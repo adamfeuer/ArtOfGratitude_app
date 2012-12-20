@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "New SMS or Email Message" %}{% endblock %}
+
+{% block content %}
+
+   {% if error %}
+    {{ error }}
+    {% endif %}
+
+    <h3>{% trans "Make a new SMS or Email Message:" %}</h3>
+
+     <form action="/sms/new_message" method="post">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <p><input type="submit" value="New Message" /></p>
+       </form>
+
+{% endblock %}

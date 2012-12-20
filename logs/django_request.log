@@ -1,0 +1,769 @@
+2012-12-18 16:48:41,056 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:01:00,256 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:01:02,327 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:02:14,286 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:02:20,339 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:02:31,776 [ERROR] django.request: Internal Server Error: /accounts/adamf/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/views.py", line 613, in profile_detail
+    profile = user.get_profile()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/models.py", line 400, in get_profile
+    self._state.db).get(user__id__exact=self.id)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: Profile matching query does not exist.
+2012-12-18 17:02:31,963 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:02:34,067 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:06,771 [WARNING] django.request: Not Found: /signup
+2012-12-18 17:03:06,828 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:08,730 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:12,818 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:21,059 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:24,285 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:26,241 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:29,328 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:37,553 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:44,893 [ERROR] django.request: Internal Server Error: /accounts/adamf/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/views.py", line 613, in profile_detail
+    profile = user.get_profile()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/models.py", line 400, in get_profile
+    self._state.db).get(user__id__exact=self.id)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: Profile matching query does not exist.
+2012-12-18 17:03:45,039 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:47,372 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:50,543 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:03:55,608 [ERROR] django.request: Internal Server Error: /sms/make_signup_url
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 302, in make_signup_url
+    context_instance=RequestContext(request))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 84, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 571, in resolve
+    obj = self.var.resolve(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 721, in resolve
+    value = self._resolve_lookup(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 772, in _resolve_lookup
+    current = current()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/forms.py", line 238, in as_p
+    errors_on_separate_row = True)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/forms.py", line 183, in _html_output
+    'field': unicode(bf),
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/forms.py", line 411, in __unicode__
+    return self.as_widget()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/forms.py", line 458, in as_widget
+    return widget.render(name, self.value(), attrs=attrs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/widgets.py", line 622, in render
+    options = self.render_options(choices, value)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/widgets.py", line 570, in render_options
+    for option_value, option_label in chain(self.choices, choices):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/models.py", line 896, in __iter__
+    for obj in self.queryset.all():
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/postgresql_psycopg2/base.py", line 52, in execute
+    return self.cursor.execute(query, args)
+DatabaseError: relation "sms_project" does not exist
+LINE 1: ...project"."created", "sms_project"."modified" FROM "sms_proje...
+                                                             ^
+
+2012-12-18 17:03:56,097 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:04:13,463 [ERROR] django.request: Internal Server Error: /sms/messages
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 197, in messages
+    context_instance=RequestContext(request))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader.py", line 176, in render_to_string
+    return t.render(context_instance)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/defaulttags.py", line 145, in render
+    len_values = len(values)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/postgresql_psycopg2/base.py", line 52, in execute
+    return self.cursor.execute(query, args)
+DatabaseError: relation "sms_message" does not exist
+LINE 1: ...message"."created", "sms_message"."modified" FROM "sms_messa...
+                                                             ^
+
+2012-12-18 17:04:13,788 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:04:16,568 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:04:18,299 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:04:19,301 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:04:21,237 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:04:39,031 [ERROR] django.request: Internal Server Error: /sms/new_project
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 56, in new_project
+    save_project_from_form(newProject, form)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 484, in save_project_from_form
+    project.save()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 912, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/postgresql_psycopg2/base.py", line 52, in execute
+    return self.cursor.execute(query, args)
+DatabaseError: relation "sms_project" does not exist
+LINE 1: INSERT INTO "sms_project" ("name", "survey_url", "smartphone...
+                    ^
+
+2012-12-18 17:04:39,225 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:04:46,345 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:04:53,708 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:04:59,124 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:05:40,553 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:05:46,471 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:05:52,503 [ERROR] django.request: Internal Server Error: /accounts/adamf/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/views.py", line 613, in profile_detail
+    profile = user.get_profile()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/models.py", line 400, in get_profile
+    self._state.db).get(user__id__exact=self.id)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: Profile matching query does not exist.
+2012-12-18 17:05:52,650 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:05,308 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:08,874 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:10,052 [ERROR] django.request: Internal Server Error: /accounts/adamf/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/views.py", line 613, in profile_detail
+    profile = user.get_profile()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/models.py", line 400, in get_profile
+    self._state.db).get(user__id__exact=self.id)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: Profile matching query does not exist.
+2012-12-18 17:06:10,199 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:21,993 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:24,739 [ERROR] django.request: Internal Server Error: /admin/auth/user/add/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/options.py", line 366, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/views/decorators/cache.py", line 89, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 196, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/views/decorators/debug.py", line 69, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/decorators.py", line 21, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/transaction.py", line 209, in inner
+    return func(*args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/admin.py", line 114, in add_view
+    extra_context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/decorators.py", line 21, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/transaction.py", line 209, in inner
+    return func(*args, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/options.py", line 978, in add_view
+    queryset=inline.queryset(request))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/models.py", line 697, in __init__
+    queryset=qs, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/models.py", line 424, in __init__
+    super(BaseModelFormSet, self).__init__(**defaults)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/formsets.py", line 50, in __init__
+    self._construct_forms()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/formsets.py", line 114, in _construct_forms
+    for i in xrange(self.total_form_count()):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/formsets.py", line 90, in total_form_count
+    initial_forms = self.initial_form_count()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/models.py", line 702, in initial_form_count
+    return super(BaseInlineFormSet, self).initial_form_count()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/forms/models.py", line 429, in initial_form_count
+    return len(self.get_queryset())
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/postgresql_psycopg2/base.py", line 52, in execute
+    return self.cursor.execute(query, args)
+DatabaseError: relation "userena_userenasignup" does not exist
+LINE 1: ...renasignup"."email_confirmation_key_created" FROM "userena_u...
+                                                             ^
+
+2012-12-18 17:06:25,069 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:27,151 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:30,697 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:43,807 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:49,073 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:51,417 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:53,152 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:54,359 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:55,184 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:55,915 [ERROR] django.request: Internal Server Error: /accounts/adamf/surveys/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 136, in surveys_select
+    survey_queryset = get_surveys(user)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 387, in get_surveys
+    return [membership.project for membership in memberships]
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/postgresql_psycopg2/base.py", line 52, in execute
+    return self.cursor.execute(query, args)
+DatabaseError: relation "sms_membership" does not exist
+LINE 1: ...ship"."created", "sms_membership"."modified" FROM "sms_membe...
+                                                             ^
+
+2012-12-18 17:06:56,135 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:57,576 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:06:59,118 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:07:00,463 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:07:01,340 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:07:02,821 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:07:13,960 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:07:16,260 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:07:17,546 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:07:27,458 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:07:29,478 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-18 17:08:08,076 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:22:17,677 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:22:20,182 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:22:28,928 [ERROR] django.request: Internal Server Error: /accounts/adamf/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/views.py", line 613, in profile_detail
+    profile = user.get_profile()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/models.py", line 400, in get_profile
+    self._state.db).get(user__id__exact=self.id)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: Profile matching query does not exist.
+2012-12-19 21:22:29,124 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:22:35,408 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:22:37,849 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:22:51,824 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:22:55,377 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:23:00,000 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:23:01,804 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:23:02,710 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:23:03,665 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:23:04,645 [ERROR] django.request: Internal Server Error: /accounts/adamf/surveys/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 136, in surveys_select
+    survey_queryset = get_surveys(user)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 387, in get_surveys
+    return [membership.project for membership in memberships]
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/cursors.py", line 201, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1146, "Table 'gratitude.sms_membership' doesn't exist")
+2012-12-19 21:23:04,850 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:23:06,419 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:23:09,413 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-19 21:23:11,040 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:32:13,322 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:32:22,656 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:32:25,401 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:32:56,254 [WARNING] django.request: Not Found: /signup.html
+2012-12-20 11:32:56,321 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:33:01,811 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:33:09,908 [WARNING] django.request: Not Found: /userena/signup.html
+2012-12-20 11:33:09,957 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:33:11,445 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:33:20,259 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:33:21,585 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:34:16,347 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:34:46,129 [WARNING] django.request: Not Found: /signup/
+2012-12-20 11:34:46,278 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:35:21,676 [WARNING] django.request: Not Found: /accounts/
+2012-12-20 11:35:21,720 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:35:36,919 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:35:43,803 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:35:51,276 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:35:56,330 [WARNING] django.request: Not Found: /signup/
+2012-12-20 11:35:56,460 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:36:12,981 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:36:16,599 [ERROR] django.request: Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/decorators.py", line 28, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+TypeError: one_page_signup() takes at least 2 arguments (1 given)
+2012-12-20 11:36:16,775 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:38:26,262 [ERROR] django.request: Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/decorators.py", line 28, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 153, in one_page_signup
+    projects = get_projects_from_surveys_param(surveys)
+NameError: global name 'surveys' is not defined
+2012-12-20 11:38:26,422 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:39:58,376 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:40:01,362 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:40:11,194 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:41:19,596 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:41:24,215 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:42:57,227 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:45:14,821 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:51:47,394 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:53:37,703 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 11:56:25,469 [ERROR] django.request: Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 156, in one_page_signup
+    user = form.save()
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/forms.py", line 83, in save
+    user =  super(SignupFormOnePage, self).save()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/forms.py", line 112, in save
+    return super(SignupFormOnlyEmail, self).save()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/forms.py", line 86, in save
+    userena_settings.USERENA_ACTIVATION_REQUIRED)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/managers.py", line 63, in create_user
+    userena_profile = self.create_userena_profile(new_user)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/managers.py", line 101, in create_userena_profile
+    activation_key=activation_key)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/manager.py", line 137, in create
+    return self.get_query_set().create(**kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 377, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 912, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/cursors.py", line 201, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1146, "Table 'gratitude.userena_userenasignup' doesn't exist")
+2012-12-20 11:56:25,750 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:01:28,801 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:01:34,967 [ERROR] django.request: Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 156, in one_page_signup
+    user = form.save()
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/forms.py", line 84, in save
+    user.first_name = self.cleaned_data['first_name']
+KeyError: 'first_name'
+2012-12-20 12:01:35,105 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:01:37,170 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:01:39,516 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:05:13,844 [ERROR] django.request: Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 89, in get_response
+    response = middleware_method(request)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/middleware/locale.py", line 21, in process_request
+    check_path = self.is_language_prefix_patterns_used()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/middleware/locale.py", line 54, in is_language_prefix_patterns_used
+    for url_pattern in get_resolver(None).url_patterns:
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 328, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 323, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/urls.py", line 6, in <module>
+    admin.autodiscover()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/__init__.py", line 29, in autodiscover
+    import_module('%s.admin' % app)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/admin.py", line 28, in <module>
+    admin.site.register(UserDetail, UserDetailAdmin)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 92, in register
+    validate(admin_class, model)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 25, in validate
+    validate_base(cls, model)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 278, in validate_base
+    validate_fields_spec(cls, model, opts, cls.fields, 'fields')
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 249, in validate_fields_spec
+    check_formfield(cls, model, opts, label, field)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 396, in check_formfield
+    "is missing from the form." % (cls.__name__, label, field))
+ImproperlyConfigured: 'UserDetailAdmin.fields' refers to field 'phone_number' that is missing from the form.
+2012-12-20 12:05:14,281 [ERROR] django.request: Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 89, in get_response
+    response = middleware_method(request)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/middleware/common.py", line 67, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 531, in is_valid_path
+    resolve(path, urlconf)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 420, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 298, in resolve
+    for pattern in self.url_patterns:
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 328, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 323, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/urls.py", line 6, in <module>
+    admin.autodiscover()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/__init__.py", line 29, in autodiscover
+    import_module('%s.admin' % app)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/admin.py", line 28, in <module>
+    admin.site.register(UserDetail, UserDetailAdmin)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 92, in register
+    validate(admin_class, model)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 25, in validate
+    validate_base(cls, model)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 278, in validate_base
+    validate_fields_spec(cls, model, opts, cls.fields, 'fields')
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 249, in validate_fields_spec
+    check_formfield(cls, model, opts, label, field)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 396, in check_formfield
+    "is missing from the form." % (cls.__name__, label, field))
+ImproperlyConfigured: 'UserDetailAdmin.fields' refers to field 'phone_number' that is missing from the form.
+2012-12-20 12:06:20,107 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:06:20,657 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:06:22,262 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:06:28,121 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:06:38,042 [ERROR] django.request: Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 156, in one_page_signup
+    user = form.save()
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/forms.py", line 88, in save
+    userDetail.save()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 912, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/cursors.py", line 203, in execute
+    if not self._defer_warnings: self._warning_check()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/cursors.py", line 117, in _warning_check
+    warn(w[-1], self.Warning, 3)
+Warning: Field 'phone_number' doesn't have a default value
+2012-12-20 12:06:38,276 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:21:23,428 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:21:33,335 [ERROR] django.request: Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 156, in one_page_signup
+    user = form.save()
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/forms.py", line 83, in save
+    user =  super(SignupFormOnePage, self).save()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/forms.py", line 112, in save
+    return super(SignupFormOnlyEmail, self).save()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/forms.py", line 86, in save
+    userena_settings.USERENA_ACTIVATION_REQUIRED)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/managers.py", line 63, in create_user
+    userena_profile = self.create_userena_profile(new_user)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/managers.py", line 101, in create_userena_profile
+    activation_key=activation_key)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/manager.py", line 137, in create
+    return self.get_query_set().create(**kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 377, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/base.py", line 463, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/base.py", line 551, in save_base
+    result = manager._insert([self], fields=fields, return_id=update_pk, using=using, raw=raw)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/manager.py", line 203, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 1593, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 912, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/cursors.py", line 201, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1146, "Table 'gratitude.userena_userenasignup' doesn't exist")
+2012-12-20 12:21:33,538 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:22:26,260 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:22:34,385 [ERROR] django.request: Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 156, in one_page_signup
+    user = form.save()
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/forms.py", line 83, in save
+    user =  super(SignupFormOnePage, self).save()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/forms.py", line 112, in save
+    return super(SignupFormOnlyEmail, self).save()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/forms.py", line 86, in save
+    userena_settings.USERENA_ACTIVATION_REQUIRED)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/userena/managers.py", line 75, in create_user
+    assign(perm[0], new_user, new_profile)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/guardian/shortcuts.py", line 81, in assign
+    return UserObjectPermission.objects.assign(perm, user, obj)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/guardian/managers.py", line 25, in assign
+    user = user)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/manager.py", line 134, in get_or_create
+    return self.get_query_set().get_or_create(**kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 445, in get_or_create
+    return self.get(**lookup), False
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/util.py", line 40, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/cursors.py", line 201, in execute
+    self.errorhandler(self, exc, value)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1146, "Table 'gratitude.guardian_userobjectpermission' doesn't exist")
+2012-12-20 12:22:34,609 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:23:55,968 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:24:05,652 [ERROR] django.request: Internal Server Error: /signup/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 157, in one_page_signup
+    redirect_to = get_intake_survey_url(user, surveys)
+NameError: global name 'surveys' is not defined
+2012-12-20 12:24:05,790 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:25:21,078 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:25:39,797 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:25:53,857 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:25:55,458 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:26:07,581 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:26:09,265 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:26:09,984 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:26:10,577 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:26:11,998 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:26:12,854 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:26:14,241 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:26:16,244 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:26:18,838 [ERROR] django.request: Internal Server Error: /accounts/4ee7b/surveys/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 140, in surveys_select
+    'phone_number': user_details.phone_number,
+AttributeError: 'UserDetail' object has no attribute 'phone_number'
+2012-12-20 12:26:18,981 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:28:21,288 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:28:24,330 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:28:25,794 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:28:26,741 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:28:27,656 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:28:29,346 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:28:37,815 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:32:07,695 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:32:09,044 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:32:10,112 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:32:11,046 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:32:12,178 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:33:45,497 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:33:47,537 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:34:41,979 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:34:43,247 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:34:44,141 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:34:45,047 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:34:45,923 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:34:53,408 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:34:54,210 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:34:55,184 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:34:56,101 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:35:05,843 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:35:11,310 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:35:12,545 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:35:13,731 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:35:17,217 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:37:20,548 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:37:23,051 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:37:29,102 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:37:49,616 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:37:52,519 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 12:37:53,724 [WARNING] django.request: Not Found: /favicon.ico

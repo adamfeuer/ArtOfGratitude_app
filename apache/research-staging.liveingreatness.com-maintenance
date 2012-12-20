@@ -1,0 +1,22 @@
+<VirtualHost *:9000>
+	ServerAdmin webmaster@localhost
+   ServerName research-staging.liveingreatness.com
+
+   RewriteEngine on
+   RewriteCond %{REQUEST_URI} !/index\.html$
+   RewriteCond %{REQUEST_URI} !/master\.css$
+   RewriteRule ^(.*)$ /index.html [L]
+
+	DocumentRoot /opt/webapps/research-staging.liveingreatness.com/surveytool/apache/maintenance
+
+	<Directory /opt/webapps/research-staging.liveingreatness.com/surveytool/apache/maintenance>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+   ErrorLog /var/log/apache2/research-staging.liveingreatness.com-error.log
+   CustomLog /var/log/apache2/research-staging.liveingreatness.com-access.log combined
+
+</VirtualHost>
