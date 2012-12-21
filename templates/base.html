@@ -63,7 +63,7 @@
           <li><a href="{% url userena_profile_detail user.username %}"><span>{% trans 'Account' %} ({{ user.email }})</span></a></li>
           <li><a href="{% url userena_signout %}"><span>{% trans 'Signout' %}</span></a></li>
           {% else %}
-          <li><a href="{% url userena_signin %}"><span>{% trans 'Sign in' %}</span></a></li>
+          <li><a href="{{ login_url }}"><span>{% trans 'Sign in' %}</span></a></li>
           {% endif %}
         </ul>
         {% endblock %}
