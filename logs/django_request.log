@@ -767,3 +767,341 @@ AttributeError: 'UserDetail' object has no attribute 'phone_number'
 2012-12-20 12:37:49,616 [WARNING] django.request: Not Found: /favicon.ico
 2012-12-20 12:37:52,519 [WARNING] django.request: Not Found: /favicon.ico
 2012-12-20 12:37:53,724 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:05:35,234 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:06:50,813 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:07:32,609 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:07:46,757 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:07:51,952 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:07:54,516 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:07:56,019 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:08:01,197 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:08:03,049 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:08:04,238 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:08:43,030 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:20:25,236 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:20:40,717 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:20:43,995 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:20:45,264 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:20:58,150 [ERROR] django.request: Internal Server Error: /accounts/8c382/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 136, in get_response
+    response = response.render()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/defaulttags.py", line 281, in render
+    return nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/defaulttags.py", line 424, in render
+    raise e
+NoReverseMatch: Reverse for 'userena_surveys_select' with arguments '(u'8c382',)' and keyword arguments '{}' not found.
+2012-12-20 13:20:58,508 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:21:52,939 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:22:00,123 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:22:02,153 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:22:03,519 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:22:04,658 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:22:05,518 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:22:07,942 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:22:08,764 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:22:27,896 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:22:31,895 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:24:34,837 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:34:12,358 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:23,071 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:27,992 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:33,892 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:35,382 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:37,059 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:38,129 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:38,920 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:39,894 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:40,745 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:36:43,105 [ERROR] django.request: Internal Server Error: /accounts/8c382/messaging/
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 132, in messaging_select
+    save_memberships_from_form(user, form)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 393, in save_memberships_from_form
+    for project in form.cleaned_data['surveys']:
+KeyError: 'surveys'
+2012-12-20 13:36:43,372 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:45:44,385 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/views/generic/simple.py", line 28, in direct_to_template
+    return HttpResponse(t.render(c), content_type=mimetype)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 253, in _populate
+    for name in pattern.reverse_dict:
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 18, in <module>
+    from forms import SmsForm, ProjectForm, MessagingForm, MessageForm, SignupFormOnePage, SignupUrlForm
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/forms.py", line 47, in <module>
+    class SignupUrlForm(forms.Form):
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/forms.py", line 48, in SignupUrlForm
+    surveys = ProjectModelMultipleChoiceField(queryset=Project.objects.all(), required=False)
+NameError: name 'ProjectModelMultipleChoiceField' is not defined
+2012-12-20 13:45:44,700 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:50:33,213 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:50:35,620 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/views/generic/simple.py", line 28, in direct_to_template
+    return HttpResponse(t.render(c), content_type=mimetype)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 253, in _populate
+    for name in pattern.reverse_dict:
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 18, in <module>
+    from forms import SmsForm, ProjectForm, MessagingForm, MessageForm, SignupFormOnePage
+ImportError: cannot import name ProjectForm
+2012-12-20 13:50:35,915 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:52:09,561 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/views/generic/simple.py", line 28, in direct_to_template
+    return HttpResponse(t.render(c), content_type=mimetype)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 253, in _populate
+    for name in pattern.reverse_dict:
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 92, in get_callable
+    lookup_view = getattr(import_module(mod_name), func_name)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/Users/adam/Dropbox/Dropbox/git/gratitude/sms/views.py", line 18, in <module>
+    from forms import SmsForm, MessagingForm, SignupFormOnePage
+ImportError: cannot import name MessagingForm
+2012-12-20 13:52:09,877 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:55:24,609 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/views/generic/simple.py", line 28, in direct_to_template
+    return HttpResponse(t.render(c), content_type=mimetype)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/template/defaulttags.py", line 411, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 363, in _reverse_with_prefix
+    possibilities = self.reverse_dict.getlist(lookup_view)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 253, in _populate
+    for name in pattern.reverse_dict:
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 276, in reverse_dict
+    self._populate()
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 265, in _populate
+    lookups.appendlist(pattern.callback, (bits, p_pattern, pattern.default_args))
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 216, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/utils/functional.py", line 27, in wrapper
+    result = func(*args)
+  File "/Users/adam/.virtualenvs/gratitude/lib/python2.7/site-packages/django/core/urlresolvers.py", line 101, in get_callable
+    (lookup_view, mod_name))
+ViewDoesNotExist: Could not import sms.views.make_signup_url. View does not exist in module sms.views.
+2012-12-20 13:55:24,909 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:57:42,685 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:57:45,122 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:57:46,237 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:57:54,144 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:58:13,017 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:58:22,241 [WARNING] django.request: Not Found: /site/welcome
+2012-12-20 13:58:22,424 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:59:24,706 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:59:26,695 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:59:29,285 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 13:59:34,160 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:00:09,571 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:00:10,242 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:00:12,593 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:03,649 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:06,559 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:08,478 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:21,072 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:26,994 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:28,078 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:29,114 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:29,975 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:35,088 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 14:01:36,811 [WARNING] django.request: Not Found: /favicon.ico
+2012-12-20 16:18:24,365 [WARNING] django.request: Not Found: /favicon.ico

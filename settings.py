@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.staticfiles',
+    'gunicorn',
     'easy_thumbnails',
     'guardian',
     'south',
@@ -122,4 +123,7 @@ PROD = "prod"
 TEST = "test"
 DEV = "dev"
 
+# landing pages
+SIGNUP_SUCCESSFUL_URL = "http://gratitude.liveingreatness.com/site/welcome"
+#SIGNUP_SUCCESSFUL_URL = "/site/welcome"
 

@@ -1,0 +1,12 @@
+2012-12-20 16:18:14,710 [INFO] gunicorn.error: Starting gunicorn 0.16.1
+2012-12-20 16:18:14,711 [INFO] gunicorn.error: Listening at: http://127.0.0.1:8000 (16734)
+2012-12-20 16:18:14,712 [INFO] gunicorn.error: Using worker: sync
+2012-12-20 16:18:14,714 [INFO] gunicorn.error: Booting worker with pid: 16735
+2012-12-20 16:21:58,392 [INFO] gunicorn.error: Handling signal: int
+2012-12-20 16:21:58,531 [INFO] gunicorn.error: Shutting down: Master
+2012-12-20 16:23:06,804 [INFO] gunicorn.error: Starting gunicorn 0.16.1
+2012-12-20 16:23:06,804 [INFO] gunicorn.error: Listening at: http://127.0.0.1:8080 (16890)
+2012-12-20 16:23:06,805 [INFO] gunicorn.error: Using worker: sync
+2012-12-20 16:23:06,808 [INFO] gunicorn.error: Booting worker with pid: 16891
+2012-12-20 16:23:27,470 [INFO] gunicorn.error: Handling signal: int
+2012-12-20 16:23:27,605 [INFO] gunicorn.error: Shutting down: Master
