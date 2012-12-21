@@ -1,5 +1,5 @@
 import ConfigParser
-from  surveytool.settings import *
+from  gratitude.settings import *
 
 APP_CONFIG = '/opt/gratitude/gratitude.config'
 config = ConfigParser.RawConfigParser()
@@ -12,11 +12,11 @@ DATABASE_USER = config.get('Database', 'user')
 DATABASE_PASSWORD = config.get('Database', 'password')
 DATABASE_DB = config.get('Database', 'database')
 
-BASE_URL="http://research.liveingreatness.com"
+BASE_URL="http://artofgratitude.org/app"
 
-STATIC_ROOT = '/opt/webapps/research.liveingreatness.com/surveytool/static'
-STATIC_URL = '/static/'
-LOGFILE_PATH = '/opt/webapps/research.liveingreatness.com/logs/surveytool.log'
+STATIC_ROOT = '/opt/gratitude/gratitude/static'
+STATIC_URL = '/app/static/'
+LOGFILE_PATH = '/opt/gratitude/logs/gratitude.log'
 
 LOGGING = {
     'version': 1,
@@ -38,7 +38,7 @@ LOGGING = {
         'request_handler': {
                 'level':'INFO',
                 'class':'logging.handlers.RotatingFileHandler',
-                'filename': '/var/log/apache2/research.liveingreatness-django-request.log',
+                'filename': '/var/log/apache2/gratitude-django-request.log',
                 'maxBytes': 1024*1024*5, # 5 MB
                 'backupCount': 5,
                 'formatter':'standard',
@@ -70,7 +70,7 @@ DATABASES = {
 }
 
 # Key Czar and django-extensions
-ENCRYPTED_FIELD_KEYS_DIR = '/opt/gratitude/src/keys'
+ENCRYPTED_FIELD_KEYS_DIR = '/opt/gratitude/gratitude/keys'
 
 # SurveyTool settings
 FLAVOR = PROD
