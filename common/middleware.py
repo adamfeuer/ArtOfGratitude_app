@@ -11,13 +11,10 @@ def set_runtime_paths(sender,**kwds):
     """
     # We only want to run this once; the signal is just for bootstrapping
     signals.request_started.disconnect(set_runtime_paths)
-    print "**** setting runtime paths "
-    print "**** BASE_URL: %s" % settings.BASE_URL
     base_url = settings.BASE_URL
     while base_url.endswith("/"):
         base_url = base_url[:-1]
     settings.BASE_URL = base_url
-    print "**** BASE_URL: %s" % settings.BASE_URL
     url_settings = ("MEDIA_URL","ADMIN_MEDIA_PREFIX","LOGIN_URL",
                              "LOGOUT_URL","LOGIN_REDIRECT_URL")
     for setting in url_settings:
@@ -29,7 +26,6 @@ def set_runtime_paths(sender,**kwds):
             newval = settings.BASE_URL + oldval
             setattr(settings,setting,newval)
             print "**** newval: %s" % newval
-            
  
 class RuntimePathsMiddleware:
     """Middleware to re-configure paths at runtime.
