@@ -1,9 +1,9 @@
 import ConfigParser
 from  surveytool.settings import *
 
-SURVEYTOOL_CONFIG = '/opt/webapps/research.liveingreatness.com/surveytool.config'
+APP_CONFIG = '/opt/gratitude/gratitude.config'
 config = ConfigParser.RawConfigParser()
-config.read(SURVEYTOOL_CONFIG)
+config.read(APP_CONFIG)
 TWILIO_FROM_PHONE_NUMBER = config.get('Twilio', 'TWILIO_FROM_PHONE_NUMBER')
 TWILIO_ACCOUNT = config.get('Twilio', 'TWILIO_ACCOUNT')
 TWILIO_TOKEN = config.get('Twilio', 'TWILIO_TOKEN')
@@ -61,17 +61,16 @@ LOGGING = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DATABASE_DB,
-        'ENGINE': 'postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'HOST': DATABASE_HOST,
+        'NAME': DATABASE_DB,
         'USER': DATABASE_USER,
         'PASSWORD': DATABASE_PASSWORD,
         }
 }
 
 # Key Czar and django-extensions
-ENCRYPTED_FIELD_KEYS_DIR = '/opt/webapps/research.liveingreatness.com/surveytool/keys'
+ENCRYPTED_FIELD_KEYS_DIR = '/opt/gratitude/src/keys'
 
 # SurveyTool settings
 FLAVOR = PROD
