@@ -1,5 +1,5 @@
 import os, ConfigParser
-from  gratitude.settings import *
+from gratitude.settings import *
 
 SURVEYTOOL_CONFIG = os.path.join(os.environ['WORKON_HOME'], 'gratitude', 'gratitude.config')
 config = ConfigParser.RawConfigParser()
@@ -12,8 +12,7 @@ DATABASE_USER = config.get('Database', 'user')
 DATABASE_PASSWORD = config.get('Database', 'password')
 DATABASE_DB = config.get('Database', 'database')
 
-BASE_URL="http://localhost:8000"
-
+BASE_URL="http://localhost:8080"
 
 STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
