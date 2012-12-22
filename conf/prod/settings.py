@@ -1,5 +1,5 @@
 import ConfigParser
-from  gratitude.settings import *
+from gratitude.settings import *
 
 APP_CONFIG = '/opt/gratitude/gratitude.config'
 config = ConfigParser.RawConfigParser()
