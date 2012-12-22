@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import logout
+from django.contrib.auth import logout, REDIRECT_FIELD_NAME
 from django.contrib.auth.decorators import permission_required, login_required, user_passes_test 
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.contrib.auth.models import User
@@ -78,6 +78,7 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
    return direct_to_template(request,
                              template_name,
                              extra_context=extra_context)
+
 
 # Utility functions
 
