@@ -1,19 +1,16 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Art of Gratitude - Profile" %}{% endblock %}
+{% block content_title %}<h2 class="content-title">{% trans 'Profile' %}</h2>{% endblock %}
 
 {% block content %}
 
-   {% if error %}
-    {{ error }}
-    {% endif %}
+<h1>Jane Grately</h1>
+<ul>
+  <li>Day 1: I am grateful for.... </li>
+  <li>Day 2: I am grateful for.... </li>
+  <li>Day 2: I am grateful for.... </li>
+  <li>Day 3: I am grateful for.... </li>
+</ul>
 
-    <ul>
-    {% for gratitude in gratitudes %}
-       <li>Day 1: foo</li>
-    {% endfor %}
-    </ul>
-      
 {% endblock %}
