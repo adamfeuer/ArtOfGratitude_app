@@ -15,7 +15,7 @@ from django.conf import settings
 
 from userena.decorators import secure_required
 
-from forms import EmailForm, MessagingForm, SignupFormOnePage 
+from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm
 from models import Message, UserDetail
 from EmailSender import EmailSender
 
@@ -61,7 +61,7 @@ def messaging_select(request, username):
 #@secure_required
 def one_page_signup(request, signup_form=SignupFormOnePage,
            template_name='userena/signup.html'):
-   form = SignupFormOnePage(initial = {'smartphone' : True })
+   form = SignupFormOnePage(initial = {})
    if request.method == 'POST':
       form = signup_form(request.POST, request.FILES)
       if form.is_valid():
@@ -78,6 +78,21 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
                              template_name,
                              extra_context=extra_context)
 
+
+@secure_required
+def profile(request, profile_form=ProfileForm,
+           template_name='gratitude/profile.html'):
+   form = ProfileForm(initial = {})
+   if request.method == 'POST':
+      form = profile_form(request.POST, request.FILES)
+      if form.is_valid():
+         user = form.save()
+   else:
+      extra_context = dict()
+      extra_context['form'] = form
+      return direct_to_template(request,
+                                template_name,
+                                extra_context=extra_context)
 
 # Utility functions
 

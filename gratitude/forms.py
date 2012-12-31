@@ -29,6 +29,9 @@ class MessagingForm(forms.Form):
    user_id = forms.IntegerField(widget=forms.HiddenInput, required=False)
    no_messages = forms.BooleanField(required=False, label=_('Do not send me any more emails'), help_text='If you want to stop getting email messages from us, check this box.')
 
+class ProfileForm(forms.Form):
+   pass
+
 class SignupFormOnePage(SignupFormOnlyEmail):
    def __init__(self, *args, **kwargs):
       super(SignupFormOnlyEmail, self).__init__(*args, **kwargs)
