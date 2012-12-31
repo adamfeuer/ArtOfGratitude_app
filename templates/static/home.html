@@ -8,7 +8,7 @@
   {% if user.is_authenticated %}
       {% if user.is_staff %}
            <ul>
-      	     <li>{% blocktrans %}<a href="{{ send_sms_url }}">Send a text</a>{% endblocktrans %}</li>
+      	     <li>{% blocktrans %}<a href="{{ send_email_url }}">Send an email</a>{% endblocktrans %}</li>
 	        </ul>
      {% endif %}
    {% endif %}

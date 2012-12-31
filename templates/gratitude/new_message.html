@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "New SMS or Email Message" %}{% endblock %}
+{% block head_title %}{% trans "New Email Message" %}{% endblock %}
 
 {% block content %}
 
@@ -10,9 +10,9 @@
     {{ error }}
     {% endif %}
 
-    <h3>{% trans "Make a new SMS or Email Message:" %}</h3>
+    <h3>{% trans "Make a new Email Message:" %}</h3>
 
-     <form action="/sms/new_message" method="post">
+     <form action="/gratitude/new_message" method="post">
        {% csrf_token %}
        {{ form.as_p }}
        <p><input type="submit" value="New Message" /></p>

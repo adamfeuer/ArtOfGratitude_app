@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Setting'
-        db.create_table('sms_setting', (
+        db.create_table('gratitude_setting', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('value', self.gf('django.db.models.fields.CharField')(max_length=500)),
@@ -17,48 +17,34 @@ class Migration(SchemaMigration):
             ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
         ))
-        db.send_create_signal('sms', ['Setting'])
+        db.send_create_signal('gratitude', ['Setting'])
 
-        # Adding model 'Project'
-        db.create_table('sms_project', (
+        # Adding model 'Profile'
+        db.create_table('gratitude_profile', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('survey_url', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('smartphone_message', self.gf('django.db.models.fields.CharField')(max_length=160)),
-            ('text_message', self.gf('django.db.models.fields.CharField')(max_length=160)),
-            ('start_datetime', self.gf('django.db.models.fields.DateTimeField')()),
-            ('end_datetime', self.gf('django.db.models.fields.DateTimeField')()),
-            ('messages_per_day', self.gf('django.db.models.fields.IntegerField')()),
-            ('guard_time_minutes', self.gf('django.db.models.fields.IntegerField')()),
-            ('synchronize_messages', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('day_start_time', self.gf('django.db.models.fields.TimeField')()),
-            ('day_end_time', self.gf('django.db.models.fields.TimeField')()),
-            ('intake_survey_url', self.gf('django.db.models.fields.CharField')(default='', max_length=500)),
-            ('intake_survey_query_string_parameter', self.gf('django.db.models.fields.CharField')(default='', max_length=100)),
+            ('user_id', self.gf('django.db.models.fields.CharField')(max_length=214)),
+            ('days_left', self.gf('django.db.models.fields.IntegerField')()),
             ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
         ))
-        db.send_create_signal('sms', ['Project'])
+        db.send_create_signal('gratitude', ['Profile'])
 
-        # Adding model 'Membership'
-        db.create_table('sms_membership', (
+        # Adding model 'Gratitude'
+        db.create_table('gratitude_gratitude', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('project', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sms.Project'])),
-            ('messages_generated', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('user_id', self.gf('django.db.models.fields.CharField')(max_length=214)),
+            ('gratitude', self.gf('django.db.models.fields.CharField')(max_length=5000)),
             ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
         ))
-        db.send_create_signal('sms', ['Membership'])
+        db.send_create_signal('gratitude', ['Gratitude'])
 
         # Adding model 'Message'
-        db.create_table('sms_message', (
+        db.create_table('gratitude_message', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('project', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sms.Project'])),
             ('user_id', self.gf('django.db.models.fields.CharField')(max_length=214)),
             ('identifier', self.gf('django.db.models.fields.CharField')(max_length=214)),
-            ('phone_number', self.gf('django.db.models.fields.CharField')(max_length=214)),
-            ('email', self.gf('django.db.models.fields.CharField')(max_length=342)),
+            ('email_address', self.gf('django.db.models.fields.CharField')(max_length=342)),
             ('message', self.gf('django.db.models.fields.CharField')(max_length=470)),
             ('send_at', self.gf('django.db.models.fields.DateTimeField')()),
             ('sent', self.gf('django.db.models.fields.BooleanField')(default=False)),
@@ -67,34 +53,34 @@ class Migration(SchemaMigration):
             ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
         ))
-        db.send_create_signal('sms', ['Message'])
+        db.send_create_signal('gratitude', ['Message'])
 
         # Adding model 'UserDetail'
-        db.create_table('sms_userdetail', (
+        db.create_table('gratitude_userdetail', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('no_messages', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
         ))
-        db.send_create_signal('sms', ['UserDetail'])
+        db.send_create_signal('gratitude', ['UserDetail'])
 
 
     def backwards(self, orm):
         # Deleting model 'Setting'
-        db.delete_table('sms_setting')
+        db.delete_table('gratitude_setting')
 
-        # Deleting model 'Project'
-        db.delete_table('sms_project')
+        # Deleting model 'Profile'
+        db.delete_table('gratitude_profile')
 
-        # Deleting model 'Membership'
-        db.delete_table('sms_membership')
+        # Deleting model 'Gratitude'
+        db.delete_table('gratitude_gratitude')
 
         # Deleting model 'Message'
-        db.delete_table('sms_message')
+        db.delete_table('gratitude_message')
 
         # Deleting model 'UserDetail'
-        db.delete_table('sms_userdetail')
+        db.delete_table('gratitude_userdetail')
 
 
     models = {
@@ -134,52 +120,37 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'sms.membership': {
-            'Meta': {'object_name': 'Membership'},
+        'gratitude.gratitude': {
+            'Meta': {'object_name': 'Gratitude'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
+            'gratitude': ('django.db.models.fields.CharField', [], {'max_length': '5000'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'messages_generated': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'project': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['sms.Project']"}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+            'user_id': ('django.db.models.fields.CharField', [], {'max_length': '214'})
         },
-        'sms.message': {
+        'gratitude.message': {
             'Meta': {'object_name': 'Message'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'email': ('django.db.models.fields.CharField', [], {'max_length': '342'}),
+            'email_address': ('django.db.models.fields.CharField', [], {'max_length': '342'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'identifier': ('django.db.models.fields.CharField', [], {'max_length': '214'}),
             'message': ('django.db.models.fields.CharField', [], {'max_length': '470'}),
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'phone_number': ('django.db.models.fields.CharField', [], {'max_length': '214'}),
-            'project': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['sms.Project']"}),
             'send_at': ('django.db.models.fields.DateTimeField', [], {}),
             'sent': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'sent_error_message': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'sent_status': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'user_id': ('django.db.models.fields.CharField', [], {'max_length': '214'})
         },
-        'sms.project': {
-            'Meta': {'object_name': 'Project'},
+        'gratitude.profile': {
+            'Meta': {'object_name': 'Profile'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'day_end_time': ('django.db.models.fields.TimeField', [], {}),
-            'day_start_time': ('django.db.models.fields.TimeField', [], {}),
-            'end_datetime': ('django.db.models.fields.DateTimeField', [], {}),
-            'guard_time_minutes': ('django.db.models.fields.IntegerField', [], {}),
+            'days_left': ('django.db.models.fields.IntegerField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'intake_survey_query_string_parameter': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '100'}),
-            'intake_survey_url': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '500'}),
-            'members': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.User']", 'through': "orm['sms.Membership']", 'symmetrical': 'False'}),
-            'messages_per_day': ('django.db.models.fields.IntegerField', [], {}),
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'smartphone_message': ('django.db.models.fields.CharField', [], {'max_length': '160'}),
-            'start_datetime': ('django.db.models.fields.DateTimeField', [], {}),
-            'survey_url': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'synchronize_messages': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'text_message': ('django.db.models.fields.CharField', [], {'max_length': '160'})
+            'user_id': ('django.db.models.fields.CharField', [], {'max_length': '214'})
         },
-        'sms.setting': {
+        'gratitude.setting': {
             'Meta': {'object_name': 'Setting'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             'description': ('django.db.models.fields.CharField', [], {'max_length': '500'}),
@@ -188,7 +159,7 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'value': ('django.db.models.fields.CharField', [], {'max_length': '500'})
         },
-        'sms.userdetail': {
+        'gratitude.userdetail': {
             'Meta': {'object_name': 'UserDetail'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -198,4 +169,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['sms']
+    complete_apps = ['gratitude']

@@ -8,15 +8,15 @@
 
 {% block content %}
 
-    <p>{% trans "This form sends a text message." %} <p/>
+    <p>{% trans "This form sends an email message." %} <p/>
 
     {% if error %}
     {{ error }}
     {% endif %}
 
-    <h3>{% trans "Send a text:" %}</h3>
+    <h3>{% trans "Send an email:" %}</h3>
 
-     <form action="/sms/sms" method="post">
+     <form action="/gratitude/email" method="post">
        {% csrf_token %}
        {{ form.as_p }}
        <input type="submit" value="Send" />

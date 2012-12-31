@@ -99,7 +99,7 @@ INSTALLED_APPS = (
     'userena.contrib.umessages',
     'cronjobs',
     'gratitude.profiles',
-    'gratitude.sms',
+    'gratitude.gratitude',
 
 )
 

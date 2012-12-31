@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from userena.forms import SignupFormOnlyEmail
 
-from sms.models import Project, Membership, UserDetail
+from gratitude.gratitude.models import UserDetail
 
 def get_datetime_field():
    return StrippingDateTimeField(required=False, widget=forms.TextInput(attrs={'class':'jquery-datetime'}))
@@ -21,9 +21,9 @@ class StrippingDateTimeField(forms.DateTimeField):
    def to_python(self, value):
       return super(StrippingDateTimeField, self).to_python(value.strip())      
     
-class SmsForm(forms.Form):
+class EmailForm(forms.Form):
    message = forms.CharField(max_length=160,widget=forms.Textarea)
-   phone_number = forms.CharField()
+   email_address = forms.CharField()
 
 class MessagingForm(forms.Form):
    user_id = forms.IntegerField(widget=forms.HiddenInput, required=False)

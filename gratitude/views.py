@@ -15,10 +15,9 @@ from django.conf import settings
 
 from userena.decorators import secure_required
 
-from forms import SmsForm, MessagingForm, SignupFormOnePage 
-from models import Project, Membership, Message, UserDetail
-from SmsSender import SmsSender
-from MessageGenerator import MessageGenerator
+from forms import EmailForm, MessagingForm, SignupFormOnePage 
+from models import Message, UserDetail
+from EmailSender import EmailSender
 
 logger = logging.getLogger(__name__)
 
@@ -27,16 +26,16 @@ TIME_FORMAT="%H:%M"
 
 @login_required
 @user_passes_test(lambda u: u.is_staff)
-def sms(request):
+def email(request):
    if request.method == 'POST': 
-      form = SmsForm(request.POST)
+      form = EmailForm(request.POST)
       if form.is_valid():
-         result = SmsSender().send(form.cleaned_data["phone_number"], form.cleaned_data['message'])
+         result = EmailSender().send(form.cleaned_data["email"], form.cleaned_data['message'])
          return HttpResponseRedirect('/') 
    else:
-      form = SmsForm() 
+      form = EmailForm() 
 
-   return render_to_response('sms/sms.html',
+   return render_to_response('email/email.html',
                              {'form': form },
                              context_instance=RequestContext(request))
        

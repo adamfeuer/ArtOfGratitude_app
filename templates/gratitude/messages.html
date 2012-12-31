@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "SMS and Email Messages" %}{% endblock %}
+{% block head_title %}{% trans "Email Messages" %}{% endblock %}
 
 {% block content %}
 
@@ -10,14 +10,13 @@
     {{ error }}
     {% endif %}
 
-    <h3>{% trans "SMS and Email Messages:" %}</h3>
+    <h3>{% trans "Email Messages:" %}</h3>
 
     <table class="message-table"> 
        <tr>
          <th>Id</th> 
          <th>Project</th>
          <th>User Id</th>
-         <th>Phone Number</th>
          <th>Email</th>
          <th>Identifier</th>
          <th>Message</th>
@@ -28,12 +27,11 @@
          <th>Edit</th> 
          <th>Delete</th> 
        </tr>
-      {% for message in sms_messages %}
+      {% for message in messages %}
        <tr>
          <td>{{ message.id }}</td> 
          <td>{{ message.project }}</td>
          <td>{{ message.user_id }}</td>
-         <td>{{ message.phone_number }}</td>
          <td>{{ message.email }}</td>
          <td>{{ message.identifier }}</td>
          <td>{{ message.message }}</td> 
@@ -41,8 +39,8 @@
          <td>{{ message.sent }}</td>
          <td>{{ message.sent_status }}</td>
          <td>{{ message.sent_error_message }}</td> 
-         <td><a href="/sms/edit_message/{{message.id}}">Edit</a></td> 
-         <td><a href="/sms/delete_message/{{message.id}}">Delete</a></td> 
+         <td><a href="/gratitude/edit_message/{{message.id}}">Edit</a></td> 
+         <td><a href="/gratitude/delete_message/{{message.id}}">Delete</a></td> 
        </tr>
       {% endfor %}
     </table>

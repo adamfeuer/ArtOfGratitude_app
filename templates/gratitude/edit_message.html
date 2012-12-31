@@ -10,9 +10,9 @@
     {{ error }}
     {% endif %}
 
-    <h3>{% trans "Edit a SMS or Email Message:" %}</h3>
+    <h3>{% trans "Edit an Email Message:" %}</h3>
 
-     <form action="/sms/save_message" method="post"> 
+     <form action="/gratitude/save_message" method="post"> 
        {% csrf_token %}
        {% for field in form %} 
             {{ field.errors }}
