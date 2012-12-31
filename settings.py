@@ -127,6 +127,5 @@ TEST = "test"
 DEV = "dev"
 
 # landing pages
-SIGNUP_SUCCESSFUL_URL = "http://artofgratitude.org/site/welcome"
-#SIGNUP_SUCCESSFUL_URL = "/site/welcome"
+SIGNUP_SUCCESSFUL_URL = "/site/welcome"
 
