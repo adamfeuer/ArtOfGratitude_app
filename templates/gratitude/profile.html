@@ -6,16 +6,15 @@
 {% block content %}
 
 <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-<ul>
+<ol>
 {% for gratitude in gratitudes %}
    <li>{{ gratitude.text }}</li>
 {% endfor %}
+</ol>
 <p/>
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="{% trans "Submit" %}" />
 </form>
-</ul>
 
 {% endblock %}
