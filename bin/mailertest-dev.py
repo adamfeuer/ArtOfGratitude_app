@@ -5,8 +5,8 @@ from mailer import Message
 
 message = Message(From="adam@adamfeuer.com",
                   To="adamfeuer@gmail.com")
-message.Subject = "HTML email test - prod"
-message.Html = """<form method="post" action="http://artofgratitude.com/app/profile-landing/adamf">
+message.Subject = "HTML email test - dev"
+message.Html = """<form method="post" action="http://localhost:8080/profile-landing/adamf">
 <p>
 <label for="id_text">Type in your gratitude for today (start with "I am grateful for..."):</label>
 <input id="id_text" type="text" maxlength="5000" name="text">
