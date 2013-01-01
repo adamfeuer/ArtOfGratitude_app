@@ -12,7 +12,7 @@ DATABASE_USER = config.get('Database', 'user')
 DATABASE_PASSWORD = config.get('Database', 'password')
 DATABASE_DB = config.get('Database', 'database')
 
-BASE_URL="http://artofgratitude.org/app"
+BASE_URL="http://artofgratitude.com/app"
 
 STATIC_ROOT = '/opt/gratitude/gratitude/static'
 STATIC_URL = '/app/static/'
