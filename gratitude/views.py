@@ -67,11 +67,13 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
       form = signup_form(request.POST, request.FILES)
       if form.is_valid():
          user = form.save()
+         logger.error('Base URL: %s' % settings.BASE_URL)
+         logger.error('Signup successful URL: %s' % settings.SIGNUP_SUCCESSFUL_URL)
          redirect_to = settings.SIGNUP_SUCCESSFUL_URL
          # A new signed user should logout the old one.
          if request.user.is_authenticated():
             logout(request)
-         return redirect(redirect_to)
+         return HttpResponseRedirect(redirect_to)
 
    extra_context = {}
    extra_context.update(csrf(request))
