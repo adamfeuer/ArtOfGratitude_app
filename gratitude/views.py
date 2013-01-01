@@ -1,6 +1,7 @@
 import datetime, logging, time, base64, string, csv, re
 
 from django.core.context_processors import csrf
+from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -72,7 +73,8 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
             logout(request)
          return redirect(redirect_to)
 
-   extra_context = dict()
+   extra_context = {}
+   extra_context.update(csrf(request))
    extra_context['form'] = form
    return direct_to_template(request,
                              template_name,
@@ -94,12 +96,19 @@ def profile(request, username, profile_form=ProfileForm,
          print newGratitudeEntry.text
          newGratitudeEntry.save()
    extra_context = {}
+   extra_context.update(csrf(request))
    extra_context['user'] = user 
    extra_context['form'] = form
    extra_context['gratitudes'] = gratitudes
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))
+
+@login_required
+@csrf_exempt
+def profile_landing(request, username, profile_form=ProfileForm,
+           template_name='gratitude/profile.html'):
+   return profile(request, username, profile_form, template_name)
 
 # Utility functions
 
