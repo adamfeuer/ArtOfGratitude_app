@@ -14,7 +14,7 @@ class Setting(models.Model):
       return self.name
    
 class UserProfile(models.Model):
-   user_id = EncryptedCharField(max_length=100)
+   user_id = models.CharField(max_length=100)
    days_left = models.IntegerField()
    created = CreationDateTimeField()
    modified = ModificationDateTimeField()
@@ -23,16 +23,16 @@ class UserProfile(models.Model):
       return self.user_id
 
 class Gratitude(models.Model):
-   user_id = EncryptedCharField(max_length=100)
-   gratitude = models.CharField(max_length=5000)
+   user_id = models.CharField(max_length=100)
+   text = models.CharField(max_length=5000)
    created = CreationDateTimeField()
    modified = ModificationDateTimeField()
 
 class Message(models.Model):
-   user_id = EncryptedCharField(max_length=100)
-   identifier = EncryptedCharField(max_length=100)
-   email_address = EncryptedCharField(max_length=200)
-   message = EncryptedCharField(max_length=300)
+   user_id = models.CharField(max_length=100)
+   identifier = models.CharField(max_length=100)
+   email_address = models.CharField(max_length=200)
+   message = models.CharField(max_length=300)
    send_at = models.DateTimeField()
    sent = models.BooleanField()
    sent_status = models.BooleanField()

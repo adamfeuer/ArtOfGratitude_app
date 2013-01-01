@@ -1,4 +1,4 @@
-from gratitude.gratitude.models import Setting, UserProfile, Message, UserDetail
+from gratitude.gratitude.models import Setting, UserProfile, Message, UserDetail, Gratitude
 from django.contrib import admin
 
 class SettingAdmin(admin.ModelAdmin):
@@ -14,10 +14,14 @@ class MessageAdmin(admin.ModelAdmin):
 class UserDetailAdmin(admin.ModelAdmin):
    fields = ['user', 'no_messages']
 
+class GratitudeAdmin(admin.ModelAdmin):
+    fields = ['user_id', 'text' ]
+
 admin.site.register(Setting, SettingAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Message, MessageAdmin)
 admin.site.register(UserDetail, UserDetailAdmin)
+admin.site.register(Gratitude, GratitudeAdmin)
 
 
 

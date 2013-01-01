@@ -19,21 +19,21 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('gratitude', ['Setting'])
 
-        # Adding model 'Profile'
-        db.create_table('gratitude_profile', (
+        # Adding model 'UserProfile'
+        db.create_table('gratitude_userprofile', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user_id', self.gf('django.db.models.fields.CharField')(max_length=214)),
             ('days_left', self.gf('django.db.models.fields.IntegerField')()),
             ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
         ))
-        db.send_create_signal('gratitude', ['Profile'])
+        db.send_create_signal('gratitude', ['UserProfile'])
 
         # Adding model 'Gratitude'
         db.create_table('gratitude_gratitude', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user_id', self.gf('django.db.models.fields.CharField')(max_length=214)),
-            ('gratitude', self.gf('django.db.models.fields.CharField')(max_length=5000)),
+            ('text', self.gf('django.db.models.fields.CharField')(max_length=5000)),
             ('created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now, blank=True)),
         ))
@@ -70,8 +70,8 @@ class Migration(SchemaMigration):
         # Deleting model 'Setting'
         db.delete_table('gratitude_setting')
 
-        # Deleting model 'Profile'
-        db.delete_table('gratitude_profile')
+        # Deleting model 'UserProfile'
+        db.delete_table('gratitude_userprofile')
 
         # Deleting model 'Gratitude'
         db.delete_table('gratitude_gratitude')
@@ -123,9 +123,9 @@ class Migration(SchemaMigration):
         'gratitude.gratitude': {
             'Meta': {'object_name': 'Gratitude'},
             'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'gratitude': ('django.db.models.fields.CharField', [], {'max_length': '5000'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
+            'text': ('django.db.models.fields.CharField', [], {'max_length': '5000'}),
             'user_id': ('django.db.models.fields.CharField', [], {'max_length': '214'})
         },
         'gratitude.message': {
@@ -140,14 +140,6 @@ class Migration(SchemaMigration):
             'sent': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'sent_error_message': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'sent_status': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'user_id': ('django.db.models.fields.CharField', [], {'max_length': '214'})
-        },
-        'gratitude.profile': {
-            'Meta': {'object_name': 'Profile'},
-            'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
-            'days_left': ('django.db.models.fields.IntegerField', [], {}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             'user_id': ('django.db.models.fields.CharField', [], {'max_length': '214'})
         },
         'gratitude.setting': {
@@ -166,6 +158,14 @@ class Migration(SchemaMigration):
             'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
             'no_messages': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+        },
+        'gratitude.userprofile': {
+            'Meta': {'object_name': 'UserProfile'},
+            'created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
+            'days_left': ('django.db.models.fields.IntegerField', [], {}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'modified': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'blank': 'True'}),
+            'user_id': ('django.db.models.fields.CharField', [], {'max_length': '214'})
         }
     }
 

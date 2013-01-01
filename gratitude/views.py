@@ -16,7 +16,7 @@ from django.conf import settings
 from userena.decorators import secure_required
 
 from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm
-from models import Message, UserDetail
+from models import Message, UserDetail, Gratitude
 from EmailSender import EmailSender
 
 logger = logging.getLogger(__name__)
@@ -79,22 +79,33 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
                              extra_context=extra_context)
 
 
-@secure_required
-def profile(request, profile_form=ProfileForm,
+@login_required
+def profile(request, username, profile_form=ProfileForm,
            template_name='gratitude/profile.html'):
+   user = get_object_or_404(User, username__iexact=username)
+   gratitudes = get_gratitudes(user)
    form = ProfileForm(initial = {})
    if request.method == 'POST':
       form = profile_form(request.POST, request.FILES)
       if form.is_valid():
-         user = form.save()
-   else:
-      extra_context = dict()
-      extra_context['form'] = form
-      return direct_to_template(request,
-                                template_name,
-                                extra_context=extra_context)
+         newGratitudeEntry = Gratitude()
+         newGratitudeEntry.user_id = user.id
+         newGratitudeEntry.text = form.cleaned_data['text'] 
+         print newGratitudeEntry.text
+         newGratitudeEntry.save()
+   extra_context = {}
+   extra_context['user'] = user 
+   extra_context['form'] = form
+   extra_context['gratitudes'] = gratitudes
+   return render_to_response(template_name,
+                             extra_context,
+                             context_instance=RequestContext(request))
 
 # Utility functions
+
+def get_gratitudes(user):
+   gratitudes = Gratitude.objects.filter(user_id = user.id)
+   return(gratitudes)
 
 def get_user_details(user):
    user_details_list = UserDetail.objects.filter(user = user.id)

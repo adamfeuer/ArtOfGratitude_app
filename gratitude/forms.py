@@ -30,7 +30,7 @@ class MessagingForm(forms.Form):
    no_messages = forms.BooleanField(required=False, label=_('Do not send me any more emails'), help_text='If you want to stop getting email messages from us, check this box.')
 
 class ProfileForm(forms.Form):
-   pass
+   text = forms.CharField(max_length=200,widget=forms.Textarea)
 
 class SignupFormOnePage(SignupFormOnlyEmail):
    def __init__(self, *args, **kwargs):
