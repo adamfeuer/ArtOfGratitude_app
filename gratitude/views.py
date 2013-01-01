@@ -98,7 +98,7 @@ def profile(request, username, profile_form=ProfileForm,
    extra_context = {}
    extra_context.update(csrf(request))
    extra_context['user'] = user 
-   extra_context['form'] = form
+   #extra_context['form'] = form
    extra_context['gratitudes'] = gratitudes
    return render_to_response(template_name,
                              extra_context,
