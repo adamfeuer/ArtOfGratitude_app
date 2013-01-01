@@ -12,7 +12,8 @@ DATABASE_USER = config.get('Database', 'user')
 DATABASE_PASSWORD = config.get('Database', 'password')
 DATABASE_DB = config.get('Database', 'database')
 
-BASE_URL="http://artofgratitude.com/app"
+SITE_URL = "http://artofgratitude.com"
+BASE_URL = SITE_URL + "/app"
 
 STATIC_ROOT = '/opt/gratitude/gratitude/static'
 STATIC_URL = '/app/static/'
@@ -86,4 +87,4 @@ TEMPLATE_DEBUG = True
 ALLOWED_PHONE_NUMBERS = []
 #ALLOWED_PHONE_NUMBERS = ['206-330-4774']
 
-SIGNUP_SUCCESSFUL_URL = BASE_URL + SIGNUP_SUCCESSFUL_BASE_URL
+SIGNUP_SUCCESSFUL_URL = SITE_URL + SIGNUP_SUCCESSFUL_BASE_URL

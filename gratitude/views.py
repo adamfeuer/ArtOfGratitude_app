@@ -67,13 +67,13 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
       form = signup_form(request.POST, request.FILES)
       if form.is_valid():
          user = form.save()
-         logger.error('Base URL: %s' % settings.BASE_URL)
-         logger.error('Signup successful URL: %s' % settings.SIGNUP_SUCCESSFUL_URL)
          redirect_to = settings.SIGNUP_SUCCESSFUL_URL
+         logger.error('Base URL: %s' % settings.BASE_URL)
+         logger.error('Signup successful URL: %s' % redirect_to)
          # A new signed user should logout the old one.
          if request.user.is_authenticated():
             logout(request)
-         return HttpResponseRedirect(redirect_to)
+         return redirect(redirect_to)
 
    extra_context = {}
    extra_context.update(csrf(request))
@@ -89,6 +89,10 @@ def profile(request, username, profile_form=ProfileForm,
    user = get_object_or_404(User, username__iexact=username)
    gratitudes = get_gratitudes(user)
    form = ProfileForm(initial = {})
+   extra_context = {}
+   extra_context.update(csrf(request))
+   extra_context['user'] = user 
+   extra_context['gratitudes'] = gratitudes
    if request.method == 'POST':
       form = profile_form(request.POST, request.FILES)
       if form.is_valid():
@@ -97,11 +101,8 @@ def profile(request, username, profile_form=ProfileForm,
          newGratitudeEntry.text = form.cleaned_data['text'] 
          print newGratitudeEntry.text
          newGratitudeEntry.save()
-   extra_context = {}
-   extra_context.update(csrf(request))
-   extra_context['user'] = user 
-   #extra_context['form'] = form
-   extra_context['gratitudes'] = gratitudes
+      else:
+         extra_context['form'] = form
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))
