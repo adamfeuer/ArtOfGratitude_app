@@ -3,8 +3,15 @@
 from mailer import Mailer
 from mailer import Message
 
-message = Message(From="adam@adamfeuer.com",
-                  To="adamfeuer@gmail.com")
+toAddress='adamfeuer@gmail.com'
+
+smtpServer='email-smtp.us-east-1.amazonaws.com'
+user='AKIAIBJGVZ52BWW3V7XQ'
+password='AgyFiq9cDPEKj87cYcUUVr4aEkINzoXjGavnyIoA5w2l'
+fromAddress='team@artofgratitude.com'
+
+message = Message(From=fromAddress,
+                  To=toAddress)
 message.Subject = "HTML email test - prod"
 message.Html = """<form method="post" action="http://artofgratitude.com/app/profile-landing/adamf">
 <p>
@@ -13,5 +20,5 @@ message.Html = """<form method="post" action="http://artofgratitude.com/app/prof
 </p>
 </form>"""
 
-sender = Mailer('mailout.easydns.com', usr='adamfeuer.com', pwd='b8PnU7HXD1f25D0m9V7478029n4hL6')
+sender = Mailer(smtpServer, usr=user, pwd=password, use_tls=True)
 sender.send(message)
