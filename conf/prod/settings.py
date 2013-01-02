@@ -1,5 +1,6 @@
 import ConfigParser
 from gratitude.settings import *
+readConfigFile()
 
 APP_CONFIG = '/opt/gratitude/gratitude.config'
 config = ConfigParser.RawConfigParser()
@@ -11,6 +12,10 @@ DATABASE_HOST = config.get('Database', 'host')
 DATABASE_USER = config.get('Database', 'user')
 DATABASE_PASSWORD = config.get('Database', 'password')
 DATABASE_DB = config.get('Database', 'database')
+AWS_SES_USER = config.get('AWS-SES', 'user')
+AWS_SES_PASSWORD = config.get('AWS-SES', 'password')
+
+SITE_ID = 2
 
 SITE_URL = "http://artofgratitude.com"
 BASE_URL = SITE_URL + "/app"

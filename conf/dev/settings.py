@@ -11,8 +11,13 @@ DATABASE_HOST = config.get('Database', 'host')
 DATABASE_USER = config.get('Database', 'user')
 DATABASE_PASSWORD = config.get('Database', 'password')
 DATABASE_DB = config.get('Database', 'database')
+# AWS settings 
+AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
+AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
 
 BASE_URL="http://localhost:8080"
+
+SITE_ID = 3
 
 STATIC_ROOT = 'static'
 STATIC_URL = '/static/'

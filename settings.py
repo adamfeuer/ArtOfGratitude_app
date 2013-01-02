@@ -15,10 +15,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-if DEBUG:
+#if DEBUG:
     # Use the Python SMTP debugging server. You can run it with:
     # ``python -m smtpd -n -c DebuggingServer localhost:1025``.
-    EMAIL_PORT = 1025
+#    EMAIL_PORT = 1025
 
 TIME_ZONE = 'America/Los_Angeles'
 LANGUAGE_CODE = 'en-us'
@@ -27,8 +27,6 @@ ugettext = lambda s: s
 LANGUAGES = (
     ('en', ugettext('English')),
 )
-
-SITE_ID = 1
 
 USE_I18N = True
 USE_L10N = True
@@ -103,13 +101,19 @@ INSTALLED_APPS = (
 
 )
 
+# Django email settings
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_SES_REGION_NAME = 'us-east-1'
+AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
+DEFAULT_FROM_EMAIL = 'team@artofgratitude.com'
+
 # Userena settings
-USERENA_ACTIVATION_REQUIRED = False
-LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
-LOGIN_URL = '/accounts/signin/'
-LOGOUT_URL = '/accounts/signout/'
+USERENA_ACTIVATION_REQUIRED = True 
+LOGIN_REDIRECT_URL = '/app/accounts/%(username)s/'
+LOGIN_URL = '/app/accounts/signin/'
+LOGOUT_URL = '/app/accounts/signout/'
 AUTH_PROFILE_MODULE = 'profiles.Profile'
-USERENA_WITHOUT_USERNAME = True
+USERENA_WITHOUT_USERNAMES = True
 USERENA_DISABLE_PROFILE_LIST = True
 USERENA_MUGSHOT_SIZE = 140
 
