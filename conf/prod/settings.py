@@ -15,7 +15,7 @@ DATABASE_DB = config.get('Database', 'database')
 AWS_SES_USER = config.get('AWS-SES', 'user')
 AWS_SES_PASSWORD = config.get('AWS-SES', 'password')
 
-SITE_ID = 2
+SITE_ID = 1
 
 SITE_URL = "http://artofgratitude.com"
 BASE_URL = SITE_URL + "/app"
