@@ -15,10 +15,10 @@ DATABASE_DB = config.get('Database', 'database')
 AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
 AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
 
-SITE_ID = 1
-
 SITE_URL = "http://artofgratitude.com"
-BASE_URL = SITE_URL + "/app"
+SITE_PREFIX = "/app"
+BASE_URL = SITE_URL + SITE_PREFIX
+SITE_ID = 1
 
 STATIC_ROOT = '/opt/gratitude/gratitude/static'
 STATIC_URL = '/app/static/'
