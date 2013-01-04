@@ -134,5 +134,5 @@ DEV = "dev"
 SIGNUP_SUCCESSFUL_BASE_URL = "/site/welcome"
 
 # signup email
-USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE="templates/gratitude/emails/activation_email_message.txt"
+USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE="gratitude/emails/activation_email_message.txt"
 

@@ -7,7 +7,7 @@
 
 {{ protocol }}://{{ site.domain }}{{ site_prefix }}{% url 'userena_activate' activation_key %}
 
-{% trans "Thanks for using our site!" %}
+{% trans "Thank you for using our site!" %}
 
 {% trans "Sincerely" %},
 {{ site.name }}
