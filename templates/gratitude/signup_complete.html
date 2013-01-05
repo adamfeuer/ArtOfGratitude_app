@@ -10,8 +10,6 @@
 
 {% if userena_activation_required %}
 <p>{% blocktrans %}You have been send an e-mail with an activation link to the supplied email.{% endblocktrans %}</p>
-<p>{% blocktrans %}We will store your signup information for {{
-  userena_activation_days }} days on our server. {% endblocktrans %}</p>
 {% else  %}
 <p>{% blocktrans %}If you need to change your settings, you can now use your email and password to signin.{% endblocktrans %}</p>
 {% endif %}
