@@ -108,13 +108,16 @@ DEFAULT_FROM_EMAIL = 'team@artofgratitude.com'
 
 # Userena settings
 USERENA_ACTIVATION_REQUIRED = True 
-LOGIN_REDIRECT_URL = '/app/accounts/%(username)s/'
-LOGIN_URL = '/accounts/signin/'
-LOGOUT_URL = '/accounts/signout/'
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 USERENA_WITHOUT_USERNAMES = True
 USERENA_DISABLE_PROFILE_LIST = True
 USERENA_MUGSHOT_SIZE = 140
+
+# Userena base urls
+LOGIN_REDIRECT_BASE_URL = '/accounts/%(username)s/'
+LOGIN_BASE_URL = '/accounts/signin/'
+LOGOUT_BASE_URL = '/accounts/signout/'
+SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
 
 # Test settings
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
@@ -128,9 +131,6 @@ VERSION = "0.1"
 PROD = "prod"
 TEST = "test"
 DEV = "dev"
-
-# landing pages
-SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
 
 # signup email
 USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE="gratitude/emails/activation_email_message.txt"

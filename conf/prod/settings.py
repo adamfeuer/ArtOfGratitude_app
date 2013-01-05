@@ -15,8 +15,8 @@ DATABASE_DB = config.get('Database', 'database')
 AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
 AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
 
-SITE_URL = "http://artofgratitude.com"
-SITE_PREFIX = "/app"
+SITE_URL = 'http://artofgratitude.com'
+SITE_PREFIX = '/app'
 BASE_URL = SITE_URL + SITE_PREFIX
 SITE_ID = 1
 
@@ -78,11 +78,10 @@ DATABASES = {
 # Key Czar and django-extensions
 ENCRYPTED_FIELD_KEYS_DIR = '/opt/gratitude/gratitude/keys'
 
-# SurveyTool settings
+# Application settings
 FLAVOR = PROD
 DEBUG = False
 TEMPLATE_DEBUG = False
-
 CRONJOB_LOCK_PREFIX = 'lock.prod'
 
 #FLAVOR = DEV
@@ -92,4 +91,8 @@ TEMPLATE_DEBUG = True
 ALLOWED_PHONE_NUMBERS = []
 #ALLOWED_PHONE_NUMBERS = ['206-330-4774']
 
-SIGNUP_SUCCESSFUL_URL = SITE_URL + SIGNUP_SUCCESSFUL_BASE_URL
+# urls
+LOGIN_REDIRECT_URL = BASE_URL + LOGIN_REDIRECT_BASE_URL
+LOGIN_URL = BASE_URL + LOGIN_BASE_URL
+LOGOUT_URL = BASE_URL + LOGOUT_BASE_URL
+SIGNUP_SUCCESSFUL_URL = BASE_URL + SIGNUP_SUCCESSFUL_BASE_URL
