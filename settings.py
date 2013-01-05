@@ -104,7 +104,7 @@ INSTALLED_APPS = (
 EMAIL_BACKEND = 'django_ses.SESBackend'
 AWS_SES_REGION_NAME = 'us-east-1'
 AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
-DEFAULT_FROM_EMAIL = 'team@artofgratitude.com'
+DEFAULT_FROM_EMAIL = '"Art of Gratitude" <team@artofgratitude.com>'
 
 # Userena settings
 USERENA_ACTIVATION_REQUIRED = True 
