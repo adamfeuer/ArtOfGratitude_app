@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'cronjobs',
     'gratitude.profiles',
     'gratitude.gratitude',
+    'gratitude.gratitude.cron',
 
 )
 

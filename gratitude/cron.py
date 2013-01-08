@@ -1,36 +1,40 @@
 import logging, sys, datetime
-import cronjobs
+from django.contrib.auth.models import User
 
-from models import Message
+import cronjobs
 from EmailSender import EmailSender, EmailStatus
+from EntryUtils import EntryUtils
+from models import Gratitude
 
 logger = logging.getLogger(__name__)
 
-TOO_OLD_MINUTES = 5
+GRATITUDES_PER_DAY = 3
 
 @cronjobs.register
-def send_messages():
-   message_sender = EmailSender()
-   now = datetime.datetime.now()
-   now_string = now.strftime("%Y-%m-%d %H:%M")
-   max_timedelta = datetime.timedelta(minutes = TOO_OLD_MINUTES)
-   messages = Message.objects.filter(send_at__lte=now_string).exclude(sent=True).order_by('send_at')
-   for message in messages:
-      delta = now - message.send_at
-      if delta > max_timedelta:
-         error_message = "Not sending message since it is more than %s old. [%s:%s %s - %s]" % (max_timedelta, message.id, message.send_at, message.phone_number, message.message)
-         logger.info(error_message)
-         message.sent = True
-         message.sent_status = EmailStatus.ERROR
-         message.sent_error_message = error_message
-      else:
-         logger.info("sending message %s:%s %s - %s" % (message.id, message.send_at, message.email_address, message.message))
-         status = message_sender.send(message.email_address, message.message)
-         message.sent = status.status
-         message.sent_status = status.status
-         message.sent_error_message = status.message
-         logger.info("Sent message %s:%s %s %s" % (message.id, message.email_address, message.sent_status, message.sent_error_message))
-      message.save()
+def sendMessages():
+   entryUtils = EntryUtils()
+   users = entryUtils.getUsersWhoCanBeEmailed()
+   #User.objects.order_by('email').filter(id__gt = 0)
+   print users
+   for user in users:
+      gratitudes = entryUtils.getGratitudes(user)
+      if (entryUtils.needsEmail(gratitudes)):
+         numberOfGratitudesNeeded = GRATITUDES_PER_DAY - len(gratitudes)
+         print numberOfGratitudesNeeded
+         sendEmail(user, numberOfGratitudesNeeded)
 
-      
-      
+def sendEmail(user, numberOfGratitudesNeeded):
+   messageSender = EmailSender()
+   subject = getEmailSubjectLine(user)
+   body = getEmailBody(user, numberOfGratitudesNeeded)
+   print("Sending message %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
+   logger.info("Sending message %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
+   #status = message_sender.send(user.email, message.message)
+   #logger.info("Sending message %s: %s" % (user.email, subject)
+
+def getEmailSubjectLine(user):
+   return "subject"
+
+def getEmailBody(user, numberOfGratitudesNeeded):
+   return "body"
+

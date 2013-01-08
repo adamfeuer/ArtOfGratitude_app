@@ -17,7 +17,7 @@ from django.conf import settings
 from userena.decorators import secure_required
 
 from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm
-from models import Message, UserDetail, Gratitude
+from models import UserDetail, Gratitude
 from EmailSender import EmailSender
 
 logger = logging.getLogger(__name__)
@@ -46,7 +46,6 @@ def messaging_select(request, username):
    if request.method == 'POST':
       form = MessagingForm(request.POST)
       if form.is_valid():
-         save_memberships_from_form(user, form)
          return HttpResponseRedirect('/accounts/%s/' % username)
    else:
       user_details = get_user_details(user)
@@ -129,7 +128,7 @@ def get_user_details(user):
    else:
       return user_details_list[0]
 
-def save_memberships_from_form(user, form):
+def save_user_details(user, form):
    user_details_list = UserDetail.objects.filter(user = user.id)
    if (len(user_details_list) > 0):
       user_details = user_details_list[0]
