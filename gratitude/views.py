@@ -19,6 +19,7 @@ from userena.decorators import secure_required
 from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm
 from models import UserDetail, Gratitude
 from EmailSender import EmailSender
+from EntryUtils import EntryUtils
 
 logger = logging.getLogger(__name__)
 
@@ -90,6 +91,8 @@ def profile(request, username, profile_form=ProfileForm,
    extra_context.update(csrf(request))
    extra_context['user'] = user 
    extra_context['gratitudes'] = gratitudes
+   entryUtils = EntryUtils()
+   extra_context['numberOfGratitudesNeeded'] = entryUtils.numberOfGratitudesNeeded(user) 
    if request.method == 'POST':
       form = profile_form(request.POST, request.FILES)
       if form.is_valid():
@@ -98,8 +101,8 @@ def profile(request, username, profile_form=ProfileForm,
          newGratitudeEntry.text = form.cleaned_data['text'] 
          print newGratitudeEntry.text
          newGratitudeEntry.save()
-      else:
-         extra_context['form'] = form
+   else:
+      extra_context['form'] = form
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))

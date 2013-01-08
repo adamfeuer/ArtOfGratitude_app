@@ -22,8 +22,5 @@ class EntryUtils:
       #gratitudes = Gratitude.objects.filter(user_id = user.id)
       return gratitudes
 
-   def needsEmail(self, gratitudes):
-      if (len(gratitudes) < GRATITUDES_PER_DAY):
-         return True
-      else:
-         return False
+   def numberOfGratitudesNeeded(self, user):
+      return GRATITUDES_PER_DAY - len(self.getGratitudes(user))

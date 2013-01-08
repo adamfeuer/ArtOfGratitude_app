@@ -8,8 +8,6 @@ from models import Gratitude
 
 logger = logging.getLogger(__name__)
 
-GRATITUDES_PER_DAY = 3
-
 @cronjobs.register
 def sendMessages():
    entryUtils = EntryUtils()
@@ -18,8 +16,8 @@ def sendMessages():
    print users
    for user in users:
       gratitudes = entryUtils.getGratitudes(user)
-      if (entryUtils.needsEmail(gratitudes)):
-         numberOfGratitudesNeeded = GRATITUDES_PER_DAY - len(gratitudes)
+      numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded()
+      if (numberOfGratitudesNeeded > 0):
          print numberOfGratitudesNeeded
          sendEmail(user, numberOfGratitudesNeeded)
 

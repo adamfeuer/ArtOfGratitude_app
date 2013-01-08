@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load extras %}
 
 {% block content_title %}<h2 class="content-title">{% trans 'Profile' %}</h2>{% endblock %}
 
@@ -12,17 +13,10 @@
 {% endfor %}
 </ol>
 <p/>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-</form>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-</form>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-</form>
-
+{% for i in numberOfGratitudesNeeded|get_range %}
+   <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+    </form>
+{% endfor %}
 {% endblock %}
