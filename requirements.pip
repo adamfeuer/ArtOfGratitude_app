@@ -9,6 +9,7 @@ anyjson==0.3.3
 billiard==2.7.3.19
 boto==2.6.0
 celery==3.0.13
+django-adminplus==0.1.7
 django-celery==3.0.11
 django-common-helpers==0.3
 django-cronjobs==0.2.3
