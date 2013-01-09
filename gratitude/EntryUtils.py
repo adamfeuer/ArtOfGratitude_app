@@ -2,6 +2,7 @@ import logging, sys, datetime
 from django.contrib.auth.models import User
 
 from models import Gratitude
+from forms import ProfileForm
 
 logger = logging.getLogger(__name__)
 
@@ -24,3 +25,11 @@ class EntryUtils:
 
    def numberOfGratitudesNeeded(self, user):
       return GRATITUDES_PER_DAY - len(self.getGratitudes(user))
+
+   def getFormFields(self, user):
+      form = ProfileForm()
+      numberOfGratitudesNeeded = self.numberOfGratitudesNeeded(user)
+      formFieldsHtml = []
+      for index in xrange(0, numberOfGratitudesNeeded):
+         formFieldsHtml.append(form['entry%s' % index])
+      return formFieldsHtml[:numberOfGratitudesNeeded]

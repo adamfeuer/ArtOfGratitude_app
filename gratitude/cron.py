@@ -49,11 +49,5 @@ def getContext(user):
    return context
 
 def getFormFields(user):
-   form = ProfileForm()
-   entryUtils = EntryUtils()
-   numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded(user)
-   formFieldsHtml = []
-   for index in xrange(0, numberOfGratitudesNeeded):
-      formFieldsHtml.append(form['entry%s' % index])
-   return formFieldsHtml[:numberOfGratitudesNeeded]
+   return EntryUtils().getFormFields(user)
 

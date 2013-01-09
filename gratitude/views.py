@@ -96,14 +96,7 @@ def profile(request, username, profile_form=ProfileForm,
    extra_context['user'] = user 
    gratitudes = get_gratitudes(user)
    extra_context['gratitudes'] = gratitudes
-   entryUtils = EntryUtils()
-   numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded(user) 
-   extra_context['numberOfGratitudesNeeded'] = numberOfGratitudesNeeded
-   extra_context['form'] = form
-   formFieldsHtml = []
-   for index in xrange(0, numberOfGratitudesNeeded):
-      formFieldsHtml.append(form['entry%s' % index])
-   extra_context['form_fields'] = formFieldsHtml[:numberOfGratitudesNeeded]
+   extra_context['form_fields'] = EntryUtils().getFormFields(user)
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))
