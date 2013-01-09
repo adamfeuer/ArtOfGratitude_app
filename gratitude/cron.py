@@ -7,6 +7,7 @@ from django.template.loader import render_to_string
 import cronjobs
 from EmailSender import EmailSender, EmailStatus
 from EntryUtils import EntryUtils
+from Quotes import Quotes
 from models import Gratitude
 from forms import ProfileForm
 
@@ -43,10 +44,15 @@ def getEmailBody(user, numberOfGratitudesNeeded):
 
 def getContext(user):
    entryUtils = EntryUtils()
+   gratitudeDayNumber = entryUtils.getGratitudeDayNumber(user)
+   quote = Quotes().getQuote(gratitudeDayNumber)
+   print quote
    context = {'user': user,
               'site': Site.objects.get_current(),
               'settings': settings,
-              'gratitudeDayNumber': entryUtils.getGratitudeDayNumber(user),
+              'quote_text': quote.text,
+              'quote_author': quote.author,
+              'gratitudeDayNumber': gratitudeDayNumber,
               'form_fields': entryUtils.getFormFields(user)}
    return context
 

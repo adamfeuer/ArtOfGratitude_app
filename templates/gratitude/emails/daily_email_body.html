@@ -4,14 +4,14 @@
 <body>
 <h2>{% trans "Here is your daily gratitude journal." %}</h2>
 
-{% blocktrans %}
+{% if quote_text != None %}
 <p>
-“What you focus on expands, and when you focus on the goodness in your life, you create more of it. Opportunities, relationships, even money flowed my way when I learned to be grateful no matter what happened in my life.”
+{{ quote_text }}
 </p>
 <p>
-- Oprah Winfrey
+&#8212;{{ quote_author }}
 </p>
-{% endblocktrans %}
+{% endif %}
 <form method="post" action="http://{{site.domain}}/profile/{{user.username}}">
    {% for field in form_fields %}
       {{ field }}<br/>
