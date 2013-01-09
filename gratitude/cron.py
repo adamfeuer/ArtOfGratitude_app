@@ -42,12 +42,11 @@ def getEmailBody(user, numberOfGratitudesNeeded):
    return body
 
 def getContext(user):
+   entryUtils = EntryUtils()
    context = {'user': user,
               'site': Site.objects.get_current(),
               'settings': settings,
-              'form_fields': getFormFields(user)}
+              'gratitudeDayNumber': entryUtils.getGratitudeDayNumber(user),
+              'form_fields': entryUtils.getFormFields(user)}
    return context
-
-def getFormFields(user):
-   return EntryUtils().getFormFields(user)
 

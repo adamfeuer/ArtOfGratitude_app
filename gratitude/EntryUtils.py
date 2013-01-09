@@ -20,7 +20,6 @@ class EntryUtils:
       today = datetime.date.today()
       oneDayInFuture = today + datetime.timedelta(days = 1)
       gratitudes = Gratitude.objects.filter(user_id = user.id).filter(created__range=(today, oneDayInFuture))
-      #gratitudes = Gratitude.objects.filter(user_id = user.id)
       return gratitudes
 
    def numberOfGratitudesNeeded(self, user):
@@ -33,3 +32,16 @@ class EntryUtils:
       for index in xrange(0, numberOfGratitudesNeeded):
          formFieldsHtml.append(form['entry%s' % index])
       return formFieldsHtml[:numberOfGratitudesNeeded]
+
+   def getGratitudeDayNumber(self, user):
+      today = datetime.date.today()
+      oneDayInFuture = today + datetime.timedelta(days = 1)
+      gratitudes = Gratitude.objects.filter(user_id = user.id)
+      datetimes = [gratitude.created for gratitude in gratitudes]
+      dates = [datetime.date(created.year, created.month, created.day) for created in datetimes] 
+      dateDict = {}
+      for date in dates:
+         dateDict["%s"%date] = True
+      uniqueDates = dateDict.keys()
+      return len(uniqueDates) + 1
+

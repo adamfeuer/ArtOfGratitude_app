@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans with site.name as site %}Daily gratitude journal - from Art of Gratitude{% endblocktrans %}
+{% blocktrans with site.name as site %}Day #{{gratitudeDayNumber}} of your 30 Days of Gratitude{% endblocktrans %}

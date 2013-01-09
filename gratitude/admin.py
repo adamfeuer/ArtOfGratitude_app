@@ -5,7 +5,7 @@ class SettingAdmin(admin.ModelAdmin):
     fields = ['name', 'value', 'description']
 
 class UserDetailAdmin(admin.ModelAdmin):
-   fields = ['user', 'no_messages', 'days_left']
+   fields = ['user', 'no_messages']
 
 class GratitudeAdmin(admin.ModelAdmin):
     fields = ['user_id', 'text' ]

@@ -22,7 +22,6 @@ class Gratitude(models.Model):
 class UserDetail(models.Model):
    user = models.ForeignKey(User)
    no_messages = models.BooleanField(default=False)
-   days_left = models.IntegerField(default=30)
    created = CreationDateTimeField()
    modified = ModificationDateTimeField()
    
