@@ -13,10 +13,16 @@
 </p>
 {% endblocktrans %}
 """<form method="post" action="http://{{site.domain}}/profile/{{user.username}}">
-<p>
-<label for="id_text">Type in your gratitude for today (start with "I am grateful for..."):</label>
-<input id="id_text" type="text" maxlength="5000" name="text">
-</p>
+   {% for field in form_fields %}
+      {{ field }}<br/>
+   {% endfor %}
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   {% if form_fields|length > 0 %}
+      <input type="submit"/>
+   {% endif %}
 </form>"""
 
 {% trans "Sincerely" %},<br/>

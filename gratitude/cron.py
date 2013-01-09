@@ -8,6 +8,7 @@ import cronjobs
 from EmailSender import EmailSender, EmailStatus
 from EntryUtils import EntryUtils
 from models import Gratitude
+from forms import ProfileForm
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +44,16 @@ def getEmailBody(user, numberOfGratitudesNeeded):
 def getContext(user):
    context = {'user': user,
               'site': Site.objects.get_current(),
-              'settings': settings}
+              'settings': settings,
+              'form_fields': getFormFields(user)}
    return context
 
+def getFormFields(user):
+   form = ProfileForm()
+   entryUtils = EntryUtils()
+   numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded(user)
+   formFieldsHtml = []
+   for index in xrange(0, numberOfGratitudesNeeded):
+      formFieldsHtml.append(form['entry%s' % index])
+   return formFieldsHtml[:numberOfGratitudesNeeded]
 
