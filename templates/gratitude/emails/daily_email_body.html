@@ -1,0 +1,26 @@
+{% load i18n %}{% autoescape off %}{% load url from future %}
+
+<html>
+<body>
+<h2>{% trans "Here is your daily gratitude journal." %}</h2>
+
+{% blocktrans %}
+<p>
+“What you focus on expands, and when you focus on the goodness in your life, you create more of it. Opportunities, relationships, even money flowed my way when I learned to be grateful no matter what happened in my life.”
+</p>
+<p>
+- Oprah Winfrey
+</p>
+{% endblocktrans %}
+"""<form method="post" action="http://{{site.domain}}/profile/{{user.username}}">
+<p>
+<label for="id_text">Type in your gratitude for today (start with "I am grateful for..."):</label>
+<input id="id_text" type="text" maxlength="5000" name="text">
+</p>
+</form>"""
+
+{% trans "Sincerely" %},<br/>
+{% trans "The Art of Gratitude team" %} <br/>
+{% endautoescape %}
+</body>
+</html>

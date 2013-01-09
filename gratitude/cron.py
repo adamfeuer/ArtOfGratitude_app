@@ -1,5 +1,8 @@
 import logging, sys, datetime
+from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
+from django.template.loader import render_to_string
 
 import cronjobs
 from EmailSender import EmailSender, EmailStatus
@@ -12,27 +15,35 @@ logger = logging.getLogger(__name__)
 def sendMessages():
    entryUtils = EntryUtils()
    users = entryUtils.getUsersWhoCanBeEmailed()
-   #User.objects.order_by('email').filter(id__gt = 0)
-   print users
    for user in users:
       gratitudes = entryUtils.getGratitudes(user)
-      numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded()
+      numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded(user)
       if (numberOfGratitudesNeeded > 0):
-         print numberOfGratitudesNeeded
          sendEmail(user, numberOfGratitudesNeeded)
 
 def sendEmail(user, numberOfGratitudesNeeded):
-   messageSender = EmailSender()
+   emailSender = EmailSender()
    subject = getEmailSubjectLine(user)
    body = getEmailBody(user, numberOfGratitudesNeeded)
    print("Sending message %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
    logger.info("Sending message %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
-   #status = message_sender.send(user.email, message.message)
-   #logger.info("Sending message %s: %s" % (user.email, subject)
+   status = emailSender.send(user.email, subject, body)
 
 def getEmailSubjectLine(user):
-   return "subject"
+   subject = render_to_string("gratitude/emails/daily_email_subject.txt",
+                              getContext(user))
+   subject = ''.join(subject.splitlines())
+   return subject
 
 def getEmailBody(user, numberOfGratitudesNeeded):
-   return "body"
+   body = render_to_string("gratitude/emails/daily_email_body.html",
+                              getContext(user))
+   return body
+
+def getContext(user):
+   context = {'user': user,
+              'site': Site.objects.get_current(),
+              'settings': settings}
+   return context
+
 

@@ -71,9 +71,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = '/tmp/gratitude-email.log' 
-
 ROOT_URLCONF = 'gratitude.urls'
 
 TEMPLATE_DIRS = (
@@ -94,6 +91,8 @@ INSTALLED_APPS = (
     'south',
     'userena',
     'userena.contrib.umessages',
+    'django_ses',
+    'adminplus',
     'cronjobs',
     'gratitude.profiles',
     'gratitude.gratitude',
@@ -102,6 +101,8 @@ INSTALLED_APPS = (
 )
 
 # Django email settings
+#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#EMAIL_FILE_PATH = '/tmp/gratitude-email.log' 
 EMAIL_BACKEND = 'django_ses.SESBackend'
 AWS_SES_REGION_NAME = 'us-east-1'
 AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'

@@ -82,36 +82,31 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
 
 
 @login_required
+@csrf_exempt
 def profile(request, username, profile_form=ProfileForm,
            template_name='gratitude/profile.html'):
    user = get_object_or_404(User, username__iexact=username)
-   gratitudes = get_gratitudes(user)
+   if request.method == 'POST':
+      form = profile_form(request.POST, request.FILES)
+      if form.is_valid():
+         save_gratitudes(user, form)
    form = ProfileForm(initial = {})
    extra_context = {}
    extra_context.update(csrf(request))
    extra_context['user'] = user 
+   gratitudes = get_gratitudes(user)
    extra_context['gratitudes'] = gratitudes
    entryUtils = EntryUtils()
-   extra_context['numberOfGratitudesNeeded'] = entryUtils.numberOfGratitudesNeeded(user) 
-   if request.method == 'POST':
-      form = profile_form(request.POST, request.FILES)
-      if form.is_valid():
-         newGratitudeEntry = Gratitude()
-         newGratitudeEntry.user_id = user.id
-         newGratitudeEntry.text = form.cleaned_data['text'] 
-         print newGratitudeEntry.text
-         newGratitudeEntry.save()
-   else:
-      extra_context['form'] = form
+   numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded(user) 
+   extra_context['numberOfGratitudesNeeded'] = numberOfGratitudesNeeded
+   extra_context['form'] = form
+   formFieldsHtml = []
+   for index in xrange(0, numberOfGratitudesNeeded):
+      formFieldsHtml.append(form['entry%s' % index])
+   extra_context['form_fields'] = formFieldsHtml[:numberOfGratitudesNeeded]
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))
-
-@login_required
-@csrf_exempt
-def profile_landing(request, username, profile_form=ProfileForm,
-           template_name='gratitude/profile.html'):
-   return profile(request, username, profile_form, template_name)
 
 # Utility functions
 
@@ -140,6 +135,15 @@ def save_user_details(user, form):
    user_details.no_messages = form.cleaned_data['no_messages']
    user_details.save()
    return
+
+def save_gratitudes(user, form):
+   for entry in ['entry0', 'entry1', 'entry2']:
+      cleanEntry = form.cleaned_data[entry].strip()
+      if (len(cleanEntry) > 0):
+         newGratitudeEntry = Gratitude()
+         newGratitudeEntry.user_id = user.id
+         newGratitudeEntry.text = cleanEntry
+         newGratitudeEntry.save()
 
 def clean_datetime(datetime_obj):
    if (datetime_obj is None):

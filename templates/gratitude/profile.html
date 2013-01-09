@@ -13,10 +13,16 @@
 {% endfor %}
 </ol>
 <p/>
-{% for i in numberOfGratitudesNeeded|get_range %}
-   <form action="" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-    </form>
-{% endfor %}
+<form action="{{ base_url}}/profile/{{ user.username }}" method="post">
+   {% for field in form_fields %}
+      {{ field }}<br/>
+   {% endfor %}
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   {% if form_fields|length > 0 %}
+      <input type="submit"/>
+   {% endif %}
+</form>
 {% endblock %}

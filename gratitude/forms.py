@@ -32,7 +32,9 @@ class MessagingForm(forms.Form):
    no_messages = forms.BooleanField(required=False, label=_('Do not send me any more emails'), help_text='If you want to stop getting email messages from us, check this box.')
 
 class ProfileForm(forms.Form):
-   text = forms.CharField(max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER}))
+   entry0 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'autofocus':'autofocus', 'tabindex': 1}))
+   entry1 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'tabindex': 2}))
+   entry2 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'tabindex': 3}))
 
 class SignupFormOnePage(SignupFormOnlyEmail):
    def __init__(self, *args, **kwargs):
