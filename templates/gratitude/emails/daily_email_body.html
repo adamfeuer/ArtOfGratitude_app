@@ -12,7 +12,7 @@
 - Oprah Winfrey
 </p>
 {% endblocktrans %}
-"""<form method="post" action="http://{{site.domain}}/profile/{{user.username}}">
+<form method="post" action="http://{{site.domain}}/profile/{{user.username}}">
    {% for field in form_fields %}
       {{ field }}<br/>
    {% endfor %}
@@ -23,7 +23,9 @@
    {% if form_fields|length > 0 %}
       <input type="submit"/>
    {% endif %}
-</form>"""
+</form>
+
+<a href="http://{{site.domain}}/unsubscribe/{{user.username}}">Unsubcribe</a>
 
 {% trans "Sincerely" %},<br/>
 {% trans "The Art of Gratitude team" %} <br/>

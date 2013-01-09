@@ -108,6 +108,18 @@ def profile(request, username, profile_form=ProfileForm,
                              extra_context,
                              context_instance=RequestContext(request))
 
+@login_required
+@csrf_exempt
+def unsubscribe(request, username, template_name='gratitude/unsubscribe.html'):
+   user = get_object_or_404(User, username__iexact=username)
+   userDetail = get_user_details(user)
+   userDetail.no_messages = True
+   userDetail.save()
+   extra_context = {}
+   extra_context['user'] = user 
+   return render_to_response(template_name,
+                             extra_context,
+                             context_instance=RequestContext(request))
 # Utility functions
 
 def get_gratitudes(user):
