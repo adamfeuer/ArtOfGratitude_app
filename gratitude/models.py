@@ -26,5 +26,5 @@ class UserDetail(models.Model):
    modified = ModificationDateTimeField()
    
    def __unicode__(self):
-      return "'%s': '%s %s'" % (self.user, self.no_messages, self.days_left)
+      return "'%s': '%s'" % (self.user, self.no_messages)
 
