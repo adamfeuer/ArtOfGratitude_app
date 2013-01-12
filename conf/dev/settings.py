@@ -16,9 +16,10 @@ AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
 AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
 
 SITE_URL="http://localhost:8080"
-SITE_PREFIX=""
+SITE_PREFIX='/app'
 BASE_URL = SITE_URL + SITE_PREFIX
 SITE_ID = 3
+FORCE_SCRIPT_NAME = SITE_PREFIX
 
 STATIC_ROOT = 'static'
 STATIC_URL = '/static/'

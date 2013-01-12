@@ -19,6 +19,7 @@ SITE_URL = 'http://artofgratitude.com'
 SITE_PREFIX = '/app'
 BASE_URL = SITE_URL + SITE_PREFIX
 SITE_ID = 1
+FORCE_SCRIPT_NAME = SITE_PREFIX
 
 STATIC_ROOT = '/opt/gratitude/gratitude/static'
 STATIC_URL = '/app/static/'
