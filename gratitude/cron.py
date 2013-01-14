@@ -29,7 +29,7 @@ def sendEmail(user, numberOfGratitudesNeeded):
    body = getEmailBody(user, numberOfGratitudesNeeded)
    print("Sending message %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
    logger.info("Sending message %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
-   status = emailSender.send(user.email, subject, body)
+   status = emailSender.send([user.email], subject, body)
 
 def getEmailSubjectLine(user):
    subject = render_to_string("gratitude/emails/daily_email_subject.txt",

@@ -45,6 +45,19 @@ class SignupFormOnePage(SignupFormOnlyEmail):
             'password2'
             ]
 
+class VerificationForm(forms.Form):
+   entry0 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'autofocus':'autofocus', 'tabindex': 1}))
+   entry1 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'tabindex': 2}))
+   entry2 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'tabindex': 3}))
+   def __init__(self, *args, **kwargs):
+      super(forms.Form, self).__init__(*args, **kwargs)
+      self.fields.keyOrder = [
+            'entry0',
+            'entry1',
+            'entry2'
+            'activationKey',
+            ]
+
    def save(self):
       """ Saves the user details then calls the base class."""
       user =  super(SignupFormOnePage, self).save()

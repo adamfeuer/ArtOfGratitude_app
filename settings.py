@@ -122,6 +122,10 @@ LOGIN_BASE_URL = '/accounts/signin/'
 LOGOUT_BASE_URL = '/accounts/signout/'
 SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
 
+# Userena activation email
+USERENA_SEND_EMAIL_MODULE='gratitude.gratitude.EmailSender'
+USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE='gratitude/emails/activation_email_message.html'
+ 
 # Test settings
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
 SOUTH_TESTS_MIGRATE = False
@@ -135,6 +139,4 @@ PROD = "prod"
 TEST = "test"
 DEV = "dev"
 
-# signup email
-USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE="gratitude/emails/activation_email_message.txt"
 

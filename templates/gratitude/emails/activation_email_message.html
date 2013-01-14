@@ -1,0 +1,17 @@
+{% load i18n %}{% autoescape off %}{% load url from future %}
+<html>
+   <body>
+      {% blocktrans %}Dear {{ user.first_name }},{% endblocktrans %}
+      {% blocktrans with site.name as site %}Thank you for signing up at {{ site }}.{% endblocktrans %}
+
+      <a href="{{ protocol }}://{{ settings.SITE }}{% url 'gratitude_activate' activation_key %}">{% trans "Activate your account by clicking this link." %}</a>
+
+      {% trans "Thank you for using our site!" %}
+
+      {% trans "Sincerely" %},
+      {{ site.name }}
+   </body>
+</html>
+
+{% endautoescape %}
+
