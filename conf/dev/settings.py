@@ -15,7 +15,8 @@ DATABASE_DB = config.get('Database', 'database')
 AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
 AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
 
-SITE_URL="http://localhost:8080"
+SITE='local.artofgratitude.com'
+SITE_URL='http://' + SITE
 SITE_PREFIX='/app'
 BASE_URL = SITE_URL + SITE_PREFIX
 SITE_ID = 3
