@@ -63,7 +63,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request",
-    "common.context_processors.settings_urls",
+    "common.context_processors.settings",
+    "common.context_processors.site",
 )
 
 AUTHENTICATION_BACKENDS = (

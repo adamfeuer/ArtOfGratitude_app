@@ -42,6 +42,7 @@ class SignupFormOnePage(SignupFormOnlyEmail):
    email = forms.EmailField(widget=forms.TextInput(attrs={'class':'required', 'placeholder':_('Email'), 'maxlength':75}), label=_('Email'))
    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'required', 'placeholder':_('Password')}, render_value=False), label=_('Create password'))
    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'required', 'placeholder':_('Repeat password')}, render_value=False), label=_('Repeat password'))
+   accept_tos = forms.BooleanField(required=True, initial=False, label=_('I accept the Art of Gratitude Terms of Service'))
    def __init__(self, *args, **kwargs):
       super(SignupFormOnlyEmail, self).__init__(*args, **kwargs)
       del self.fields['password2']
@@ -49,6 +50,7 @@ class SignupFormOnePage(SignupFormOnlyEmail):
             'first_name', 'last_name',
             'email',
             'password1',
+            'accept_tos',
             ]
 
    def save(self):

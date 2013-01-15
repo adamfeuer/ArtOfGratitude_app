@@ -66,7 +66,7 @@ def messaging_select(request, username):
 
 #@secure_required
 def one_page_signup(request, signup_form=SignupFormOnePage,
-           template_name='userena/signup.html'):
+           template_name='gratitude/signup.html'):
    form = SignupFormOnePage(initial = {})
    if request.method == 'POST':
       form = signup_form(request.POST, request.FILES)
@@ -136,7 +136,7 @@ def activate(request, activation_key,
                                check_password=False)
       login(request, auth_user)
       if userena_settings.USERENA_USE_MESSAGES:
-          messages.success(request, _('Your account has been activated and you have been signed in.'),
+          messages.success(request, _('Congratulations -- your Art of Gratitude account is confirmed!'),
                            fail_silently=True)
       if request.method == 'POST':
          form = ProfileForm(request.POST)

@@ -2,7 +2,8 @@
 {% load i18n %}
 {% load extras %}
 
-{% block content_title %}<h2 class="content-title">{% trans 'Profile' %}</h2>{% endblock %}
+{% block title %}{% trans 'Express Your Gratitude!' %}{% endblock %}
+{% block content_title %}<h2 class="content-title">{% trans 'Express Your Gratitude!' %}</h2>{% endblock %}
 
 {% block content %}
 
@@ -25,6 +26,7 @@
 {% endfor %}
 </ol>
 <p/>
+{% if form_fields|length > 0 %}
 <form action="{{ site_prefix }}/profile/{{ user.username }}" method="post">
    {% for field in form_fields %}
       {{ field }}<br/>
@@ -33,8 +35,9 @@
    <br/>
    <br/>
    <br/>
-   {% if form_fields|length > 0 %}
       <input type="submit"/>
-   {% endif %}
 </form>
+{% else %}
+<p>{% trans "Thank you for entering your gratitudes for today! Come back tomorrow to enter more!" %}<p/>
+{% endif %}
 {% endblock %}

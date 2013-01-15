@@ -1,0 +1,39 @@
+{% extends 'base_signup.html' %}
+{% load i18n %}
+
+{% block content_title %}<h2 class="content-title">The Art of Gratitude - Sign Up</h2>{% endblock %}
+
+{% block content %}
+
+<p>
+<div>Create an account</div><div>(Or <a href="{{site_prefix}}/accounts/signin/">sign in</a>)</div>
+</div>
+
+<form action="" method="post">
+   {% csrf_token %}
+   {{ form.non_field_errors }}
+   <p>
+      {{ form.first_name.errors }}
+      {{ form.first_name }}
+      {{ form.last_name.errors }}
+      {{ form.last_name }} 
+   </p>
+   <p>
+      {{ form.email.errors }}
+      {{ form.email }}
+   </p>
+   <p>
+      {{ form.password1.errors }}
+      {{ form.password1 }}
+   </p>
+   <br/>
+   <p>
+      {{ form.accept_tos.errors }}
+      {{ form.accept_tos }}{% blocktrans with site.name as site %} I accept the {{site}} <a href="/terms-of-service">Terms of Service</a>.{% endblocktrans %}</p>
+   </p>
+   <br/>
+   <input type="submit" value="{% trans "Be grateful!" %}" />
+</form>
+</p>
+
+{% endblock %}
