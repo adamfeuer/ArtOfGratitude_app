@@ -12,7 +12,7 @@
 &#8212;{{ quote_author }}
 </p>
 {% endif %}
-<form method="post" action="http://{{site.domain}}/profile/{{user.username}}">
+<form method="post" action="http://{{site.domain}}{{site_prefix}}/profile/{{user.username}}">
    {% for field in form_fields %}
       {{ field }}<br/>
    {% endfor %}
@@ -25,7 +25,7 @@
    {% endif %}
 </form>
 
-<a href="http://{{site.domain}}/unsubscribe/{{user.username}}">Unsubcribe</a>
+<a href="http://{{site.domain}}{{site_prefix}}/unsubscribe/{{user.username}}">Unsubscribe</a>
 
 {% trans "Sincerely" %},<br/>
 {% trans "The Art of Gratitude team" %} <br/>
