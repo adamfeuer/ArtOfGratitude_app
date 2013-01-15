@@ -18,7 +18,7 @@ django-guardian==1.0.4
 django-ses==0.4.1
 django-smtp-ssl==1.0
 django-startproject==1.0a
-django-userena==1.1.2bv
+django-userena==1.1.2bv-2
 easy-thumbnails==1.0-alpha-21
 gunicorn==0.16.1
 httplib2==0.7.1
