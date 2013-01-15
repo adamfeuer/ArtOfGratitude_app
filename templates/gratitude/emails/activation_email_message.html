@@ -1,9 +1,10 @@
 {% load i18n %}{% autoescape off %}{% load url from future %}
 <html>
    <body>
-      Dear {{ user.first_name }}, <br/>
-      <p>{% blocktrans with site.name as site %}Thank you for signing up with {{ site }}.{% endblocktrans %}</p>
-      <p>{% trans "Activate your account and get started on your 30 days of gratitude by filling out the form below and hitting submit!" %}</p>
+      {% trans "Hi" %} {{ user.first_name }}! <br/>
+      <p>{% trans "Your account is almost ready!" %}</p>
+      <p>{% trans "To complete the signup process and get started on your 30 days of gratitude, fill out the form below with three things you are grateful for, and hit submit!" %}</p>
+      <p>{% trans '(Remember to type "I am grateful for ..." when you start out each entry.' %}</p>
 
       <form action="{{ protocol }}://{{ settings.SITE }}{% url 'gratitude_activate' activation_key %}" method="post">
           <input name="entry0" maxlength="5000" type="text" autofocus="autofocus" placeholder="I am grateful for..." id="id_entry0" tabindex="1" /><br/>
@@ -13,10 +14,7 @@
           <input type="submit"/>
       </form>
 
-      <a href="{{ protocol }}://{{ settings.SITE }}{% url 'gratitude_activate' activation_key %}">{% trans "Or, just activate your account by clicking this link." %}</a>
-
-      {% trans "Sincerely" %},
-      {% trans "The" %} {{ site.name }} {% trans "Team" %}
+      &mdash;{% trans "The" %} {{ site.name }} {% trans "Team" %}
    </body>
 </html>
 
