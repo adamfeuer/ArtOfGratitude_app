@@ -13,7 +13,7 @@
 {% endfor %}
 </ol>
 <p/>
-<form action="{{ base_url}}/profile/{{ user.username }}" method="post">
+<form action="{{ site_prefix }}/profile/{{ user.username }}" method="post">
    {% for field in form_fields %}
       {{ field }}<br/>
    {% endfor %}
