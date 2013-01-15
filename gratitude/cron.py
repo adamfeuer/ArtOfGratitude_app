@@ -46,7 +46,6 @@ def getContext(user):
    entryUtils = EntryUtils()
    gratitudeDayNumber = entryUtils.getGratitudeDayNumber(user)
    quote = Quotes().getQuote(gratitudeDayNumber)
-   print quote
    context = {'user': user,
               'site': Site.objects.get_current(),
               'settings': settings,
