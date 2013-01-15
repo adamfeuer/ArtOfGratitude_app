@@ -125,6 +125,7 @@ SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
 # Userena activation email
 USERENA_SEND_EMAIL_MODULE='gratitude.gratitude.EmailSender'
 USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE='gratitude/emails/activation_email_message.html'
+USERENA_SIGNUP_FIRST_AND_LAST_NAMES=True
  
 # Test settings
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'

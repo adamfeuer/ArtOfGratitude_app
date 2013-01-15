@@ -37,13 +37,28 @@ class ProfileForm(forms.Form):
    entry2 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'tabindex': 3}))
 
 class SignupFormOnePage(SignupFormOnlyEmail):
+   first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'placeholder':_('First name')}))
+   last_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'placeholder':_('Last name')}))
+   email = forms.EmailField(widget=forms.TextInput(attrs={'class':'required', 'placeholder':_('Email'), 'maxlength':75}), label=_('Email'))
+   password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'required', 'placeholder':_('Password')}, render_value=False), label=_('Create password'))
+   password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'required', 'placeholder':_('Repeat password')}, render_value=False), label=_('Repeat password'))
    def __init__(self, *args, **kwargs):
       super(SignupFormOnlyEmail, self).__init__(*args, **kwargs)
+      #del self.fields['password2']
       self.fields.keyOrder = [
+            'first_name', 'last_name',
             'email',
             'password1',
-            'password2'
+            'password2',
             ]
+
+   def save(self):
+      """ Saves the user details then calls the base class."""
+      user =  super(SignupFormOnePage, self).save()
+      userDetail = UserDetail()
+      userDetail.user = user
+      userDetail.save()
+      return user
 
 class VerificationForm(forms.Form):
    entry0 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'autofocus':'autofocus', 'tabindex': 1}))
@@ -57,14 +72,4 @@ class VerificationForm(forms.Form):
             'entry2'
             'activationKey',
             ]
-
-   def save(self):
-      """ Saves the user details then calls the base class."""
-      user =  super(SignupFormOnePage, self).save()
-      user.save()
-
-      userDetail = UserDetail()
-      userDetail.user = user
-      userDetail.save()
-      return user
 

@@ -67,6 +67,9 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
       form = signup_form(request.POST, request.FILES)
       if form.is_valid():
          user = form.save()
+         user.first_name = form.cleaned_data['first_name']
+         user.last_name = form.cleaned_data['last_name']
+         user.save()
          redirect_to = settings.SIGNUP_SUCCESSFUL_URL
          # A new signed user should logout the old one.
          if request.user.is_authenticated():
