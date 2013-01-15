@@ -122,6 +122,7 @@ def unsubscribe(request, username, template_name='gratitude/unsubscribe.html'):
                              extra_context,
                              context_instance=RequestContext(request))
 
+@csrf_exempt
 def activate(request, activation_key,
              template_name='userena/activate_fail.html',
              extra_context=None):

@@ -1,15 +1,22 @@
 {% load i18n %}{% autoescape off %}{% load url from future %}
 <html>
    <body>
-      Dear {{ user.first_name }},
-      {% blocktrans with site.name as site %}Thank you for signing up at {{ site }}.{% endblocktrans %}
+      Dear {{ user.first_name }}, <br/>
+      <p>{% blocktrans with site.name as site %}Thank you for signing up with {{ site }}.{% endblocktrans %}</p>
+      <p>{% trans "Activate your account and get started on your 30 days of gratitude by filling out the form below and hitting submit!" %}</p>
 
-      <a href="{{ protocol }}://{{ settings.SITE }}{% url 'gratitude_activate' activation_key %}">{% trans "Activate your account by clicking this link." %}</a>
+      <form action="{{ protocol }}://{{ settings.SITE }}{% url 'gratitude_activate' activation_key %}" method="post">
+          <input name="entry0" maxlength="5000" type="text" autofocus="autofocus" placeholder="I am grateful for..." id="id_entry0" tabindex="1" /><br/>
+          <input name="entry1" maxlength="5000" placeholder="I am grateful for..." type="text" id="id_entry1" tabindex="2" /><br/>
+          <input name="entry2" maxlength="5000" placeholder="I am grateful for..." type="text" id="id_entry2" tabindex="3" /><br/>
+          <br/>
+          <input type="submit"/>
+      </form>
 
-      {% trans "Thank you for using our site!" %}
+      <a href="{{ protocol }}://{{ settings.SITE }}{% url 'gratitude_activate' activation_key %}">{% trans "Or, just activate your account by clicking this link." %}</a>
 
       {% trans "Sincerely" %},
-      {{ site.name }}
+      {% trans "The" %} {{ site.name }} {% trans "Team" %}
    </body>
 </html>
 
