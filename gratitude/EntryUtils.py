@@ -14,7 +14,7 @@ class EntryUtils:
 
    def getUsersWhoCanBeEmailed(self):
       # filter out Anonymous users and those who are unsubscribed
-      return User.objects.order_by('email').filter(id__gt = 0).filter(userdetail__no_messages__exact = False)
+      return User.objects.order_by('email').filter(id__gt = 0).filter(is_active__exact=True).filter(userdetail__no_messages__exact = False)
 
    def getGratitudes(self, user):
       today = datetime.date.today()
