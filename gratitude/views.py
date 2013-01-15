@@ -9,12 +9,17 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout, REDIRECT_FIELD_NAME
 from django.contrib.auth.decorators import permission_required, login_required, user_passes_test 
 from django.shortcuts import redirect, render_to_response, get_object_or_404
-from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.views.generic.simple import direct_to_template
 from django.conf import settings
+from django.utils.translation import ugettext as _
 
 from userena.decorators import secure_required
+from userena.models import UserenaSignup
+from userena.views import ExtraContextTemplateView
+from userena import settings as userena_settings
 
 from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm
 from models import UserDetail, Gratitude
@@ -116,6 +121,32 @@ def unsubscribe(request, username, template_name='gratitude/unsubscribe.html'):
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))
+
+def activate(request, activation_key,
+             template_name='userena/activate_fail.html',
+             extra_context=None):
+   """
+   Activate a user with an activation key.
+   """
+   user = UserenaSignup.objects.activate_user(activation_key)
+   if user:
+      # Sign the user in.
+      auth_user = authenticate(identification=user.email,
+                               check_password=False)
+      login(request, auth_user)
+      if userena_settings.USERENA_USE_MESSAGES:
+          messages.success(request, _('Your account has been activated and you have been signed in.'),
+                           fail_silently=True)
+      if request.method == 'POST':
+         form = ProfileForm(request.POST)
+         if form.is_valid():
+            save_gratitudes(user, form)
+      redirect_to = settings.LOGIN_REDIRECT_URL % {'username': user.username }
+      return redirect(redirect_to)
+   else:
+      if not extra_context: extra_context = {}
+      return ExtraContextTemplateView.as_view(template_name=template_name,
+                                            extra_context=extra_context)(request)
 # Utility functions
 
 def get_gratitudes(user):

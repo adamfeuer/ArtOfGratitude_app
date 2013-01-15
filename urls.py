@@ -34,7 +34,7 @@ urlpatterns = patterns('',
         name='about'),
     (r'^i18n/', include('django.conf.urls.i18n')),
     (r'^gratitude/', include('gratitude.gratitude.urls')),
-    (r'^activate1/(?P<activation_key>\w+)/$', userena_views.activate, {'success_url':'/profile/%(username)s'}, 'gratitude_activate' )
+    url(r'^activate/(?P<activation_key>\w+)/$', 'gratitude.gratitude.views.activate', name='gratitude_activate'),
     )
 
 if settings.DEBUG:

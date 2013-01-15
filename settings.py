@@ -117,7 +117,7 @@ USERENA_DISABLE_PROFILE_LIST = True
 USERENA_MUGSHOT_SIZE = 140
 
 # Userena base urls
-LOGIN_REDIRECT_BASE_URL = '/accounts/%(username)s/'
+LOGIN_REDIRECT_BASE_URL = '/profile/%(username)s/'
 LOGIN_BASE_URL = '/accounts/signin/'
 LOGOUT_BASE_URL = '/accounts/signout/'
 SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
