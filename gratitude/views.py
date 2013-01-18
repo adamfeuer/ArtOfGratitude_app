@@ -12,6 +12,7 @@ from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.contrib.auth.views import logout as Signout
 from django.views.generic.simple import direct_to_template
 from django.conf import settings
 from django.utils.translation import ugettext as _
@@ -52,7 +53,7 @@ def messaging_select(request, username):
    if request.method == 'POST':
       form = MessagingForm(request.POST)
       if form.is_valid():
-         return HttpResponseRedirect('/accounts/%s/' % username)
+         return HttpResponseRedirect('/profile/%s/' % username)
    else:
       user_details = get_user_details(user)
       initial_dict={'user': user_details.user.id,
@@ -148,6 +149,15 @@ def activate(request, activation_key,
       if not extra_context: extra_context = {}
       return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
+
+
+@secure_required
+def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
+            template_name='gratitude/signout.html', *args, **kwargs):
+    if request.user.is_authenticated() and userena_settings.USERENA_USE_MESSAGES:
+        messages.success(request, _('You have been signed out.'), fail_silently=True)
+    return Signout(request, next_page, template_name, *args, **kwargs)
+
 # Utility functions
 
 def get_gratitudes(user):

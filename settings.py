@@ -120,7 +120,7 @@ USERENA_MUGSHOT_SIZE = 140
 # Userena base urls
 LOGIN_REDIRECT_BASE_URL = '/profile/%(username)s/'
 LOGIN_BASE_URL = '/accounts/signin/'
-LOGOUT_BASE_URL = '/accounts/signout/'
+LOGOUT_BASE_URL = '/signout/'
 SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
 
 # Userena activation email
@@ -128,6 +128,7 @@ USERENA_SEND_EMAIL_MODULE='gratitude.gratitude.EmailSender'
 USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE='gratitude/emails/activation_email_message.html'
 USERENA_ACTIVATION_EMAIL_SUBJECT_TEMPLATE='gratitude/emails/activation_email_subject.txt'
 USERENA_SIGNUP_FIRST_AND_LAST_NAMES=True
+USERENA_SIGNIN_REDIRECT_URL='/profile/%(username)s/'
  
 # Test settings
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'

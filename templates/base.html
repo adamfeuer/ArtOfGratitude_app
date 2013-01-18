@@ -1,57 +1,278 @@
 {% load i18n %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-  <head>
-    <title>{% block title %}The Art of Gratitude{% endblock %}</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="The Art of Gratitude" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+   <title>{% block title %}The Art of Gratitude{% endblock %}</title>
+	<meta name="description" content="Art of Gratitude"/>
+	<meta name="keywords" content="gratitude, grateful, journal, happiness" />
+	<!-- end: Meta -->
+	
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- end: Mobile Specific -->
+	
+	<!-- start: Facebook Open Graph -->
+	<meta property="og:title" content=""/>
+	<meta property="og:description" content=""/>
+	<meta property="og:type" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content=""/>
+	<!-- end: Facebook Open Graph -->
 
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ media_url }}css/master.css" />
-    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+    <!-- start: CSS -->
+    <link href="http://local.artofgratitude.com/media/css/bootstrap.css" rel="stylesheet">
+    <link href="http://local.artofgratitude.com/media/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://local.artofgratitude.com/media/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
 
-    <link type="text/css" href="{{ media_url }}css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />     
-    <script type="text/javascript" src="{{ media_url }}js/jquery-1.6.4.min.js"></script>
-    <script type="text/javascript" src="{{ media_url }}js/jquery-ui-1.8.16.custom.min.js"></script>
-    <script type="text/javascript">
-       $(function() {
-         $('.jquery-datetime').datetimepicker();
-       });
-       $(function() {
-         $('.jquery-time').timepicker({});
-       });
-    </script>
-   
 
-  </head>
-  <body>
-    <div id="container">	
-      <div id="header">
+	<!-- end: CSS -->
 
-        {% block nav %}
-        <ul id="nav">
-          <li><a href="{% url home %}"><span>{% trans 'Home' %}</span></a></li>
-          {% if user.is_authenticated %}
-          <li><a href="{{ base_url }}{% url userena_profile_detail user.username %}"><span>{% trans 'Account' %} ({{ user.email }})</span></a></li>
-          <li><a href="{{ base_url }}{% url userena_signout %}"><span>{% trans 'Signout' %}</span></a></li>
-          {% else %}
-          <li><a href="{{ login_url }}"><span>{% trans 'Sign in' %}</span></a></li>
-          {% endif %}
-        </ul>
-        {% endblock %}
-        {% if not user.is_authenticated %}
-        <div id="try"></div>
-        {% endif %}
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-      </div><!-- /header-->
-      {% block content_title %}{% endblock %}
-      <div id="content-container">
-        {% block content %}{% endblock %}
-      </div><!-- /content-container-->
-      <div id="footer"><p>{% trans 'Made by the ' %} <a href="/about">Art of Gratitude Team</a></p></div>
-    </div><!-- /container-->
-   </body>
- </html>
+</head>
+<body>
+	
+	<!--start: Wrapper -->
+	<div id="wrapper">
+		
+		<!--start: Container -->
+		<div class="container">
+		
+		
+			<!--start: Header -->
+			<header>
+			
+				<!--start: Row -->
+				<div class="row">
+					
+					<!--start: Logo -->
+					<div class="logo span5">
+						<a class="brand" href="#"><h1 class="logo-heading"><img class="logo-image" height="120" width="88.8" src="http://local.artofgratitude.com/scratch/best-bootstrap-theme/img/art_of_gratitude_leaf_small.png"/><span class="logo-text">Art of Gratitude</span></h1></a>
+					</div>
+					<!--end: Logo -->
+					
+					<!--start: Social Links -->
+					<div class="span7">
+						<div id="social-links">
+							<ul class="social-small-grid">
+								<li>
+									<div class="social-small-item">				
+										<div class="social-small-info-wrap">
+											<div class="social-small-info">
+												<div class="social-small-info-front social-small-twitter">
+													<a href="http://twitter.com"></a>
+												</div>
+												<div class="social-small-info-back social-small-twitter-hover">
+													<a href="http://twitter.com"></a>
+												</div>	
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="social-small-item">				
+										<div class="social-small-info-wrap">
+											<div class="social-small-info">
+												<div class="social-small-info-front social-small-facebook">
+													<a href="http://facebook.com"></a>
+												</div>
+												<div class="social-small-info-back social-small-facebook-hover">
+													<a href="http://facebook.com"></a>
+												</div>	
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--end: Social Links -->
+					
+				</div>
+				<!--end: Row -->
+						
+			</header>
+			<!--end: Header-->
+			
+			<!--start: Navigation-->	
+			<div class="navbar navbar-inverse">
+    			<div class="navbar-inner">
+        			<div class="container">
+          				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            				<span class="icon-bar"></span>
+            				<span class="icon-bar"></span>
+            				<span class="icon-bar"></span>
+          				</a>
+          				<div class="nav-collapse collapse navbar-left-reset">
+            				<ul class="nav">
+              					<li class="active"><a href="/">Home</a></li>
+                           {% if user.is_authenticated %}
+                              <li><a href="{{ base_url }}{% url gratitude.gratitude.views.profile user.username %}">{% trans 'My Gratitudes' %}</a></li>
+                           {% endif %}
+              					<li class="dropdown">
+                					<a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                					<ul class="dropdown-menu">
+                  						<li><a href="#">About</a></li>
+                  						<li><a href="#">Contact</a></li>
+                					</ul>
+              					</li>
+            				</ul>
+          				</div>
+                     <ul class="nav pull-right">
+                        {% if user.is_authenticated %}
+                           <li><a href="{{ base_url }}{% url gratitude_signout %}">{% trans 'Signout' %}</a></li>
+                        {% else %}
+                           <li><a href="{% url gratitude_signup %}">{% trans 'Sign up' %}</a></li>
+                           <li><a href="{{ login_url }}">{% trans 'Sign in' %}</a></li>
+                        {% endif %}
+                     </ul>
+        			</div>
+      			</div>
+    		</div>
+			<!--end: Navigation-->
+			
+		</div>
+		<!--end: Container-->
+				
+		<!--start: Container -->
+    	<div class="container">
+
+            <div class="span9">
+              <p>
+                  {% if messages %}
+                  <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+              </p>
+            </div>	
+        		<div class="span9">
+                  {% block content %}{% endblock %}
+						<div class="clear"></div>
+        		</div>
+
+      		</div>
+			<!-- end: Row -->
+      		
+			<hr>
+		
+		</div>
+		<!--end: Container-->
+				
+		<!--start: Container -->
+    	<div class="container">		
+
+			<!-- start: Footer -->
+			<div id="footer">
+			
+				<!-- start: Container -->
+				<div class="container">
+				
+					<!-- start: Row -->
+					<div class="row">
+
+						<!-- start: About -->
+						<div class="span6">
+						
+							<h3>About Us</h3>
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+							</p>
+							
+						</div>
+						<!-- end: About -->
+
+						<div class="span3">
+					
+							<!-- start: Follow Us -->
+							<h3>Follow Us!</h3>
+							<ul class="social-grid">
+								<li>
+									<div class="social-item">				
+										<div class="social-info-wrap">
+											<div class="social-info">
+												<div class="social-info-front social-twitter">
+													<a href="http://twitter.com"></a>
+												</div>
+												<div class="social-info-back social-twitter-hover">
+													<a href="http://twitter.com"></a>
+												</div>	
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="social-item">				
+										<div class="social-info-wrap">
+											<div class="social-info">
+												<div class="social-info-front social-facebook">
+													<a href="http://facebook.com"></a>
+												</div>
+												<div class="social-info-back social-facebook-hover">
+													<a href="http://facebook.com"></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<!-- end: Follow Us -->
+					
+						</div>
+					
+					</div>
+					<!-- end: Row -->	
+				
+				</div>
+				<!-- end: Container  -->
+
+			</div>
+			<!-- end: Footer -->
+	
+		</div>
+		<!-- end: Container  -->
+
+	</div>
+	<!-- end: Wrapper  -->
+
+
+	<!-- start: Copyright -->
+	<div id="copyright">
+	
+		<!-- start: Container -->
+		<div class="container">
+		
+			<div class="sixteen columns">
+				<p>
+					&copy; 2013 Art of Gratitude </p>
+			</div>
+	
+		</div>
+		<!-- end: Container  -->
+		
+	</div>	
+	<!-- end: Copyright -->
+
+<!-- start: Java Script -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="http://local.artofgratitude.com/media/js/jquery-1.8.2.js"></script>
+<script src="http://local.artofgratitude.com/media/js/bootstrap.js"></script>
+<script src="http://local.artofgratitude.com/media/js/flexslider.js"></script>
+<script src="http://local.artofgratitude.com/media/js/carousel.js"></script>
+<script def src="/js/custom.js"></script>
+<!-- end: Java Script -->
+
+</body>
+</html>
