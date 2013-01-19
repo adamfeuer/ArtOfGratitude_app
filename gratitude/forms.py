@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from django.contrib.localflavor.us.forms import USPhoneNumberField
 from django.utils.translation import ugettext_lazy as _
 
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
+from crispy_forms.bootstrap import FormActions 
+
 from userena.forms import SignupFormOnlyEmail
 
 from gratitude.gratitude.models import UserDetail
@@ -46,12 +50,26 @@ class SignupFormOnePage(SignupFormOnlyEmail):
    def __init__(self, *args, **kwargs):
       super(SignupFormOnlyEmail, self).__init__(*args, **kwargs)
       del self.fields['password2']
-      self.fields.keyOrder = [
-            'first_name', 'last_name',
-            'email',
-            'password1',
-            'accept_tos',
-            ]
+      self.helper = FormHelper()
+      self.helper.form_id = 'signup-form'
+      self.helper.form_class = 'form-horizontal pull-left'
+      self.helper.layout = Layout(
+         Fieldset(
+             '',
+             'first_name',
+             'last_name',
+             'email',
+             'password1',
+             'accept_tos'
+         ),
+         FormActions(
+             Submit('be-grateful', 'Be Grateful'),
+         )
+      )
+      self.fields['first_name'].label = ""
+      self.fields['last_name'].label = ""
+      self.fields['email'].label = ""
+      self.fields['password1'].label = ""
 
    def save(self):
       """ Saves the user details then calls the base class."""

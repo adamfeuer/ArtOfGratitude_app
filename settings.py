@@ -96,6 +96,7 @@ INSTALLED_APPS = (
     'django_ses',
     'adminplus',
     'cronjobs',
+    'crispy_forms',
     'gratitude.profiles',
     'gratitude.gratitude',
     'gratitude.gratitude.cron',
