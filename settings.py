@@ -20,6 +20,9 @@ MANAGERS = ADMINS
     # ``python -m smtpd -n -c DebuggingServer localhost:1025``.
 #    EMAIL_PORT = 1025
 
+# We're using Apache mod_proxy and gunicorn - use this so redirects work
+USE_X_FORWARDED_HOST = True 
+
 TIME_ZONE = 'America/Los_Angeles'
 LANGUAGE_CODE = 'en-us'
 
@@ -120,6 +123,7 @@ USERENA_MUGSHOT_SIZE = 140
 
 # Userena base urls
 LOGIN_REDIRECT_BASE_URL = '/profile/%(username)s/'
+USERENA_SIGNIN_REDIRECT_BASE_URL = LOGIN_REDIRECT_BASE_URL
 LOGIN_BASE_URL = '/accounts/signin/'
 LOGOUT_BASE_URL = '/signout/'
 SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"

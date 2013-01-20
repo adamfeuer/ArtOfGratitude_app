@@ -16,7 +16,7 @@ AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
 AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
 
 SITE='local.artofgratitude.com'
-SITE_URL='http://' + SITE
+SITE_URL='https://' + SITE
 SITE_PREFIX='/app'
 BASE_URL = SITE_URL
 SITE_ID = 3
@@ -51,9 +51,16 @@ LOGGING = {
                 'backupCount': 5,
                 'formatter':'standard',
         },
+        'email_sender': {
+                'level':'INFO',
+                'class':'logging.handlers.RotatingFileHandler',
+                'filename': 'logs/email_sender.log',
+                'maxBytes': 1024*1024*5, # 5 MB
+                'backupCount': 5,
+                'formatter':'standard',
+        },
     },
     'loggers': {
-
         '': {
             'handlers': ['default'],
             'level': 'INFO',
@@ -91,6 +98,7 @@ CRONJOB_LOCK_PREFIX = 'lock.dev'
 ALLOWED_EMAIL_ADDRESSES=['adamf@pobox.com', 'adamfeuer@gmail.com', 'robertreichner@gmail.com']
 
 LOGIN_REDIRECT_URL = SITE_PREFIX + LOGIN_REDIRECT_BASE_URL
+USERENA_SIGNIN_REDIRECT_URL = SITE_PREFIX + USERENA_SIGNIN_REDIRECT_BASE_URL
 LOGIN_URL = SITE_PREFIX + LOGIN_BASE_URL
 LOGOUT_URL = SITE_PREFIX + LOGOUT_BASE_URL
 SIGNUP_SUCCESSFUL_URL = SITE_PREFIX + SIGNUP_SUCCESSFUL_BASE_URL

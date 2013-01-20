@@ -11,10 +11,11 @@ from Quotes import Quotes
 from models import Gratitude
 from forms import ProfileForm
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('email_sender')
 
 @cronjobs.register
 def sendMessages():
+   return
    entryUtils = EntryUtils()
    users = entryUtils.getUsersWhoCanBeEmailed()
    for user in users:
@@ -27,7 +28,6 @@ def sendEmail(user, numberOfGratitudesNeeded):
    emailSender = EmailSender()
    subject = getEmailSubjectLine(user)
    body = getEmailBody(user, numberOfGratitudesNeeded)
-   print("Sending message %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
    logger.info("Sending message %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
    status = emailSender.send([user.email], subject, body)
 
