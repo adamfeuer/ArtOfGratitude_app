@@ -45,10 +45,10 @@ class SignupFormOnePage(SignupFormOnlyEmail):
    last_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'placeholder':_('Last name')}))
    email = forms.EmailField(widget=forms.TextInput(attrs={'class':'required', 'placeholder':_('Email'), 'maxlength':75}), label=_('Email'))
    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'required', 'placeholder':_('Password')}, render_value=False), label=_('Create password'))
-   password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'required', 'placeholder':_('Repeat password')}, render_value=False), label=_('Repeat password'))
    accept_tos = forms.BooleanField(required=True, initial=False, label=_('I accept the Art of Gratitude Terms of Service'))
    def __init__(self, *args, **kwargs):
       super(SignupFormOnlyEmail, self).__init__(*args, **kwargs)
+      del self.fields['username']
       del self.fields['password2']
       self.helper = FormHelper()
       self.helper.form_id = 'signup-form'
@@ -63,7 +63,7 @@ class SignupFormOnePage(SignupFormOnlyEmail):
              'accept_tos'
          ),
          FormActions(
-             Submit('be-grateful', 'Be Grateful'),
+             Submit('gratitude_signup', 'Be Grateful'),
          )
       )
       self.fields['first_name'].label = ""

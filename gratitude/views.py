@@ -65,12 +65,12 @@ def messaging_select(request, username):
                              context_instance=RequestContext(request))
 
 
-#@secure_required
+@secure_required
 def one_page_signup(request, signup_form=SignupFormOnePage,
            template_name='gratitude/signup.html'):
    form = SignupFormOnePage(initial = {})
    if request.method == 'POST':
-      form = signup_form(request.POST, request.FILES)
+      form = signup_form(request.POST)
       if form.is_valid():
          user = form.save()
          user.first_name = form.cleaned_data['first_name']
