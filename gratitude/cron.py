@@ -15,7 +15,6 @@ logger = logging.getLogger('email_sender')
 
 @cronjobs.register
 def sendMessages():
-   return
    entryUtils = EntryUtils()
    users = entryUtils.getUsersWhoCanBeEmailed()
    for user in users:
