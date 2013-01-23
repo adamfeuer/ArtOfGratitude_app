@@ -16,7 +16,7 @@ AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
 AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
 
 SITE='artofgratitude.com'
-SITE_URL = 'http://' + SITE
+SITE_URL = 'https://' + SITE
 SITE_PREFIX = '/app'
 BASE_URL = SITE_URL 
 SITE_ID = 1
@@ -95,8 +95,8 @@ TEMPLATE_DEBUG = False
 CRONJOB_LOCK_PREFIX = 'lock.prod'
 
 #FLAVOR = DEV
-DEBUG = True
-TEMPLATE_DEBUG = True
+#DEBUG = True
+#TEMPLATE_DEBUG = True
 
 ALLOWED_EMAIL_ADDRESSES=[]
 
