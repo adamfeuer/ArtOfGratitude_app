@@ -18,7 +18,7 @@ Hi {{ user.first_name }},<br><br>
 To activate your account, fill out the form below with three things you are grateful for, and click the button below!<br><br>
 <i>(Remember to start each entry with "I am grateful for...")</i><br>
 <br>
-<form method="post" action="https://{{site.domain}}{{site_prefix}}/profile/{{user.username}}">
+<form method="post" action="https://{{site.domain}}{% url 'gratitude_activate' activation_key %}">
 <input name="entry0" type="text" size="60" style="font-size: 15px;" /><br>
 <input name="entry1" type="text" size="60" style="font-size: 15px;" /><br>
 <input name="entry2" type="text" size="60" style="font-size: 15px;" /><br>
