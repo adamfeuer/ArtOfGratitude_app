@@ -37,7 +37,7 @@ USE_L10N = True
 MEDIA_ROOT = abspath(PROJECT_ROOT, 'media')
 DOCUMENT_ROOT = abspath(PROJECT_ROOT, 'docs')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/app/media/'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 STATIC_URL = '/app/'
 
@@ -130,7 +130,7 @@ SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
 
 # Userena activation email
 USERENA_SEND_EMAIL_MODULE='gratitude.gratitude.EmailSender'
-USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE='gratitude/emails/activation_email_message.html'
+USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE='gratitude/emails/activation_email_body.html'
 USERENA_ACTIVATION_EMAIL_SUBJECT_TEMPLATE='gratitude/emails/activation_email_subject.txt'
 USERENA_SIGNUP_FIRST_AND_LAST_NAMES=True
 USERENA_SIGNIN_REDIRECT_URL='/profile/%(username)s/'

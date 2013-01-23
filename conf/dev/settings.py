@@ -23,7 +23,7 @@ SITE_ID = 3
 FORCE_SCRIPT_NAME = SITE_PREFIX
 
 STATIC_ROOT = 'static'
-STATIC_URL = '/static/'
+STATIC_URL = '/app/static/'
 LOGFILE_PATH = 'logs/gratitude.log'
 
 LOGGING = {
