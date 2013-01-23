@@ -36,6 +36,8 @@ urlpatterns = patterns('',
     (r'^i18n/', include('django.conf.urls.i18n')),
     (r'^gratitude/', include('gratitude.gratitude.urls')),
     url(r'^activate/(?P<activation_key>\w+)/$', 'gratitude.gratitude.views.activate', name='gratitude_activate'),
+    #url(r'^404$', direct_to_template, {'template': '404.html'},),    # not normally accessible 
+    #url(r'^500$', direct_to_template, {'template': '500.html'},),    # not normally accessible 
     )
 
 if settings.DEBUG:
