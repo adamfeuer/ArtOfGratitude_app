@@ -110,7 +110,6 @@ def profile(request, username, profile_form=ProfileForm,
                              extra_context,
                              context_instance=RequestContext(request))
 
-@login_required
 @csrf_exempt
 def unsubscribe(request, username, template_name='gratitude/unsubscribe.html'):
    user = get_object_or_404(User, username__iexact=username)
