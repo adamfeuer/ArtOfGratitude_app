@@ -76,6 +76,10 @@ class SignupFormOnePage(SignupFormOnlyEmail):
       self.fields['email'].label = ""
       self.fields['password1'].label = ""
 
+   def clean_accept_tos(self):
+      if self.cleaned_data['accept_tos'] is not True:
+         raise forms.ValidationError(_('You must accept the Terms of Service to sign up.'))
+
    def save(self):
       """ Saves the user details then calls the base class."""
       user =  super(SignupFormOnePage, self).save()
