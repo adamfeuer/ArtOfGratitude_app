@@ -68,7 +68,8 @@ class SignupFormOnePage(SignupFormOnlyEmail):
              'accept_tos'
          ),
          FormActions(
-             Submit('gratitude_signup', 'Be Grateful'),
+             Submit('gratitude_signup', 'Be Grateful', ),
+             css_class='pagination-centered',
          )
       )
       self.fields['first_name'].label = ""
