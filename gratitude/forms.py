@@ -32,8 +32,13 @@ class EmailForm(forms.Form):
    email_address = forms.CharField()
 
 class MessagingForm(forms.Form):
-   user_id = forms.IntegerField(widget=forms.HiddenInput, required=False)
+   user_id = forms.IntegerField(widget=forms.HiddenInput, required=True)
    no_messages = forms.BooleanField(required=False, label=_('Do not send me any more emails'), help_text='If you want to stop getting email messages from us, check this box.')
+
+   def save(self):
+      userDetail = UserDetail.objects.filter(user_id__exact=self.cleaned_data['user_id'])[:1].get()
+      userDetail.no_messages = self.cleaned_data['no_messages']
+      userDetail.save()
 
 class ProfileForm(forms.Form):
    entry0 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'autofocus':'autofocus', 'tabindex': 1}))

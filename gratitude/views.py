@@ -53,10 +53,13 @@ def messaging_select(request, username):
    if request.method == 'POST':
       form = MessagingForm(request.POST)
       if form.is_valid():
-         return HttpResponseRedirect('/profile/%s/' % username)
+         form.save()
+         if userena_settings.USERENA_USE_MESSAGES:
+             messages.success(request, _('Your profile has been updated.'), fail_silently=True)
+      return HttpResponseRedirect(reverse('userena_profile_detail', args=(username,)))
    else:
       user_details = get_user_details(user)
-      initial_dict={'user': user_details.user.id,
+      initial_dict={'user_id': user.id,
                     'no_messages': user_details.no_messages}
       form = MessagingForm(initial=initial_dict)
     
