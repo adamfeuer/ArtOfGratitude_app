@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
+from django.views.generic import RedirectView
 from django.views.generic.simple import direct_to_template
 from django.contrib import admin
 from adminplus import AdminSitePlus
@@ -13,6 +14,7 @@ admin.autodiscover()
 admin.site.register_view('django-ses', dashboard, 'Django SES Stats')
 
 urlpatterns = patterns('',
+    (r'^(/?)$', RedirectView.as_view(url=settings.SITE_URL)),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
     url(r'^signout$', 'gratitude.gratitude.views.signout', name='gratitude_signout'),

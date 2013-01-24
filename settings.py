@@ -124,7 +124,7 @@ USERENA_MUGSHOT_SIZE = 140
 # Userena base urls
 LOGIN_REDIRECT_BASE_URL = '/profile/%(username)s/'
 USERENA_SIGNIN_REDIRECT_BASE_URL = LOGIN_REDIRECT_BASE_URL
-LOGIN_BASE_URL = '/accounts/signin/'
+LOGIN_BASE_URL = '/'
 LOGOUT_BASE_URL = '/signout/'
 SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
 
