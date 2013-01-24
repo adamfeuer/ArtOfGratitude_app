@@ -1220,3 +1220,20 @@ form#newsletter input[type=submit] {
    position: relative;
    left: -379px;
 }
+
+.form-horizontal .form-actions {
+    padding-left: 10px;
+}
+
+.form-actions {
+    background-color: #FFFFFF;
+    border-top: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 5px 5px 5px;
+}
+
+input[type="text"], input[type="password"] {
+   margin: 5px;
+}
+
