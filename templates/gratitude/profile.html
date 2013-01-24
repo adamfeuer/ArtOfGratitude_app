@@ -28,4 +28,15 @@
 {% else %}
 <p>{% trans "Thank you for entering your gratitudes for today! Come back tomorrow to enter more!" %}<p/>
 {% endif %}
+<p/>
+<p/>
+<p/>
+<p/>
+</div> 
+{% endblock %}
+{% block content-footer %}
+   <div class="span11"></div>
+   <div class="span1">
+      <a href="{{site_prefix}}/accounts/{{ user.username }}">Preferences</a> 
+   </div>
 {% endblock %}

@@ -148,6 +148,9 @@
 				
 		<!--start: Container -->
     	<div class="container">
+   
+		   <!--start: Row -->
+         <div class="row">
 
             <div class="span9">
               <p>
@@ -166,6 +169,12 @@
         		</div>
 
       		</div>
+			<!-- end: Row -->
+   
+            <div class="row">
+               {% block content-footer %}{% endblock %}
+			      <div class="clear"></div>
+            </div>
 			<!-- end: Row -->
       		
 			<hr>
