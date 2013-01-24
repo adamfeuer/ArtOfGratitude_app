@@ -68,6 +68,8 @@ def messaging_select(request, username):
                              context_instance=RequestContext(request))
 
 
+# Todo: needs to not have csrf_exempt
+@csrf_exempt
 @secure_required
 def one_page_signup(request, signup_form=SignupFormOnePage,
            template_name='gratitude/signup.html'):

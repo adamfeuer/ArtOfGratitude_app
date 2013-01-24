@@ -134,7 +134,6 @@
                         {% if user.is_authenticated %}
                            <li><a href="{{ base_url }}{% url gratitude_signout %}">{% trans 'Signout' %}</a></li>
                         {% else %}
-                           <li><a href="{% url gratitude_signup %}">{% trans 'Sign up' %}</a></li>
                            <li><a href="{{ login_url }}">{% trans 'Sign in' %}</a></li>
                         {% endif %}
                      </ul>
