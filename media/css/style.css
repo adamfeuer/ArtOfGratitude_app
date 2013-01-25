@@ -1229,3 +1229,6 @@ input[type="text"], input[type="password"] {
    margin-bottom: 5px;
 }
 
+.lead li { 
+   line-height: 120%;
+}
