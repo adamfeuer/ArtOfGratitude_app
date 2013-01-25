@@ -7,8 +7,8 @@
 
 {% block content %}
 
-<h2>{{ user.first_name }} {{ user.last_name }}</h2>
-<ol>
+<h2>{{ user.first_name }} {{ user.last_name }} - Your Gratitudes:</h2>
+<ol class="lead">
 {% for gratitude in gratitudes %}
    <li>{{ gratitude.text }}</li>
 {% endfor %}

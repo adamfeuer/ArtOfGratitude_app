@@ -1,11 +1,3 @@
-/*
-* Author: Łukasz Holeczek
-* Template: Best. Bootstrap Theme
-*
-* Modified for Art of Gratitude
-*/
-
-
 /* Import Section
 =================================================================== */
 @import url("icons.css");				/* Icons. */
@@ -31,7 +23,7 @@ h1 {
 }
 
 h2, h3, h4, h5, h6 {
-	font-family: "Boogaloo" !important;
+	font-family: 'Droid Sans';
 	font-weight: normal;
 	color: #666;
 }
@@ -1234,6 +1226,6 @@ form#newsletter input[type=submit] {
 }
 
 input[type="text"], input[type="password"] {
-   margin: 5px;
+   margin-bottom: 5px;
 }
 
