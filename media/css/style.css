@@ -1237,3 +1237,8 @@ input[type="text"], input[type="password"] {
 .social-small-item {
    visibility:hidden;
 }
+
+.lead li {
+   line-height: 120%;
+}
+
