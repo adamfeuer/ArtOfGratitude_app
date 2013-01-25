@@ -1229,6 +1229,11 @@ input[type="text"], input[type="password"] {
    margin-bottom: 5px;
 }
 
-.lead li { 
-   line-height: 120%;
+#form-actions-homepage {
+   position: relative;
+   top: -20px;
+}
+
+.social-small-item {
+   visibility:hidden;
 }
