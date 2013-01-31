@@ -89,6 +89,9 @@ DATABASES = {
 ENCRYPTED_FIELD_KEYS_DIR = 'keys'
 
 # SurveyTool settings
+#FLAVOR = PROD 
+#DEBUG = False
+#TEMPLATE_DEBUG = False
 FLAVOR = DEV
 DEBUG = True
 TEMPLATE_DEBUG = True
