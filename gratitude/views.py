@@ -94,12 +94,13 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
                              template_name,
                              extra_context=extra_context)
 
-
 @login_required
 @csrf_exempt
 def profile(request, username, profile_form=ProfileForm,
            template_name='gratitude/profile.html'):
    user = get_object_or_404(User, username__iexact=username)
+   if (user.username != request.user.username):
+      return redirect_to_login(request)
    if request.method == 'POST':
       form = profile_form(request.POST, request.FILES)
       if form.is_valid():
@@ -114,6 +115,7 @@ def profile(request, username, profile_form=ProfileForm,
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))
+
 
 @csrf_exempt
 def unsubscribe(request, username, template_name='gratitude/unsubscribe.html'):
@@ -163,6 +165,10 @@ def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
     return Signout(request, next_page, template_name, *args, **kwargs)
 
 # Utility functions
+
+def redirect_to_login(request):
+   from django.shortcuts import redirect as django_redirect
+   return django_redirect('/app/accounts/signin')
 
 def get_gratitudes(user):
    gratitudes = Gratitude.objects.filter(user_id = user.id)
