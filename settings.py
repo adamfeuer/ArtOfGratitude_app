@@ -100,6 +100,7 @@ INSTALLED_APPS = (
     'adminplus',
     'cronjobs',
     'crispy_forms',
+    'tastypie',
     'gratitude.profiles',
     'gratitude.gratitude',
     'gratitude.gratitude.cron',
