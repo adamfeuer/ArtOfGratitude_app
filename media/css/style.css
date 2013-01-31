@@ -1235,7 +1235,7 @@ input[type="text"], input[type="password"] {
 }
 
 .social-small-item {
-   /* visibility:hidden; */
+   visibility:hidden;
 }
 
 .lead li {
@@ -1245,16 +1245,15 @@ input[type="text"], input[type="password"] {
 .twitter-follow {
    position: relative;
    top: 48px;
-   left: 77px;
+   left: 0px;
 
 }
 
 .fb-like  {
    position: relative;
-   top: 24px;
-   left: -9px;
+   top: 22px;
+   left: 65px;
 }
-
 
 /* for wordpress */
 img.alignright {float:right; margin:0 0 1em 1em}
