@@ -1,4 +1,19 @@
-import os, sys
+import os, sys, ConfigParser
+
+def createModuleGlobalsFromConfigFile(module, filepath):
+   config = ConfigParser.RawConfigParser() 
+   config.read(filepath) 
+   setattr(module,'TWILIO_FROM_PHONE_NUMBER', config.get('Twilio', 'TWILIO_FROM_PHONE_NUMBER'))
+   setattr(module,'TWILIO_ACCOUNT', config.get('Twilio', 'TWILIO_ACCOUNT'))
+   setattr(module,'TWILIO_TOKEN', config.get('Twilio', 'TWILIO_TOKEN'))
+   setattr(module,'DATABASE_HOST', config.get('Database', 'host'))
+   setattr(module,'DATABASE_USER', config.get('Database', 'user'))
+   setattr(module,'DATABASE_PASSWORD', config.get('Database', 'password')) 
+   setattr(module,'DATABASE_DB', config.get('Database', 'database')) 
+   setattr(module,'AWS_ACCESS_KEY_ID', config.get('AWS', 'user')) 
+   setattr(module,'AWS_SECRET_ACCESS_KEY', config.get('AWS', 'password')) 
+   setattr(module,'FACEBOOK_APP_ID', config.get('Facebook', 'app_id')) 
+   setattr(module,'FACEBOOK_API_SECRET', config.get('Facebook', 'api_secret')) 
 
 abspath = lambda *p: os.path.abspath(os.path.join(*p))
 
@@ -68,12 +83,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "common.context_processors.settings",
     "common.context_processors.site",
+    "social_auth.context_processors.social_auth_by_name_backends",
+    "social_auth.context_processors.social_auth_backends",
 )
 
 AUTHENTICATION_BACKENDS = (
     'userena.backends.UserenaAuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'social_auth.backends.facebook.FacebookBackend',
 )
 
 ROOT_URLCONF = 'gratitude.urls'
@@ -101,6 +119,7 @@ INSTALLED_APPS = (
     'cronjobs',
     'crispy_forms',
     'tastypie',
+    'social_auth',
     'gratitude.profiles',
     'gratitude.gratitude',
     'gratitude.gratitude.cron',
@@ -114,6 +133,10 @@ EMAIL_BACKEND = 'django_ses.SESBackend'
 AWS_SES_REGION_NAME = 'us-east-1'
 AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
 DEFAULT_FROM_EMAIL = '"Art of Gratitude" <team@artofgratitude.com>'
+
+# Django Social Auth
+SOCIAL_AUTH_DEFAULT_USERNAME = 'social_auth_user'
+FACEBOOK_EXTENDED_PERMISSIONS = ['email']
 
 # Userena settings
 USERENA_ACTIVATION_REQUIRED = True 
@@ -148,5 +171,4 @@ VERSION = "0.1"
 PROD = "prod"
 TEST = "test"
 DEV = "dev"
-
 

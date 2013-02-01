@@ -1,19 +1,8 @@
-import ConfigParser
 from gratitude.settings import *
 
-APP_CONFIG = '/opt/gratitude/gratitude.config'
-config = ConfigParser.RawConfigParser()
-config.read(APP_CONFIG)
-TWILIO_FROM_PHONE_NUMBER = config.get('Twilio', 'TWILIO_FROM_PHONE_NUMBER')
-TWILIO_ACCOUNT = config.get('Twilio', 'TWILIO_ACCOUNT')
-TWILIO_TOKEN = config.get('Twilio', 'TWILIO_TOKEN')
-DATABASE_HOST = config.get('Database', 'host')
-DATABASE_USER = config.get('Database', 'user')
-DATABASE_PASSWORD = config.get('Database', 'password')
-DATABASE_DB = config.get('Database', 'database')
-# AWS settings 
-AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
-AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
+module = sys.modules[__name__]
+appConfigFile = '/opt/gratitude/gratitude.config'
+createModuleGlobalsFromConfigFile(module, appConfigFile)
 
 SITE='artofgratitude.com'
 SITE_URL = 'https://' + SITE
