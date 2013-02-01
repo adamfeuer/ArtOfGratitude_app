@@ -137,6 +137,8 @@ DEFAULT_FROM_EMAIL = '"Art of Gratitude" <team@artofgratitude.com>'
 # Django Social Auth
 SOCIAL_AUTH_DEFAULT_USERNAME = 'social_auth_user'
 FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
+SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 
 # Userena settings
 USERENA_ACTIVATION_REQUIRED = True 
