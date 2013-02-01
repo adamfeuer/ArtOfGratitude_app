@@ -9,6 +9,8 @@ from django_ses.views import dashboard
 from userena import views as userena_views
 from gratitude import views as gratitude_views
 
+handler500 = 'gratitude.gratitude.views.server_error'
+
 admin.site = AdminSitePlus()
 admin.autodiscover()
 admin.site.register_view('django-ses', dashboard, 'Django SES Stats')

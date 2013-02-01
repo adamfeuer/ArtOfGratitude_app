@@ -164,6 +164,13 @@ def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
         messages.success(request, _('You have been signed out.'), fail_silently=True)
     return Signout(request, next_page, template_name, *args, **kwargs)
 
+
+def server_error(request, template_name='500.html'):
+    """ 500 error handler.  """
+    return render_to_response(template_name,
+        context_instance = RequestContext(request)
+    )
+
 # Utility functions
 
 def redirect_to_login(request):
