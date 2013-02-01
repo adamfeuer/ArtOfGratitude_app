@@ -1,9 +1,9 @@
 import ConfigParser
-from  surveytool.settings import *
+from gratitude.settings import *
 
-SURVEYTOOL_CONFIG = '/opt/webapps/research-staging.liveingreatness.com/surveytool.config'
+APP_CONFIG = '/opt/gratitude-staging/gratitude.config'
 config = ConfigParser.RawConfigParser()
-config.read(SURVEYTOOL_CONFIG)
+config.read(APP_CONFIG)
 TWILIO_FROM_PHONE_NUMBER = config.get('Twilio', 'TWILIO_FROM_PHONE_NUMBER')
 TWILIO_ACCOUNT = config.get('Twilio', 'TWILIO_ACCOUNT')
 TWILIO_TOKEN = config.get('Twilio', 'TWILIO_TOKEN')
@@ -11,12 +11,20 @@ DATABASE_HOST = config.get('Database', 'host')
 DATABASE_USER = config.get('Database', 'user')
 DATABASE_PASSWORD = config.get('Database', 'password')
 DATABASE_DB = config.get('Database', 'database')
+# AWS settings 
+AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
+AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
 
-BASE_URL="http://research-staging.liveingreatness.com"
+SITE='test.artofgratitude.com'
+SITE_URL = 'https://' + SITE
+SITE_PREFIX = '/app'
+BASE_URL = SITE_URL 
+SITE_ID = 1
+FORCE_SCRIPT_NAME = SITE_PREFIX
 
-STATIC_ROOT = '/opt/webapps/research-staging.liveingreatness.com/surveytool/static'
-STATIC_URL = '/static/'
-LOGFILE_PATH = '/opt/webapps/research-staging.liveingreatness.com/logs/surveytool.log'
+STATIC_ROOT = '/opt/gratitude-staging/gratitude/static'
+STATIC_URL = '/app/static/'
+LOGFILE_PATH = '/opt/gratitude-staging/logs/gratitude.log'
 
 LOGGING = {
     'version': 1,
@@ -38,7 +46,15 @@ LOGGING = {
         'request_handler': {
                 'level':'INFO',
                 'class':'logging.handlers.RotatingFileHandler',
-                'filename': '/var/log/apache2/research-staging.liveingreatness-django-request.log',
+                'filename': '/var/log/apache2/gratitude-django-request.log',
+                'maxBytes': 1024*1024*5, # 5 MB
+                'backupCount': 5,
+                'formatter':'standard',
+        },
+        'email_sender': {
+                'level':'INFO',
+                'class':'logging.handlers.RotatingFileHandler',
+                'filename': 'logs/email_sender.log',
                 'maxBytes': 1024*1024*5, # 5 MB
                 'backupCount': 5,
                 'formatter':'standard',
@@ -61,29 +77,33 @@ LOGGING = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DATABASE_DB,
-        'ENGINE': 'postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'HOST': DATABASE_HOST,
+        'NAME': DATABASE_DB,
         'USER': DATABASE_USER,
         'PASSWORD': DATABASE_PASSWORD,
         }
 }
 
 # Key Czar and django-extensions
-ENCRYPTED_FIELD_KEYS_DIR = '/opt/webapps/research-staging.liveingreatness.com/surveytool/keys'
+ENCRYPTED_FIELD_KEYS_DIR = '/opt/gratitude-staging/gratitude/keys'
 
-# SurveyTool settings
+# Application settings
 FLAVOR = PROD
 DEBUG = False
 TEMPLATE_DEBUG = False
-
-CRONJOB_LOCK_PREFIX = 'lock.staging'
+CRONJOB_LOCK_PREFIX = 'lock.prod'
 
 #FLAVOR = DEV
 #DEBUG = True
 #TEMPLATE_DEBUG = True
 
-ALLOWED_PHONE_NUMBERS = []
-#ALLOWED_PHONE_NUMBERS = ['206-330-4774']
+#ALLOWED_EMAIL_ADDRESSES=[]
+ALLOWED_EMAIL_ADDRESSES=['adamf@pobox.com', 'adamfeuer@gmail.com', 'robertreichner@gmail.com']
 
+# urls
+LOGIN_REDIRECT_URL = SITE_PREFIX + LOGIN_REDIRECT_BASE_URL
+LOGIN_URL = SITE_PREFIX + LOGIN_BASE_URL
+LOGOUT_URL = SITE_PREFIX + LOGOUT_BASE_URL
+SIGNUP_SUCCESSFUL_URL = SITE_PREFIX + SIGNUP_SUCCESSFUL_BASE_URL
+USERENA_SIGNIN_REDIRECT_URL = SITE_PREFIX + USERENA_SIGNIN_REDIRECT_BASE_URL
