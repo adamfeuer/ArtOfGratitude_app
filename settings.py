@@ -139,6 +139,7 @@ SOCIAL_AUTH_DEFAULT_USERNAME = 'social_auth_user'
 FACEBOOK_EXTENDED_PERMISSIONS = ['email']
 SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
+SOCIAL_AUTH_ENABLED_BACKENDS = ('facebook',)
 
 # Userena settings
 USERENA_ACTIVATION_REQUIRED = True 
