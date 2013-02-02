@@ -6,10 +6,15 @@
 
 {% block content %}
 
-<div="span9">Create an account (Or <a href="{{site_prefix}}/accounts/signin/">sign in</a>)</div>
-<p/>
-<div="span9">
-   {% crispy form %}
+<div class="row">
+   <div class="span5">
+      Create an account (Or <a href="{{site_prefix}}/accounts/signin/">sign in</a>)
+      {% crispy form %}
+   </div>
+   <div class="span1"></div>
+   <div class="span3">
+      <p>Or &nbsp; <a class="btn btn-primary" href="{% url socialauth_begin 'facebook' %}">Log in with Facebook</a></p>
+   </div>
 </div>
 
 {% endblock %}
