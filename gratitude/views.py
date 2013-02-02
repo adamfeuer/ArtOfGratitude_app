@@ -94,6 +94,10 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
                              template_name,
                              extra_context=extra_context)
 
+def one_page_signup_facebook(request, signup_form=SignupFormOnePage,
+           template_name='gratitude/signup1.html'):
+   return one_page_signup(request, signup_form, template_name)
+
 @login_required
 @csrf_exempt
 def profile(request, username, profile_form=ProfileForm,

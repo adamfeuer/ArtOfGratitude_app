@@ -78,16 +78,18 @@ DATABASES = {
 ENCRYPTED_FIELD_KEYS_DIR = '/opt/gratitude-test/gratitude/keys'
 
 # Application settings
-FLAVOR = PROD
-DEBUG = False
-TEMPLATE_DEBUG = False
 CRONJOB_LOCK_PREFIX = 'lock.prod'
 
-#FLAVOR = DEV
-#DEBUG = True
-#TEMPLATE_DEBUG = True
+#FLAVOR = PROD
+#DEBUG = False
+#TEMPLATE_DEBUG = False
 
-ALLOWED_EMAIL_ADDRESSES=[]
+FLAVOR = DEV
+DEBUG = True
+TEMPLATE_DEBUG = True
+
+#ALLOWED_EMAIL_ADDRESSES=[]
+ALLOWED_EMAIL_ADDRESSES=['adamf@pobox.com', 'adamfeuer@gmail.com', 'robertreichner@gmail.com']
 
 # urls
 LOGIN_REDIRECT_URL = SITE_PREFIX + LOGIN_REDIRECT_BASE_URL
