@@ -105,6 +105,14 @@ def profile(request, username, profile_form=ProfileForm,
    user = get_object_or_404(User, username__iexact=username)
    if (user.username != request.user.username):
       return redirect_to_login(request)
+   return profile_simple(request, profile_form, template_name)
+
+@login_required
+def profile_simple(request, profile_form=ProfileForm,
+      template_name='gratitude/profile.html'):
+   if (request.user is None):
+      return redirect_to_login(request)
+   user = request.user
    if request.method == 'POST':
       form = profile_form(request.POST, request.FILES)
       if form.is_valid():
@@ -119,7 +127,6 @@ def profile(request, username, profile_form=ProfileForm,
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))
-
 
 @csrf_exempt
 def unsubscribe(request, username, template_name='gratitude/unsubscribe.html'):
