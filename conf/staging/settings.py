@@ -1,21 +1,10 @@
-import ConfigParser
 from gratitude.settings import *
 
-APP_CONFIG = '/opt/gratitude-staging/gratitude.config'
-config = ConfigParser.RawConfigParser()
-config.read(APP_CONFIG)
-TWILIO_FROM_PHONE_NUMBER = config.get('Twilio', 'TWILIO_FROM_PHONE_NUMBER')
-TWILIO_ACCOUNT = config.get('Twilio', 'TWILIO_ACCOUNT')
-TWILIO_TOKEN = config.get('Twilio', 'TWILIO_TOKEN')
-DATABASE_HOST = config.get('Database', 'host')
-DATABASE_USER = config.get('Database', 'user')
-DATABASE_PASSWORD = config.get('Database', 'password')
-DATABASE_DB = config.get('Database', 'database')
-# AWS settings 
-AWS_ACCESS_KEY_ID = config.get('AWS', 'user')
-AWS_SECRET_ACCESS_KEY = config.get('AWS', 'password')
+module = sys.modules[__name__]
+appConfigFile = '/opt/gratitude-staging/gratitude.config'
+createModuleGlobalsFromConfigFile(module, appConfigFile)
 
-SITE='test.artofgratitude.com'
+SITE='staging.artofgratitude.com'
 SITE_URL = 'https://' + SITE
 SITE_PREFIX = '/app'
 BASE_URL = SITE_URL 
@@ -98,8 +87,7 @@ CRONJOB_LOCK_PREFIX = 'lock.prod'
 #DEBUG = True
 #TEMPLATE_DEBUG = True
 
-#ALLOWED_EMAIL_ADDRESSES=[]
-ALLOWED_EMAIL_ADDRESSES=['adamf@pobox.com', 'adamfeuer@gmail.com', 'robertreichner@gmail.com']
+ALLOWED_EMAIL_ADDRESSES=[]
 
 # urls
 LOGIN_REDIRECT_URL = SITE_PREFIX + LOGIN_REDIRECT_BASE_URL
