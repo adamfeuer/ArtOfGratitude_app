@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans with site.name as site %}Just one more step to get started on {{ site }}{% endblocktrans %}
+{% blocktrans with site.name as site %}Get started with {{ site }}{% endblocktrans %}
