@@ -93,6 +93,25 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
    return direct_to_template(request,
                              template_name,
                              extra_context=extra_context)
+   
+@secure_required
+def social_verification(request):
+   user = request.user
+   user.active = False
+   user.save()
+   # send activation email
+   userena_signals.signup_complete.send(sender=None, user=user)
+   redirect_to = settings.SIGNUP_SUCCESSFUL_URL
+   if request.user.is_authenticated():
+      logout(request)
+   return redirect(redirect_to)
+
+def one_page_signup_facebook(request, signup_form=SignupFormOnePage,
+           template_name='gratitude/signup1.html'):
+   return one_page_signup(request, signup_form, template_name)
+
+
+
 
 def one_page_signup_facebook(request, signup_form=SignupFormOnePage,
            template_name='gratitude/signup1.html'):
