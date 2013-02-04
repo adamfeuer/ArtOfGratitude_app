@@ -140,6 +140,7 @@ FACEBOOK_EXTENDED_PERMISSIONS = ['email']
 SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+SOCIAL_AUTH_NEW_USER_REDIRECT_BASE_URL = '/social-verification/'
 
 # Userena settings
 USERENA_ACTIVATION_REQUIRED = True 
