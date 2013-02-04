@@ -21,6 +21,8 @@ from userena.decorators import secure_required
 from userena.models import UserenaSignup
 from userena.views import ExtraContextTemplateView
 from userena import settings as userena_settings
+from userena import signals as userena_signals
+from userena.managers import UserenaManager
 
 from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm
 from models import UserDetail, Gratitude
@@ -97,10 +99,10 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
 @secure_required
 def social_verification(request):
    user = request.user
-   user.active = False
+   user.is_active = False
    user.save()
-   # send activation email
-   userena_signals.signup_complete.send(sender=None, user=user)
+   userenaProfile = UserenaSignup.objects.create_userena_profile(user)
+   userenaProfile.send_activation_email()
    redirect_to = settings.SIGNUP_SUCCESSFUL_URL
    if request.user.is_authenticated():
       logout(request)
