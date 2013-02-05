@@ -72,6 +72,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'userena.middleware.UserenaLocaleMiddleware',
     'common.middleware.RuntimePathsMiddleware',
+    'social_auth.middleware.SocialAuthExceptionMiddleware',
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -141,6 +142,8 @@ SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 SOCIAL_AUTH_NEW_USER_REDIRECT_BASE_URL = '/social-verification/'
+SOCIAL_AUTH_BACKEND_ERROR_BASE_URL = '/signup-error/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 # Userena settings
 USERENA_ACTIVATION_REQUIRED = True 
@@ -151,9 +154,9 @@ USERENA_MUGSHOT_SIZE = 140
 
 # Userena base urls
 LOGIN_REDIRECT_BASE_URL = '/profile/'
-USERENA_SIGNIN_REDIRECT_BASE_URL = LOGIN_REDIRECT_BASE_URL
 LOGIN_BASE_URL = '/'
 LOGOUT_BASE_URL = '/signout/'
+LOGIN_ERROR_BASE_URL    = '/login-error/'
 SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
 
 # Userena activation email
@@ -161,7 +164,8 @@ USERENA_SEND_EMAIL_MODULE='gratitude.gratitude.EmailSender'
 USERENA_ACTIVATION_EMAIL_MESSAGE_TEMPLATE='gratitude/emails/activation_email_body.html'
 USERENA_ACTIVATION_EMAIL_SUBJECT_TEMPLATE='gratitude/emails/activation_email_subject.txt'
 USERENA_SIGNUP_FIRST_AND_LAST_NAMES=True
-USERENA_SIGNIN_REDIRECT_BASE_URL='/profile/%(username)s/'
+USERENA_SIGNIN_REDIRECT_BASE_URL = LOGIN_REDIRECT_BASE_URL
+#USERENA_SIGNIN_REDIRECT_BASE_URL='/profile/%(username)s/'
  
 # Test settings
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'

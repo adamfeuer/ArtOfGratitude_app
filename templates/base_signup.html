@@ -95,6 +95,19 @@
 		<!--start: Container -->
     	<div class="container">
 
+            <div class="span9">
+                  {% if messages %}
+                  <p>
+                     <ul class="messages">
+                       {% for message in messages %}
+                          <li class="{{ message.tags }}">
+                             {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+                          </li>
+                       {% endfor %}
+                     </ul>
+                  </p>
+                  {% endif %}
+            </div> 
         		<div class="span9">
                   {% block content %}{% endblock %}
 						<div class="clear"></div>

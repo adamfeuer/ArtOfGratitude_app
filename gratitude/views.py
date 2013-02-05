@@ -23,6 +23,7 @@ from userena.views import ExtraContextTemplateView
 from userena import settings as userena_settings
 from userena import signals as userena_signals
 from userena.managers import UserenaManager
+from userena.forms import AuthenticationForm
 
 from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm
 from models import UserDetail, Gratitude
@@ -108,17 +109,6 @@ def social_verification(request):
       logout(request)
    return redirect(redirect_to)
 
-def one_page_signup_facebook(request, signup_form=SignupFormOnePage,
-           template_name='gratitude/signup1.html'):
-   return one_page_signup(request, signup_form, template_name)
-
-
-
-
-def one_page_signup_facebook(request, signup_form=SignupFormOnePage,
-           template_name='gratitude/signup1.html'):
-   return one_page_signup(request, signup_form, template_name)
-
 @login_required
 @csrf_exempt
 def profile(request, username, profile_form=ProfileForm,
@@ -196,6 +186,11 @@ def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
         messages.success(request, _('You have been signed out.'), fail_silently=True)
     return Signout(request, next_page, template_name, *args, **kwargs)
 
+@secure_required
+def social_auth_backend_error(request):
+   htmlMessage = html_message("Oops! Log in with Facebook or sign up using your email below to get started.")
+   messages.error(request, htmlMessage, extra_tags='safe')
+   return one_page_signup(request)
 
 def server_error(request, template_name='500.html'):
     """ 500 error handler.  """
@@ -204,6 +199,10 @@ def server_error(request, template_name='500.html'):
     )
 
 # Utility functions
+
+def html_message(message):
+   template = """<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>%s</div>"""
+   return template % message
 
 def redirect_to_login(request):
    from django.shortcuts import redirect as django_redirect
