@@ -174,7 +174,7 @@ SOUTH_TESTS_MIGRATE = False
 # Guardian
 ANONYMOUS_USER_ID = -1
 
-# Gratitude App
+# Gratitude App 
 VERSION = "0.1"
 PROD = "prod"
 TEST = "test"
