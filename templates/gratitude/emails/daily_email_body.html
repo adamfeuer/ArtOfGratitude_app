@@ -3,10 +3,10 @@
    <table cellpadding="8" cellspacing="0" style="background-color: #ffffff; background: #ffffff; width: 100% !important; margin: 0; padding: 0; *width:550px;" border="0">
       <tr>
       <td valign="top">
-         <table cellpadding="0" cellspacing="0" align="center" border="0"><tr><td bgcolor="#ffffff" align="center" style="border-left: 1px #b9e1fb solid; border-right: 1px #b9e1fb solid; border-top: 1px #b9e1fb solid; font-size: 0px;" height="1">        <img src="https://{{site.domain}}/static/img/art_of_gratitude_logo_small.png" alt="" style="width:500;">
+         <table cellpadding="0" cellspacing="0" align="center" border="0"><tr><td bgcolor="#ffffff" align="center" style="border-left: 1px #b9e1fb solid; border-right: 1px #b9e1fb solid; border-top: 1px #b9e1fb solid; font-size: 0px;" height="150">        <img src="https://{{site.domain}}/static/img/art_of_gratitude_logo_small.png" alt="" style="width:500;">
 </td></tr><tr><td>
 <table cellpadding="0" cellspacing="0" style="border-left: 1px #b9e1fb solid; border-right: 1px #b9e1fb solid; border-bottom: 1px #b9e1fb solid; -webkit-border-radius: 0px 0px 4px 4px; border-radius: 0px 0px 4px 4px; -moz-border-radius-bottomright: 4px; -moz-border-radius-bottomleft: 4px;" border="0" align="center">
-<tr><td colspan="3" height="16"></td></tr><tr><td width="36"></td>
+<tr><td colspan="3" height="0"></td></tr><tr><td width="36"></td>
 <td width="454" style="font-size: 14px; color: #444444; font-family: 'Open Sans', 'Lucida Grande', 'Segoe UI', Arial, Verdana, 'Lucida Sans Unicode', Tahoma, 'Sans Serif'; border-collapse: collapse;" align="left" valign="top">{% if quote_text != None %}<p>
 {{ quote_text }}
 </p>
@@ -25,14 +25,15 @@ Here is your daily gratitude journal:<br><br>
 <br>
 <input type="submit" value="Save your gratitudes!" style="text-align:center; text-decoration: none; font-size: 15px; color: white; background-color: #33A0E8; width: 180px; max-width:90%; margin: 0px auto 0px auto; padding: 7px 14px 7px 14px; display: block; border-top: 1px #2270AB solid; border-right: 1px #18639A solid; border-bottom: 1px #0F568B solid; border-left: 1px #18639A solid; border-radius: 3px; box-shadow: 0 1px 1px #cccccc, inset 0 1px 0 #83C5F1; text-shadow: #3557820 1px 2px; -moz-border-radius: 3px; -moz-box-shadow: 0 1px 1px #444444, inset 0 1px 0 #83c5f1; -moz-text-shadow: #355782 0 1px 2px; -webkit-border-radius: 3px; -webkit-box-shadow: 0 1px 1px #444444, inset 0 1px 0 #83C5F1; -webkit-text-shadow: #355782 0 1px 2px;" />
 </form>
+<br><i>
+(Click "yes" if your email prompts you about posting your gratitudes.)</i><br>
 <br>
-(Click "yes" if your email prompts you about posting your gratitudes.)<br>
-<br>
+<strong>Outlook and Hotmail users</strong>: Please click <a href="https://artofgratitude.com/app/accounts/signin/">here</a> to sign in and submit your gratitudes.<br>
 <br>- the Art of Gratitude Team</td>
 <td width="36"></td>
 </tr><tr><td colspan="3" height="36"></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" align="center" border="0">
 <tr><td height="10"></td></tr><tr><td style="padding: 0; border-collapse: collapse;"><table cellpadding="0" cellspacing="0" align="center" border="0"><tr style="font-size: 11px; color: #a8b9c6; font-family: 'Open Sans', 'Lucida Grande', 'Segoe UI', Arial, Verdana, 'Lucida Sans Unicode', Tahoma, 'Sans Serif';" valign="top"><td width="400" align="left"></td>
 <td width="128" align="right">&#169; 2013 Art of Gratitude</td></tr>
-<tr><td> <a href="https://{{site.domain}}{{site_prefix}}{% url 'gratitude_unsubscribe' user.username %}">Unsubscribe</a></td></tr>
+<tr><td> <a style="font-size: 14px; font-family: 'Open Sans', 'Lucida Grande', 'Segoe UI', Arial, Verdana, 'Lucida Sans Unicode', Tahoma, 'Sans Serif'"; href="https://{{site.domain}}{{site_prefix}}{% url 'gratitude_unsubscribe' user.username %}">Unsubscribe</a></td></tr>
 </table></td></tr></table></td></tr></table></center>
 {% endautoescape %}
