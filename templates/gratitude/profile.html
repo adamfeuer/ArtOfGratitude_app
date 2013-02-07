@@ -29,7 +29,7 @@
          {% endif %}
          {% for group in gratitudes %}
             <div class="well">
-               <div class="profile-text profile-day"><i>{{group.0.created_date|date:"l, F jS, Y"}}</i></div>
+               <div class="profile-text profile-day"><i>{{group.0.created|date:"l, F jS, Y"}}</i></div>
             {% for gratitude in group %}
             <li class="profile-text profile-item"><div id="profile-item-{{forloop.counter}}">{{ gratitude.text }}</div></li> 
             {% endfor %}
