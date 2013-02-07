@@ -128,20 +128,20 @@
 		   <!--start: Row -->
          <div class="row">
 
-            <div class="span9">
+            <div class="span12">
                   {% if messages %}
                   <p>
                      <ul class="messages">
                        {% for message in messages %}
                           <li class="{{ message.tags }}">
-                             {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+                          <div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}</div>
                           </li>
                        {% endfor %}
                      </ul>
                   </p>
                   {% endif %}
             </div>	
-        		<div class="span9">
+        		<div class="span12">
                   {% block content %}{% endblock %}
 						<div class="clear"></div>
         		</div>
@@ -255,6 +255,7 @@
 <script src="{{ media_url }}/js/flexslider.js"></script>
 <script src="{{ media_url }}/js/carousel.js"></script>
 <script def src="{{ media_url }}/js/custom.js"></script>
+{% block javascript %}{% endblock %}
 <!-- end: Java Script -->
 
 </body>
