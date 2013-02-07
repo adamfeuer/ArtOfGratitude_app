@@ -51,8 +51,12 @@
             <div class="well">
                <div class="profile-text profile-day"><i><div id="gratitude-date-{{forloop.counter}}">{{group.0.created|date:"l, F jS, Y"}}</div></i></div>
             {% for gratitude in group %}
-            <li class="profile-text profile-item"><div id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{ gratitude.text }}</div> <input type="button" class="btn btn-mini" value="Post to Facebook" onclick="publish1('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" /></li> 
-            {% endfor %}
+            <li class="profile-text profile-item"><div id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{ gratitude.text }}</div> 
+               {% if forloop.parentloop.counter <= 1 %}
+                  <input id="gratitude-fbshare-{{forloop.parentloop.counter}}-{{forloop.counter}}" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-social-btn" alt="Post to Facebook" onclick="publish1('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" />
+               {% endif %}
+            </li> 
+               {% endfor %}
             </div>
          {% endfor %}
          </ol>

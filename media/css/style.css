@@ -1267,38 +1267,43 @@ input[type="text"], input[type="password"] {
 }
 
 .profile-text {
-    color: #666666;
-    font-family: 'Droid Sans';
-    font-weight: normal;
+   color: #666666;
+   font-family: 'Droid Sans';
+   font-weight: normal;
 }
 
 .profile-header {
-    font-size: 21px;
-    font-weight: 200;
-    line-height: 30px;
-    margin-bottom: 20px;
+   font-size: 21px;
+   font-weight: 200;
+   line-height: 30px;
+   margin-bottom: 20px;
 }
 
 .profile-item {
-    font-size: 18px;
-    line-height: 20px;
+   font-size: 18px;
+   line-height: 20px;
 }
 
 .profile-day {
-    font-size: 12px;
-    line-height: 20px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+   font-size: 12px;
+   line-height: 20px;
+   padding-top: 12px;
+   padding-bottom: 12px;
 }
 
 .profile-item {
-    color: #666666;
-    font-family: 'Droid Sans';
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 20px;
+   color: #666666;
+   font-family: 'Droid Sans';
+   font-weight: normal;
+   font-size: 18px;
+   line-height: 20px;
 }
 
+.profile-social-btn {
+   float: right;
+   position: relative;
+   top: -26px;
+}
 
 
 /* for wordpress */
