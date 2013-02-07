@@ -6,6 +6,26 @@
 {% block content_title %}<h2 class="content-title">{% trans 'Express Your Gratitude!' %}</h2>{% endblock %}
 
 {% block content %}
+
+<div id="fb-root"></div>
+<script>
+      function publish1(gratitudeTextId, gratitudeDateId) {
+         var gratitudeDate = document.getElementById(gratitudeDateId).textContent; 
+         var gratitudeText = document.getElementById(gratitudeTextId).textContent; 
+         var publish = {
+            method: 'stream.publish',
+            display: 'popup', // force popup mode
+            attachment: {
+               name: gratitudeText,
+               caption: 'My gratitude for ' + gratitudeDate,
+               description: 'From artofgratitude.com &mdash; a free site for cultivating the daily practice of gratitude.',
+               href: 'https://artofgratitude.com'
+            }
+         };
+         FB.ui(publish);//, Log.info.bind('stream.publish callback'));
+      }
+</script>
+
 <div id="fb-root"></div>
 <div class="row">
    <div class="span10"></div>
@@ -29,16 +49,16 @@
          {% endif %}
          {% for group in gratitudes %}
             <div class="well">
-               <div class="profile-text profile-day"><i>{{group.0.created|date:"l, F jS, Y"}}</i></div>
+               <div class="profile-text profile-day"><i><div id="gratitude-date-{{forloop.counter}}">{{group.0.created|date:"l, F jS, Y"}}</div></i></div>
             {% for gratitude in group %}
-            <li class="profile-text profile-item"><div id="profile-item-{{forloop.counter}}">{{ gratitude.text }}</div></li> 
+            <li class="profile-text profile-item"><div id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{ gratitude.text }}</div> <input type="button" class="btn btn-mini" value="Post to Facebook" onclick="publish1('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" /></li> 
             {% endfor %}
             </div>
          {% endfor %}
          </ol>
       <p/>
       {% if form_fields|length <= 0 %}
-      <p class="profile-text profile-item"><i>{% trans "Look for your daily gratitude email in your inbox tomorrow!" %}</i><p/>
+         <p class="profile-text profile-item"><i>{% trans "Look for your daily gratitude email in your inbox tomorrow!" %}</i><p/>
       {% endif %}
    </div> 
    <div class="span3"></div>
@@ -47,5 +67,18 @@
 {% block content-footer %}
 {% endblock %}
 {% block javascript %}
+   <script>
+      window.fbAsyncInit = function() {
+        console.log('Initing facebook...');
+        FB.init({appId: '477687335622950', status: true, cookie: true,
+                 xfbml: true});
+        console.log('done.');
+      };
+      (function() {
+        var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol +
+          '//connect.facebook.net/en_US/all.js';
+        document.getElementById('fb-root').appendChild(e);
+      }());
 </script>
 {% endblock %}
