@@ -19,13 +19,14 @@ from django.utils.translation import ugettext as _
 
 from userena.decorators import secure_required
 from userena.models import UserenaSignup
-from userena.views import ExtraContextTemplateView
+from userena.views import ExtraContextTemplateView, signin as userena_signin
 from userena import settings as userena_settings
 from userena import signals as userena_signals
 from userena.managers import UserenaManager
 from userena.forms import AuthenticationForm
+from userena.utils import signin_redirect
 
-from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm
+from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm, RememberMeAuthenticationForm
 from models import UserDetail, Gratitude
 from EmailSender import EmailSender
 from EntryUtils import EntryUtils
@@ -108,6 +109,13 @@ def social_verification(request):
    if request.user.is_authenticated():
       logout(request)
    return redirect(redirect_to)
+
+@secure_required
+def signin(request, auth_form=RememberMeAuthenticationForm,
+           template_name='gratitude/signin.html',
+           redirect_field_name=REDIRECT_FIELD_NAME,
+           redirect_signin_function=signin_redirect, extra_context=None):
+   return userena_signin(request, auth_form, template_name, redirect_field_name, redirect_signin_function, extra_context)
 
 @login_required
 @csrf_exempt

@@ -7,7 +7,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from crispy_forms.bootstrap import FormActions 
 
-from userena.forms import SignupFormOnlyEmail
+from userena.forms import SignupFormOnlyEmail, AuthenticationForm
 
 from gratitude.gratitude.models import UserDetail
 
@@ -93,3 +93,5 @@ class SignupFormOnePage(SignupFormOnlyEmail):
       "Overrride base class to prevent checking that password1 and password2 match, because we don't use password2"
       return self.cleaned_data
 
+class RememberMeAuthenticationForm(AuthenticationForm):
+    remember_me = forms.BooleanField(widget=forms.HiddenInput(), initial=True, required=True)
