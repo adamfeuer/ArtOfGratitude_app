@@ -6,37 +6,46 @@
 {% block content_title %}<h2 class="content-title">{% trans 'Express Your Gratitude!' %}</h2>{% endblock %}
 
 {% block content %}
-
-<h2>{{ user.first_name }} {{ user.last_name }} - Your Gratitudes:</h2>
-<ol class="lead">
-{% for gratitude in gratitudes %}
-   <li>{{ gratitude.text }}</li>
-{% endfor %}
-</ol>
-<p/>
-{% if form_fields|length > 0 %}
-<form action="{{ site_prefix }}/profile/{{ user.username }}" method="post">
-   {% for field in form_fields %}
-      {{ field }}<br/>
-   {% endfor %}
-   <br/>
-   <br/>
-   <br/>
-   <br/>
-      <input type="submit"/>
-</form>
-{% else %}
-<p class="lead"><i>{% trans "Look for your daily gratitude email in your inbox tomorrow!" %}</i><p/>
-{% endif %}
-<p/>
-<p/>
-<p/>
-<p/>
-</div> 
-{% endblock %}
-{% block content-footer %}
-   <div class="span11"></div>
+<div id="fb-root"></div>
+<div class="row">
+   <div class="span10"></div>
    <div class="span1">
       <a href="{{site_prefix}}/accounts/{{ user.username }}">Preferences</a> 
    </div>
+   <div class="span1"></div>
+</div>
+<div class="row">
+   <div class="span9">
+      <h2 class="profile-header">{{ user.first_name }} {{ user.last_name }} - Your Gratitudes:</h2>
+      <p>
+      <ol reversed start="{{gratitudes_length}}">
+         {% if form_fields|length > 0 %}
+            <form action="{{ site_prefix }}/profile/{{ user.username }}" method="post">
+               {% for field in form_fields %}
+               {{ field }}<br>
+               {% endfor %}
+                  <input class="btn btn-primary" type="submit" value="Save your gratitudes!"/>
+            </form>
+         {% endif %}
+         {% for group in gratitudes %}
+            <div class="well">
+               <div class="profile-text profile-day"><i>{{group.0.created}}</i></div>
+            {% for gratitude in group %}
+            <li class="profile-text profile-item"><div id="profile-item-{{forloop.counter}}">{{ gratitude.text }}</div></li> 
+            {% endfor %}
+            </div>
+         {% endfor %}
+         </ol>
+      <p/>
+      {% if form_fields|length <= 0 %}
+      <p class="profile-text profile-item"><i>{% trans "Look for your daily gratitude email in your inbox tomorrow!" %}</i><p/>
+      {% endif %}
+   </div> 
+   <div class="span3"></div>
+</div>
+{% endblock %}
+{% block content-footer %}
+{% endblock %}
+{% block javascript %}
+</script>
 {% endblock %}

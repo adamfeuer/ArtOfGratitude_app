@@ -134,6 +134,7 @@ def profile_simple(request, profile_form=ProfileForm,
    extra_context['user'] = user 
    gratitudes = get_gratitudes(user)
    extra_context['gratitudes'] = gratitudes
+   extra_context['gratitudes_length'] = get_gratitudes_length(gratitudes)
    extra_context['form_fields'] = EntryUtils().getFormFields(user)
    return render_to_response(template_name,
                              extra_context,
@@ -188,8 +189,7 @@ def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
 
 @secure_required
 def social_auth_backend_error(request):
-   htmlMessage = html_message("Oops! Log in with Facebook or sign up using your email below to get started.")
-   messages.error(request, htmlMessage, extra_tags='safe')
+   messages.error("Oops! Log in with Facebook or sign up using your email below to get started.")
    return one_page_signup(request)
 
 def server_error(request, template_name='500.html'):
@@ -200,17 +200,35 @@ def server_error(request, template_name='500.html'):
 
 # Utility functions
 
-def html_message(message):
-   template = """<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>%s</div>"""
-   return template % message
-
 def redirect_to_login(request):
    from django.shortcuts import redirect as django_redirect
    return django_redirect('/app/accounts/signin')
 
 def get_gratitudes(user):
    gratitudes = Gratitude.objects.filter(user_id = user.id)
-   return(gratitudes)
+   gratitudeList = []
+   if len(gratitudes) > 0:
+      group = []
+      currentDay = None
+      for gratitude in gratitudes:
+         gratitudeDay = gratitude.created.date()
+         if gratitudeDay != currentDay:
+            currentDay = gratitudeDay
+            if len(group) > 0:
+               gratitudeList.append(group)
+            group = []
+         group.append(gratitude)
+      if len(group) > 0:
+         gratitudeList.append(group)
+   gratitudeList.reverse()
+   return gratitudeList
+
+def get_gratitudes_length(gratitudes):
+   count = 0
+   for group in gratitudes:
+      count += len(group)
+   return count
+
 
 def get_user_details(user):
    user_details_list = UserDetail.objects.filter(user = user.id)
