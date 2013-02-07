@@ -19,6 +19,10 @@ class Gratitude(models.Model):
    created = CreationDateTimeField()
    modified = ModificationDateTimeField()
 
+   @property
+   def created_date(self):
+      return self.created.date()
+
 class UserDetail(models.Model):
    user = models.ForeignKey(User)
    no_messages = models.BooleanField(default=False)
