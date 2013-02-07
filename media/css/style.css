@@ -1305,6 +1305,8 @@ input[type="text"], input[type="password"] {
    top: -26px;
 }
 
+.profile-hidden { display: none; }
+.profile-item:hover .profile-hidden { display: block; }
 
 /* for wordpress */
 img.alignright {float:right; margin:0 0 1em 1em}
