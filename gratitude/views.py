@@ -135,8 +135,8 @@ def signin(request, auth_form=RememberMeAuthenticationForm,
                  messages.success(request, _('You have been signed in.'),
                                    fail_silently=True)
 
-              if save_stashed_gratitudes(request, user):
-                 return redirect(reverse('gratitude_profile_simple'))
+              save_stashed_gratitudes(request, user)
+              return redirect(reverse('gratitude_profile_simple'))
            else:
               return redirect(reverse('userena_disabled',
                                        kwargs={'username': user.username}))
@@ -157,8 +157,7 @@ def profile(request, username, profile_form=ProfileForm,
          form = profile_form(request.POST, request.FILES, user=user)
          if form.is_valid():
             stash_gratitudes(request, form)
-            return redirect(reverse('gratitude_signin'))
-      return redirect_to(request)
+      return redirect(reverse('gratitude_signin'))
    return profile_simple(request, profile_form, template_name, extra_context)
 
 @login_required
