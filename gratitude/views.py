@@ -26,7 +26,7 @@ from userena.managers import UserenaManager
 from userena.forms import AuthenticationForm
 from userena.utils import signin_redirect
 
-from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm, RememberMeAuthenticationForm
+from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm, RememberMeAuthenticationForm, AlertErrorList
 from models import UserDetail, Gratitude
 from EmailSender import EmailSender
 from EntryUtils import EntryUtils
@@ -40,12 +40,12 @@ TIME_FORMAT="%H:%M"
 @user_passes_test(lambda u: u.is_staff)
 def email(request):
    if request.method == 'POST': 
-      form = EmailForm(request.POST)
+      form = EmailForm(request.POST, error_class=AlertErrorList)
       if form.is_valid():
          result = EmailSender().send(form.cleaned_data["email"], form.cleaned_data['message'])
          return HttpResponseRedirect('/') 
    else:
-      form = EmailForm() 
+      form = EmailForm(error_class=AlertErrorList) 
 
    return render_to_response('email/email.html',
                              {'form': form },
@@ -55,7 +55,7 @@ def email(request):
 def messaging_select(request, username):
    user = get_object_or_404(User, username__iexact=username)
    if request.method == 'POST':
-      form = MessagingForm(request.POST)
+      form = MessagingForm(request.POST, error_class=AlertErrorList)
       if form.is_valid():
          form.save()
          if userena_settings.USERENA_USE_MESSAGES:
@@ -65,7 +65,7 @@ def messaging_select(request, username):
       user_details = get_user_details(user)
       initial_dict={'user_id': user.id,
                     'no_messages': user_details.no_messages}
-      form = MessagingForm(initial=initial_dict)
+      form = MessagingForm(initial=initial_dict, error_class=AlertErrorList)
     
    return render_to_response('userena/messaging_form.html',
                              {'form': form },
@@ -77,9 +77,9 @@ def messaging_select(request, username):
 @secure_required
 def one_page_signup(request, signup_form=SignupFormOnePage,
            template_name='gratitude/signup.html'):
-   form = SignupFormOnePage(initial = {})
+   form = SignupFormOnePage(initial = {}, error_class=AlertErrorList)
    if request.method == 'POST':
-      form = signup_form(request.POST)
+      form = signup_form(request.POST, error_class=AlertErrorList)
       if form.is_valid():
          user = form.save()
          user.first_name = form.cleaned_data['first_name']
@@ -115,9 +115,9 @@ def signin(request, auth_form=RememberMeAuthenticationForm,
            template_name='gratitude/signin.html',
            redirect_field_name=REDIRECT_FIELD_NAME,
            redirect_signin_function=signin_redirect, extra_context=None):
-   form = auth_form()
+   form = auth_form(error_class=AlertErrorList)
    if request.method == 'POST':
-       form = auth_form(request.POST, request.FILES)
+       form = auth_form(request.POST, request.FILES, error_class=AlertErrorList)
        if form.is_valid():
            identification, password, remember_me = (form.cleaned_data['identification'],
                                                     form.cleaned_data['password'],

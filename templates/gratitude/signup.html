@@ -7,13 +7,13 @@
 {% block content %}
 
 <div class="row">
-   <div class="span5">
-      Create an account (Or  <p><a href="{{site_prefix}}/login/facebook/"><img src="{{site_prefix}}/media/img/login-with-facebook-button.png" alt="login-with-facebook-button" /></a></p>
+   <div class="span3">
+      Create an account 
       {% crispy form %}
    </div>
-   <div class="span1"></div>
+   <div class="span3"></div>
    <div class="span3">
-      <p>Or &nbsp; <a class="btn btn-primary" href="{% url socialauth_begin 'facebook' %}">Log in with Facebook</a></p>
+      <p>Or&nbsp;<a href="{{site_prefix}}/login/facebook/"><img src="{{site_prefix}}/media/img/login-with-facebook-button.png" alt="login-with-facebook-button" /></a></p>
    </div>
 </div>
 

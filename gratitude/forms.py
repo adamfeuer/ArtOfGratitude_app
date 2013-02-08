@@ -2,6 +2,10 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.localflavor.us.forms import USPhoneNumberField
 from django.utils.translation import ugettext_lazy as _
+from django.forms.util import ErrorList
+from django.utils.safestring import mark_safe
+from django.utils.html import conditional_escape
+from django.utils.encoding import force_unicode
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
@@ -12,6 +16,12 @@ from userena.forms import SignupFormOnlyEmail, AuthenticationForm
 from gratitude.gratitude.models import UserDetail, Gratitude
 
 PROFILE_PLACEHOLDER = 'I am grateful for...'
+
+class AlertErrorList(ErrorList):
+    def as_ul(self):
+        if not self: return u''
+        return mark_safe(u'<ul class="errorlist">%s</ul>'
+                % ''.join([u'<li class="alert alert-error">%s</li>' % conditional_escape(force_unicode(e)) for e in self]))
 
 def get_datetime_field():
    return StrippingDateTimeField(required=False, widget=forms.TextInput(attrs={'class':'jquery-datetime'}))
