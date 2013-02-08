@@ -1294,10 +1294,12 @@ input[type="text"], input[type="password"] {
    line-height: 20px;
 }
 
-.profile-social-btn {
+.profile-fb-share {
    float: right;
+   clear: right;
    position: relative;
-   top: -26px;
+   top: -46px;
+   margin: 20px;
 }
 
 .profile-hidden { display: none; }
