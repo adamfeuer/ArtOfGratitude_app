@@ -1208,11 +1208,6 @@ form#newsletter input[type=submit] {
    top: 5px;
 }
 
-.navbar-left-reset {
-   position: relative;
-   left: -379px;
-}
-
 .form-horizontal .form-actions {
     padding-left: 10px;
 }
@@ -1315,4 +1310,62 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 .alignright {float:right; }
 .alignleft {float:left; }
 .aligncenter {display: block; margin-left: auto; margin-right: auto}
+
+/* mobile changes */
+
+/* desktop */
+@media (min-width: 980px) {
+
+   .navbar-left-reset {
+      position: relative;
+      left: -379px;
+   }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+   .navbar-left-reset {
+      position: relative;
+      left: 0px;
+   }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+
+   .navbar-left-reset {
+      position: relative;
+      left: 0px;
+   }
+
+   .twitter-follow {
+      display: none;
+   }
+
+   .fb-like {
+      display: none;
+   }
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+   .navbar-left-reset {
+      position: relative;
+      left: 0px;
+   }
+
+   .twitter-follow {
+      display: none;
+   }
+
+   .fb-like {
+      display: none;
+   }
+
+}
 
