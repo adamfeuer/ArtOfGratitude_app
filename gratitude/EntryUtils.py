@@ -26,7 +26,7 @@ class EntryUtils:
       return GRATITUDES_PER_DAY - len(self.getGratitudes(user))
 
    def getFormFields(self, user):
-      form = ProfileForm()
+      form = ProfileForm(user=user)
       numberOfGratitudesNeeded = self.numberOfGratitudesNeeded(user)
       formFieldsHtml = []
       for index in xrange(0, numberOfGratitudesNeeded):

@@ -9,7 +9,7 @@ from crispy_forms.bootstrap import FormActions
 
 from userena.forms import SignupFormOnlyEmail, AuthenticationForm
 
-from gratitude.gratitude.models import UserDetail
+from gratitude.gratitude.models import UserDetail, Gratitude
 
 PROFILE_PLACEHOLDER = 'I am grateful for...'
 
@@ -44,6 +44,25 @@ class ProfileForm(forms.Form):
    entry0 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'autofocus':'autofocus', 'tabindex': 1}))
    entry1 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'tabindex': 2}))
    entry2 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'tabindex': 3}))
+   stashed = forms.BooleanField(required=False,initial=False,widget=forms.HiddenInput())
+   stash_id = forms.BooleanField(required=False,initial="",widget=forms.HiddenInput())
+
+   def __init__(self, *args, **kwargs):
+      self.user = kwargs.pop("user")
+      super(ProfileForm, self).__init__(*args, **kwargs)
+
+   def save(self):
+      for entry in ['entry0', 'entry1', 'entry2']: 
+         cleanEntry = self.cleaned_data[entry].strip() 
+         stashed = self.cleaned_data['stashed']
+         stash_id = self.cleaned_data['stash_id']
+         if (len(cleanEntry) > 0): 
+            newGratitudeEntry = Gratitude() 
+            newGratitudeEntry.user_id = self.user.id 
+            newGratitudeEntry.text = cleanEntry 
+            newGratitudeEntry.stashed = stashed
+            newGratitudeEntry.stash_id = stash_id
+            newGratitudeEntry.save() 
 
 class SignupFormOnePage(SignupFormOnlyEmail):
    first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'placeholder':_('First name')}))
@@ -51,6 +70,8 @@ class SignupFormOnePage(SignupFormOnlyEmail):
    email = forms.EmailField(widget=forms.TextInput(attrs={'class':'required', 'placeholder':_('Email'), 'maxlength':75}), label=_('Email'))
    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'required', 'placeholder':_('Password')}, render_value=False), label=_('Create password'))
    accept_tos = forms.BooleanField(required=True, initial=False, label=_('I accept the Art of Gratitude Terms of Service'))
+   stash_id = forms.CharField(widget=forms.HiddenInput(), initial="")
+
    def __init__(self, *args, **kwargs):
       super(SignupFormOnlyEmail, self).__init__(*args, **kwargs)
       del self.fields['username']

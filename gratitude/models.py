@@ -16,6 +16,8 @@ class Setting(models.Model):
 class Gratitude(models.Model):
    user_id = models.CharField(max_length=100)
    text = models.CharField(max_length=5000)
+   stashed = models.BooleanField(default=False)
+   stash_id = models.CharField(max_length=100, default="")
    created = CreationDateTimeField()
    modified = ModificationDateTimeField()
 

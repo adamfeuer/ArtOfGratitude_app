@@ -1,4 +1,4 @@
-import datetime, logging, time, base64, string, csv, re
+import datetime, logging, time, base64, string, csv, re, uuid
 
 from django.core.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt
@@ -115,28 +115,73 @@ def signin(request, auth_form=RememberMeAuthenticationForm,
            template_name='gratitude/signin.html',
            redirect_field_name=REDIRECT_FIELD_NAME,
            redirect_signin_function=signin_redirect, extra_context=None):
-   return userena_signin(request, auth_form, template_name, redirect_field_name, redirect_signin_function, extra_context)
+   form = auth_form()
+   if request.method == 'POST':
+       form = auth_form(request.POST, request.FILES)
+       if form.is_valid():
+           identification, password, remember_me = (form.cleaned_data['identification'],
+                                                    form.cleaned_data['password'],
+                                                    form.cleaned_data['remember_me'])
+           user = authenticate(identification=identification,
+                               password=password)
+           if user.is_active:
+              login(request, user)
+              if remember_me:
+                 request.session.set_expiry(userena_settings.USERENA_REMEMBER_ME_DAYS[1] * 86400)
+              else: 
+                 request.session.set_expiry(0)
 
-@login_required
+              if userena_settings.USERENA_USE_MESSAGES:
+                 messages.success(request, _('You have been signed in.'),
+                                   fail_silently=True)
+
+              if save_stashed_gratitudes(request, user):
+                 return redirect(reverse('gratitude_profile_simple'))
+           else:
+              return redirect(reverse('userena_disabled',
+                                       kwargs={'username': user.username}))
+   if not extra_context: extra_context = dict()
+   extra_context.update({
+       'form': form,
+       'next': request.REQUEST.get(redirect_field_name),
+   })
+   return ExtraContextTemplateView.as_view(template_name=template_name,
+                                            extra_context=extra_context)(request)
+
 @csrf_exempt
 def profile(request, username, profile_form=ProfileForm,
-           template_name='gratitude/profile.html'):
+           template_name='gratitude/profile.html', extra_context=None):
    user = get_object_or_404(User, username__iexact=username)
    if (user.username != request.user.username):
-      return redirect_to_login(request)
-   return profile_simple(request, profile_form, template_name)
+      if request.method == 'POST':
+         form = profile_form(request.POST, request.FILES, user=user)
+         if form.is_valid():
+            stashId = uuid.uuid1()
+            form.user.id = -1
+            form.cleaned_data['stashed'] = True
+            form.cleaned_data['stash_id'] = stashId
+            form.save()
+            request.session['stash_id'] = stashId 
+            messages.warning(request, "Log in to save your gratitudes.")
+            return redirect(reverse('gratitude_signin'))
+      return redirect_to(request)
+   return profile_simple(request, profile_form, template_name, extra_context)
 
 @login_required
 def profile_simple(request, profile_form=ProfileForm,
-      template_name='gratitude/profile.html'):
+      template_name='gratitude/profile.html', extra_context=None):
    if (request.user is None):
       return redirect_to_login(request)
    user = request.user
+   save_stashed_gratitudes(request, user)
    if request.method == 'POST':
-      form = profile_form(request.POST, request.FILES)
+      form = profile_form(request.POST, request.FILES, user=user)
       if form.is_valid():
-         save_gratitudes(user, form)
-   form = ProfileForm(initial = {})
+         form.save()
+         messages.success(request, "Your gratitudes were saved.")
+      else:
+         messages.error(request, "There was a problem saving your gratitudes.")
+   form = ProfileForm(initial = {}, user=user)
    extra_context = {}
    extra_context.update(csrf(request))
    extra_context['user'] = user 
@@ -177,9 +222,9 @@ def activate(request, activation_key,
           messages.success(request, _('Congratulations -- your Art of Gratitude account is confirmed!'),
                            fail_silently=True)
       if request.method == 'POST':
-         form = ProfileForm(request.POST)
+         form = ProfileForm(request.POST, user=user)
          if form.is_valid():
-            save_gratitudes(user, form)
+            form.save()
       redirect_to = settings.LOGIN_REDIRECT_URL % {'username': user.username }
       return redirect(redirect_to)
    else:
@@ -237,6 +282,20 @@ def get_gratitudes_length(gratitudes):
       count += len(group)
    return count
 
+def save_stashed_gratitudes(request, user):
+   gratitudesWereStashed = False
+   stashId = request.session.get('stash_id', None)
+   if stashId is not None:
+      stashedGratitudes = Gratitude.objects.all().filter(stashed__exact=True).filter(stash_id__exact=stashId)
+      for gratitude in stashedGratitudes:
+         gratitude.user_id = user.id
+         gratitude.stashed = False
+         gratitude.stash_id = ""
+         gratitude.save()
+      del request.session['stash_id']
+      gratitudesWereStashed = True
+      messages.success(request, "Your gratitudes were saved.")
+   return gratitudesWereStashed
 
 def get_user_details(user):
    user_details_list = UserDetail.objects.filter(user = user.id)
@@ -259,15 +318,6 @@ def save_user_details(user, form):
    user_details.no_messages = form.cleaned_data['no_messages']
    user_details.save()
    return
-
-def save_gratitudes(user, form):
-   for entry in ['entry0', 'entry1', 'entry2']:
-      cleanEntry = form.cleaned_data[entry].strip()
-      if (len(cleanEntry) > 0):
-         newGratitudeEntry = Gratitude()
-         newGratitudeEntry.user_id = user.id
-         newGratitudeEntry.text = cleanEntry
-         newGratitudeEntry.save()
 
 def clean_datetime(datetime_obj):
    if (datetime_obj is None):

@@ -1,4 +1,4 @@
-{% extends 'userena/base_userena.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
 {% load url from future %}
 
@@ -8,20 +8,23 @@
 <form action="" method="post">
   {% csrf_token %}
   <fieldset>
-    <legend>{% trans "Log In" %}</legend>
-    {{ form.non_field_errors }}
-    {% for field in form %}
-    {{ field.errors }}
-    {% comment %} Displaying checkboxes differently {% endcomment %}
-    {% if field.name == 'remember_me' %}
-      {{ field }}
-    {% else %}
-       <p>
-       {{ field.label_tag }}
-       {{ field }}
-       </p>
-    {% endif %}
-    {% endfor %}
+     <legend>{% trans "Log In" %}</legend>
+     {{ form.non_field_errors }}
+     {% for field in form %}
+     {{ field.errors }}
+     {% comment %} Displaying checkboxes differently {% endcomment %}
+     {% if field.name == 'remember_me' %}
+        {{ field }}
+     {% else %}
+        <p>
+        {{ field.label_tag }}
+        {{ field }}
+        </p>
+     {% endif %}
+  {% endfor %}
+  {% if stashed %}
+     <input type="hidden" value="{{stash_id}}" />
+  {% endif %}
   </fieldset>
   <p><input class= "btn btn-primary" type="submit" value="{% trans "Log In" %}" /></p>
   <p>Or<p/>

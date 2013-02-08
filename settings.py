@@ -1,4 +1,5 @@
 import os, sys, ConfigParser
+from django.contrib.messages import constants as messages
 
 def createModuleGlobalsFromConfigFile(module, filepath):
    config = ConfigParser.RawConfigParser() 
@@ -126,6 +127,14 @@ INSTALLED_APPS = (
     'gratitude.gratitude.cron',
 
 )
+
+# Bootstrap CSS for django alerts
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert alert-success',
+    messages.INFO: 'alert alert-info',
+    messages.WARNING: 'alert',
+    messages.ERROR: 'alert alert-error',
+}
 
 # Django email settings
 #EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'

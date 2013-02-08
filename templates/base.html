@@ -133,8 +133,8 @@
                   <p>
                      <ul class="messages">
                        {% for message in messages %}
-                          <li class="{{ message.tags }}">
-                          <div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}</div>
+                          <li>
+                             <div class="{{ message.tags }}"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}</div>
                           </li>
                        {% endfor %}
                      </ul>
