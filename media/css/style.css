@@ -1349,6 +1349,21 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
       display: none;
    }
 
+   .logo-image {
+      height: 40%;
+      width: auto;
+      top: 23px;
+      right: -1px;
+   }
+
+   .logo-text {
+      color: #000000;
+      text-decoration: none;
+      font-size: 30px;
+      position:relative;
+      top: 30px;
+   }
+
 }
  
 /* Landscape phones and down */
