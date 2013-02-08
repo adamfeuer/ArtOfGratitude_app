@@ -19,7 +19,7 @@
                name: gratitudeText,
                caption: 'My gratitude for ' + gratitudeDate,
                description: 'From artofgratitude.com &mdash; a free site for cultivating the daily practice of gratitude.',
-               href: 'https://artofgratitude.com'
+               href: '{{base_url}}'
             }
          };
          FB.ui(publish);//, Log.info.bind('stream.publish callback'));
@@ -71,10 +71,10 @@
 {% block javascript %}
    <script>
       window.fbAsyncInit = function() {
-        console.log('Initing facebook...');
-        FB.init({appId: '477687335622950', status: true, cookie: true,
+        console.log('Initializing Facebook SDK...');
+        FB.init({appId: '{{facebook_app_id}}', status: true, cookie: true,
                  xfbml: true});
-        console.log('done.');
+        console.log('Facebook init done.');
       };
       (function() {
         var e = document.createElement('script'); e.async = true;

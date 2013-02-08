@@ -183,6 +183,7 @@ def profile_simple(request, profile_form=ProfileForm,
    extra_context['gratitudes'] = gratitudes
    extra_context['gratitudes_length'] = get_gratitudes_length(gratitudes)
    extra_context['form_fields'] = EntryUtils().getFormFields(user)
+   extra_context['facebook_app_id'] = settings.FACEBOOK_APP_ID
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))
