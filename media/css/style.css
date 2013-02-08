@@ -1135,7 +1135,7 @@ form#newsletter input[type=submit] {
 
 /* Higher than 960 (desktop devices)
 ====================================================================== */
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 980px) {
 	
 	#wrapper {
 		width: 1200px;
@@ -1164,7 +1164,7 @@ form#newsletter input[type=submit] {
 
 /* Tablet Portrait (devices and browsers)
 ====================================================================== */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+@media only screen and (min-width: 768px) and (max-width: 979px) {
 	
 	
 	
@@ -1313,8 +1313,18 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 
 /* mobile changes */
 
+/* large desktop */
+@media (min-width: 1200px) {
+
+   .navbar-left-reset {
+      position: relative;
+      left: -470px;
+   }
+
+}
+
 /* desktop */
-@media (min-width: 980px) {
+@media (min-width: 980px) and (max-width: 1199px) {
 
    .navbar-left-reset {
       position: relative;
@@ -1350,7 +1360,7 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
    }
 
    .logo-image {
-      height: 40%;
+      height: 30px; 
       width: auto;
       top: 23px;
       right: -1px;
