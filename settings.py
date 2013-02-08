@@ -189,4 +189,5 @@ VERSION = "0.1"
 PROD = "prod"
 TEST = "test"
 DEV = "dev"
+MAX_STASHED_GRATITUDES=1000
 

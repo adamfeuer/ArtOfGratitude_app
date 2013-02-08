@@ -156,13 +156,7 @@ def profile(request, username, profile_form=ProfileForm,
       if request.method == 'POST':
          form = profile_form(request.POST, request.FILES, user=user)
          if form.is_valid():
-            stashId = uuid.uuid1()
-            form.user.id = -1
-            form.cleaned_data['stashed'] = True
-            form.cleaned_data['stash_id'] = stashId
-            form.save()
-            request.session['stash_id'] = stashId 
-            messages.warning(request, "Log in to save your gratitudes.")
+            stash_gratitudes(request, form)
             return redirect(reverse('gratitude_signin'))
       return redirect_to(request)
    return profile_simple(request, profile_form, template_name, extra_context)
@@ -281,6 +275,21 @@ def get_gratitudes_length(gratitudes):
    for group in gratitudes:
       count += len(group)
    return count
+
+def stash_gratitudes(request, form):
+   stashId = request.session.get('stash_id', None) 
+   if stashId is None:
+      stashId = uuid.uuid1()
+      request.session['stash_id'] = stashId 
+   stashedGratitudes = Gratitude.objects.all().filter(stashed__exact=True).filter(stash_id__exact=stashId)
+   if len(stashedGratitudes) < settings.MAX_STASHED_GRATITUDES:
+      form.user.id = -1
+      form.cleaned_data['stashed'] = True
+      form.cleaned_data['stash_id'] = stashId
+      form.save()
+      messages.warning(request, "Log in to save your gratitudes.")
+   else:
+      messages.error(request, "Your gratitudes could not be saved because you have not logged in recently. Log in to fix this.")
 
 def save_stashed_gratitudes(request, user):
    gratitudesWereStashed = False
