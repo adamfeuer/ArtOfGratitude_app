@@ -1138,7 +1138,7 @@ form#newsletter input[type=submit] {
 @media only screen and (min-width: 960px) {
 	
 	#wrapper {
-		width: 1000px;
+		width: 1200px;
 		margin: 20px auto;
 	}
 	
@@ -1353,19 +1353,6 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
  
 /* Landscape phones and down */
 @media (max-width: 480px) {
-
-   .navbar-left-reset {
-      position: relative;
-      left: 0px;
-   }
-
-   .twitter-follow {
-      display: none;
-   }
-
-   .fb-like {
-      display: none;
-   }
 
 }
 
