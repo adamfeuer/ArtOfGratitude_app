@@ -280,7 +280,10 @@ def stash_gratitudes(request, form):
    allUsersNumStashedGratitudes = Gratitude.objects.all().filter(stashed__exact=True).count()
    numUsers = User.objects.all().count()
    if allUsersNumStashedGratitudes > numUsers * settings.MAX_STASHED_GRATITUDES:
+      reap_old_stashed_gratitudes()
+   if allUsersNumStashedGratitudes > numUsers * settings.MAX_STASHED_GRATITUDES:
       messages.error(request, "An error occurred. Your gratitudes could not be saved.")
+      logger.error("Too many stashed gratitudes - user's gratitudes could not be stashed.")
       return
    stashId = request.session.get('stash_id', None) 
    if stashId is None:
@@ -311,6 +314,11 @@ def save_stashed_gratitudes(request, user):
       gratitudesWereStashed = True
       messages.success(request, "Your gratitudes were saved.")
    return gratitudesWereStashed
+
+def reap_old_stashed_gratitudes():
+   time_threshold = datetime.datetime.now() - datetime.timedelta(days=settings.MAX_AGE_OF_STASHED_GRATITUDES_IN_DAYS)
+   results = Gratitude.objects.filter(stashed__exact=True).filter(created__lt=time_threshold)
+   results.delete()
 
 def get_user_details(user):
    user_details_list = UserDetail.objects.filter(user = user.id)
