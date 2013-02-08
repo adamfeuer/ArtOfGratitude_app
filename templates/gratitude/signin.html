@@ -25,7 +25,7 @@
   </fieldset>
   <p><input class= "btn btn-primary" type="submit" value="{% trans "Log In" %}" /></p>
   <p>Or<p/>
-  <p><a class="btn btn-primary" href="{{site_prefix}/login/facebook/">Log in with Facebook</a></p>
+  <p><a href="{{site_prefix}}/login/facebook/"><img src="{{site_prefix}}/media/img/login-with-facebook-button.png" alt="login-with-facebook-button" /></a></p>
   {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
 </form>
   <p class="forgot-password"><a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">{% trans "Forgot your password?" %}</a></p>
