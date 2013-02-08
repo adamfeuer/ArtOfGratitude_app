@@ -90,7 +90,6 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
          if request.user.is_authenticated():
             logout(request)
          return redirect(redirect_to)
-
    extra_context = {}
    extra_context.update(csrf(request))
    extra_context['form'] = form
