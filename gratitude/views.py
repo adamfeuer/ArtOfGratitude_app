@@ -277,12 +277,17 @@ def get_gratitudes_length(gratitudes):
    return count
 
 def stash_gratitudes(request, form):
+   allUsersNumStashedGratitudes = Gratitude.objects.all().filter(stashed__exact=True).count()
+   numUsers = User.objects.all().count()
+   if allUsersNumStashedGratitudes > numUsers * settings.MAX_STASHED_GRATITUDES:
+      messages.error(request, "An error occurred. Your gratitudes could not be saved.")
+      return
    stashId = request.session.get('stash_id', None) 
    if stashId is None:
       stashId = uuid.uuid1()
       request.session['stash_id'] = stashId 
-   stashedGratitudes = Gratitude.objects.all().filter(stashed__exact=True).filter(stash_id__exact=stashId)
-   if len(stashedGratitudes) < settings.MAX_STASHED_GRATITUDES:
+   numStashedGratitudes = Gratitude.objects.all().filter(stashed__exact=True).filter(stash_id__exact=stashId).count()
+   if numStashedGratitudes < settings.MAX_STASHED_GRATITUDES:
       form.user.id = -1
       form.cleaned_data['stashed'] = True
       form.cleaned_data['stash_id'] = stashId
@@ -290,6 +295,7 @@ def stash_gratitudes(request, form):
       messages.warning(request, "Log in to save your gratitudes.")
    else:
       messages.error(request, "Your gratitudes could not be saved because you have not logged in recently. Log in to fix this.")
+   return
 
 def save_stashed_gratitudes(request, user):
    gratitudesWereStashed = False
