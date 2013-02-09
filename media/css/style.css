@@ -1295,11 +1295,9 @@ input[type="text"], input[type="password"] {
 }
 
 .profile-fb-share {
-   float: right;
-   clear: right;
    position: relative;
-   top: -46px;
-   margin: 20px;
+   top: -3px;
+   margin: 10px;
 }
 
 .profile-hidden { display: none; }
