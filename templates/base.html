@@ -1,4 +1,4 @@
-{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,7 +112,7 @@
                            {% if user.is_authenticated %}
                               <li><a href="{{ base_url }}{% url gratitude_signout %}">{% trans 'Sign out' %}</a></li>
                            {% else %}
-                              <li><a href="{{ login_url }}">{% trans 'Sign in' %}</a></li>
+                              <li><a href="{{ base_url}}{% url gratitude_signin %}">{% trans 'Sign in' %}</a></li>
                            {% endif %}
                         </ul>
                   </div>
