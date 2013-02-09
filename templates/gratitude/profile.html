@@ -44,16 +44,18 @@
          {% endif %}
          {% for group in gratitudes %}
             <div class="well">
-               <div class="profile-text profile-day"><i><div id="gratitude-date-{{forloop.counter}}">{{group.0.created|date:"l, F jS, Y"}}</div></i></div>
+               <div class="profile-text profile-day">
+                  <i><div id="gratitude-date-{{forloop.counter}}">{{group.0.created|date:"l, F jS, Y"}}</div></i>
+               </div>
                {% for gratitude in group %}
                   <div class="row-fluid">
-                     <div class="span10">
-                        <li class="profile-text profile-item">
-                           <div id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{ gratitude.text }}</div> 
-                        </li>
-                     </div>
-                     <div class="span1">
-                        <div class="{% if forloop.parentloop.counter > 1 %}profile-hidden{% endif %}"><input id="gratitude-fbshare-{{forloop.parentloop.counter}}-{{forloop.counter}}" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="publish2('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" /></div>
+                     <div class="profile-item">
+                        <div class="span12">
+                           <li class="profile-text">
+                              <span id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{ gratitude.text }}</span> 
+                              <span class="pull-right {% if forloop.parentloop.counter > 1 %}profile-hidden{% endif %}"><input id="gratitude-fbshare-{{forloop.parentloop.counter}}-{{forloop.counter}}" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="publish2('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" /></span>
+                           </li>
+                        </div>
                      </div>
                   </div>
                {% endfor %}
@@ -84,5 +86,8 @@
           '//connect.facebook.net/en_US/all.js';
         document.getElementById('fb-root').appendChild(e);
       }());
+
+   });
+
 </script>
 {% endblock %}

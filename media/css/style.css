@@ -1300,8 +1300,12 @@ input[type="text"], input[type="password"] {
    margin: 10px;
 }
 
-.profile-hidden { display: none; }
-.profile-item:hover .profile-hidden { display: block; }
+.profile-hidden { 
+   display: inline;
+   visibility: hidden 
+}
+
+.profile-item:hover .profile-hidden { visibility: visible }
 
 .footer-links {
    padding: 20px;
