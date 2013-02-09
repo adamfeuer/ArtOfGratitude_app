@@ -75,7 +75,7 @@
                   </div>
                </div>
 					<!--end: Social Links -->
-					
+
 				</div>
 				<!--end: Row -->
 						
@@ -83,40 +83,42 @@
 			<!--end: Header-->
 			
 			<!--start: Navigation-->	
-			<div class="navbar navbar-inverse">
-    			<div class="navbar-inner">
-        			<div class="container">
-          				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            				<span class="icon-bar"></span>
-            				<span class="icon-bar"></span>
-            				<span class="icon-bar"></span>
-          				</a>
-          				<div class="nav-collapse collapse navbar-left-reset">
-            				<ul class="nav">
-              					<li class="active"><a href="/">Home</a></li>
+         <div class="navbar-outer">
+            <div class="navbar navbar-inverse">
+               <div class="navbar-inner">
+                  <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                           <span class="icon-bar"></span>
+                           <span class="icon-bar"></span>
+                           <span class="icon-bar"></span>
+                        </a>
+                        <div class="nav-collapse collapse navbar-left-reset">
+                           <ul class="nav">
+                              <li class="active"><a href="/">Home</a></li>
+                              {% if user.is_authenticated %}
+                                 <li><a href="{{ base_url }}{% url gratitude.gratitude.views.profile user.username %}">{% trans 'My Gratitudes' %}</a></li>
+                              {% endif %}
+                              <li class="dropdown">
+                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                                 <ul class="dropdown-menu">
+                                       <li><a href="/site/about">About</a></li>
+                                       <li><a href="/site/contact">Contact</a></li>
+                                 </ul>
+                              </li>
+                              <li><a href="/site/resources">Resources</a></li>
+                           </ul>
+                        </div>
+                        <ul class="nav pull-right">
                            {% if user.is_authenticated %}
-                              <li><a href="{{ base_url }}{% url gratitude.gratitude.views.profile user.username %}">{% trans 'My Gratitudes' %}</a></li>
+                              <li><a href="{{ base_url }}{% url gratitude_signout %}">{% trans 'Sign out' %}</a></li>
+                           {% else %}
+                              <li><a href="{{ login_url }}">{% trans 'Sign in' %}</a></li>
                            {% endif %}
-              					<li class="dropdown">
-                					<a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
-                					<ul class="dropdown-menu">
-                  						<li><a href="/site/about">About</a></li>
-                  						<li><a href="/site/contact">Contact</a></li>
-                					</ul>
-              					</li>
-                  		   <li><a href="/site/resources">Resources</a></li>
-            				</ul>
-          				</div>
-                     <ul class="nav pull-right">
-                        {% if user.is_authenticated %}
-                           <li><a href="{{ base_url }}{% url gratitude_signout %}">{% trans 'Signout' %}</a></li>
-                        {% else %}
-                           <li><a href="{{ login_url }}">{% trans 'Sign in' %}</a></li>
-                        {% endif %}
-                     </ul>
-        			</div>
-      			</div>
-    		</div>
+                        </ul>
+                  </div>
+                  </div>
+            </div>
+         </div>
 			<!--end: Navigation-->
 			
 		</div>
@@ -172,7 +174,7 @@
 					<!-- start: Row -->
 					<div class="row">
 
-						<div class="span4">
+						<div class="span4 footer-links">
                      <ul>
                         <li><a href="/site/privacy-policy">Privacy Policy</a></li>
                         <li><a href="/site/terms-of-service">Terms of Use</a></li>
