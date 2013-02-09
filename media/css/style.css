@@ -1393,6 +1393,10 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
       right: -35px;
    }
 
+   .alert {
+      width: 880px;
+   }
+
 
 }
 
