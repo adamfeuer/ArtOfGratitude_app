@@ -15,13 +15,20 @@ logger = logging.getLogger('email_sender')
 
 @cronjobs.register
 def sendMessages():
+   timeBeforeSending = datetime.datetime.now()
+   count = 0
    entryUtils = EntryUtils()
    users = entryUtils.getUsersWhoCanBeEmailed()
+   logger.info("About to send emails, checking %d users." % len(users))
    for user in users:
       gratitudes = entryUtils.getGratitudes(user)
       numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded(user)
       if (numberOfGratitudesNeeded > 0):
+         count += 1
          sendEmail(user, numberOfGratitudesNeeded)
+   timeAfterSending = datetime.datetime.now()
+   interval = timeAfterSending - timeBeforeSending
+   logger.info("Sent %d emails in %s" % (count, interval))
 
 def sendEmail(user, numberOfGratitudesNeeded):
    emailSender = EmailSender()

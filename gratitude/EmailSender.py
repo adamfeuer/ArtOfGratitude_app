@@ -36,8 +36,7 @@ class EmailSender:
             email = EmailMultiAlternatives(subject, "", fromEmail, toList)
             email.attach_alternative(body, 'text/html')
             email.send()
-            #print("Sent message to %s." % toList)
-            logger.info("Sent message to %s." % toList)
+            logger.debug("Sent message to %s." % toList)
          except Exception as e:
             return self.emailSendingError(toListWithoutPluses, e)
       return EmailStatus(EmailStatus.OK, "")
@@ -50,13 +49,11 @@ class EmailSender:
 
    def emailSendingError(self, emailAddress, exception):
       error_message = "'%s'" % exception
-      #print("Email sending error: %s" % error_message)
       logger.error("Email sending error (%s): %s" % (emailAddress, error_message))
       return EmailStatus(EmailStatus.ERROR, error_message)
 
    def emailAddressNotAllowed(self, emailAddresses):
       status = "Not sending email because one of the email addresses in the list %s is not in settings.ALLOWED_EMAIL_ADDRESSES." % (emailAddresses)
-      #print(status)
       logger.warn(status)
       return EmailStatus(EmailStatus.ERROR, status)
 
