@@ -235,7 +235,7 @@ def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
 
 @secure_required
 def social_auth_backend_error(request):
-   messages.error("Oops! Log in with Facebook or sign up using your email below to get started.")
+   messages.error(request, "Oops! Log in with Facebook or sign up using your email below to get started.")
    return one_page_signup(request)
 
 def server_error(request, template_name='500.html'):

@@ -166,7 +166,6 @@ USERENA_REMEMBER_ME_DAYS = ('3 years', 1095)
 LOGIN_REDIRECT_BASE_URL = '/profile/'
 LOGIN_BASE_URL = '/'
 LOGOUT_BASE_URL = '/signout/'
-LOGIN_ERROR_BASE_URL    = '/login-error/'
 SIGNUP_SUCCESSFUL_BASE_URL = "/signup-verification"
 
 # Userena activation email
