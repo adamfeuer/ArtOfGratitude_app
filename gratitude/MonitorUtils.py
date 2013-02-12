@@ -8,7 +8,7 @@ class MonitorUtils:
       pass
 
    def isWebserverRunning(self):
-      p = subprocess.Popen(['ps', '-A'], stdout=subprocess.PIPE)
+      p = subprocess.Popen(['ps', 'ax'], stdout=subprocess.PIPE)
       out, err = p.communicate()
       djangoFound = False
       apacheFound = False
