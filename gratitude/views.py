@@ -251,7 +251,7 @@ def redirect_to_login(request):
    return django_redirect('/app/accounts/signin')
 
 def get_gratitudes(user):
-   gratitudes = Gratitude.objects.filter(user_id = user.id)
+   gratitudes = Gratitude.objects.filter(user_id = user.id).order_by("-created")
    gratitudeList = []
    if len(gratitudes) > 0:
       group = []
@@ -266,7 +266,6 @@ def get_gratitudes(user):
          group.append(gratitude)
       if len(group) > 0:
          gratitudeList.append(group)
-   gratitudeList.reverse()
    return gratitudeList
 
 def get_gratitudes_length(gratitudes):
