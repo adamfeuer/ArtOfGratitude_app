@@ -152,6 +152,8 @@ SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 SOCIAL_AUTH_NEW_USER_REDIRECT_BASE_URL = '/social-verification/'
 SOCIAL_AUTH_BACKEND_ERROR_BASE_URL = '/signup-error/'
+SOCIAL_AUTH_INACTIVE_USER_BASE_URL = '/login-error/'
+SOCIAL_AUTH_INACTIVE_USER_MESSAGE = 'Your account is not yet verified. Please check your email and save your first gratitudes to activate your account and start your 30 days of gratitude!'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 # Userena settings
