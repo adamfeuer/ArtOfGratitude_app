@@ -24,12 +24,13 @@ from userena import settings as userena_settings
 from userena import signals as userena_signals
 from userena.managers import UserenaManager
 from userena.forms import AuthenticationForm
-from userena.utils import signin_redirect
+from userena.utils import signin_redirect, get_profile_model
 
 from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm, RememberMeAuthenticationForm, AlertErrorList
 from models import UserDetail, Gratitude
 from EmailSender import EmailSender
 from EntryUtils import EntryUtils
+from managers import GratitudeManager
 
 logger = logging.getLogger(__name__)
 
@@ -102,8 +103,8 @@ def social_verification(request):
    user = request.user
    user.is_active = False
    user.save()
-   userenaProfile = UserenaSignup.objects.create_userena_profile(user)
-   userenaProfile.send_activation_email()
+   gratitudeManager = GratitudeManager()
+   gratitudeManager.create_profile_and_userdetail(user)
    redirect_to = settings.SIGNUP_SUCCESSFUL_URL
    if request.user.is_authenticated():
       logout(request)
