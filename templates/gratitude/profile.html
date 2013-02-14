@@ -12,17 +12,20 @@
       function publish1(gratitudeTextId, gratitudeDateId) {
          var gratitudeDate = document.getElementById(gratitudeDateId).textContent; 
          var gratitudeText = document.getElementById(gratitudeTextId).textContent; 
-         var publish = {
-            method: 'stream.publish',
-            display: 'popup', // force popup mode
-            attachment: {
-               name: gratitudeText,
-               caption: 'My gratitude for ' + gratitudeDate,
-               description: 'From artofgratitude.com &mdash; a free site for cultivating the daily practice of gratitude.',
-               href: '{{base_url}}'
-            }
+         var obj = {
+            method: 'feed',
+            display: 'popup',
+            name: gratitudeText,
+            caption: 'My gratitude for ' + gratitudeDate,
+            description: 'From artofgratitude.com &mdash; a free site for cultivating the daily practice of gratitude.',
+            link: '{{base_url}}',
+            picture: '{{media_url}}/img/art_of_gratitude_leaf_large_square-128x128.png'
          };
-         FB.ui(publish);//, Log.info.bind('stream.publish callback'));
+
+        function callback(response) {
+        }
+
+         FB.ui(obj, callback);
       }
 </script>
 
