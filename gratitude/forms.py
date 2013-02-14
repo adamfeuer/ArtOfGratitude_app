@@ -102,10 +102,6 @@ class SignupFormOnePage(SignupFormOnlyEmail):
              css_class='pagination-centered',
          )
       )
-      self.fields['first_name'].label = ""
-      self.fields['last_name'].label = ""
-      self.fields['email'].label = ""
-      self.fields['password1'].label = ""
 
    def clean_accept_tos(self):
       if self.cleaned_data['accept_tos'] is not True:
