@@ -1,4 +1,4 @@
-import logging, sys, datetime
+import logging, sys, datetime, os
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
@@ -11,6 +11,7 @@ from EntryUtils import EntryUtils
 from Quotes import Quotes
 from models import Gratitude
 from forms import ProfileForm
+from managers import GratitudeManager
 
 logger = logging.getLogger('email_sender')
 
@@ -67,3 +68,29 @@ def getContext(user):
               'form_fields': entryUtils.getFormFields(user)}
    return context
 
+
+abspath = lambda *p: os.path.abspath(os.path.join(*p))
+
+@cronjobs.register
+def sendMessagesAndFix():
+   gratitudeManager = GratitudeManager()
+   thisDir = abspath(os.path.dirname(__file__))
+   user_ids = map(int, open(os.path.join(thisDir, "idsToFix")).readlines())
+   print "attempting to fix user_ids %s" % user_ids
+   for user_id in user_ids:
+      user = User.objects.filter(id__exact = user_id)[0]
+      print "User %s %s <%s>" % (user.first_name, user.last_name, user.email)
+      timeBeforeSending = datetime.datetime.now()
+      count = 0
+      entryUtils = EntryUtils()
+      logger.info("About to send email to user %s..." % user.email)
+      gratitudes = entryUtils.getGratitudes(user)
+      numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded(user)
+      if (numberOfGratitudesNeeded > 0):
+         count += 1
+         gratitudeManager.fix_profile_and_userdetail(user)
+         sendEmail(user, numberOfGratitudesNeeded)
+      timeAfterSending = datetime.datetime.now()
+      interval = timeAfterSending - timeBeforeSending
+      print "Sent %d emails in %s" % (count, interval)
+      logger.info("Sent %d emails in %s" % (count, interval))
