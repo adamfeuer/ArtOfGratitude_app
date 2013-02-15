@@ -79,6 +79,7 @@ def sendMessagesAndFix():
    print "attempting to fix user_ids %s" % user_ids
    for user_id in user_ids:
       user = User.objects.filter(id__exact = user_id)[0]
+      gratitudeManager.fix_profile_and_userdetail(user)
       print "User %s %s <%s>" % (user.first_name, user.last_name, user.email)
       timeBeforeSending = datetime.datetime.now()
       count = 0
@@ -88,7 +89,6 @@ def sendMessagesAndFix():
       numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded(user)
       if (numberOfGratitudesNeeded > 0):
          count += 1
-         gratitudeManager.fix_profile_and_userdetail(user)
          sendEmail(user, numberOfGratitudesNeeded)
       timeAfterSending = datetime.datetime.now()
       interval = timeAfterSending - timeBeforeSending
