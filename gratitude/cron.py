@@ -79,7 +79,8 @@ def sendMessagesAndFix():
    print "attempting to fix user_ids %s" % user_ids
    for user_id in user_ids:
       user = User.objects.filter(id__exact = user_id)[0]
-      gratitudeManager.fix_profile_and_userdetail(user)
+      if user.is_active:
+         gratitudeManager.fix_profile_and_userdetail(user)
       print "User %s %s <%s>" % (user.first_name, user.last_name, user.email)
       timeBeforeSending = datetime.datetime.now()
       count = 0
