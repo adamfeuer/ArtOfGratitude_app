@@ -74,6 +74,12 @@ class ProfileForm(forms.Form):
             newGratitudeEntry.stash_id = stash_id
             newGratitudeEntry.save() 
 
+   def clean_stash_id(self):
+      data = self.cleaned_data['stash_id']
+      if type(data) != type(''):
+         data = ''
+      return data
+
 class SignupFormOnePage(SignupFormOnlyEmail):
    first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'placeholder':_('First name')}))
    last_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'placeholder':_('Last name')}))
