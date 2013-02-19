@@ -13,7 +13,7 @@ class EntryUtils:
 
    def getUsersWhoCanBeEmailed(self):
       # filter out Anonymous users and those who are unsubscribed
-      return User.objects.order_by('email').filter(id__gt = 0).filter(is_active__exact=True).filter(userdetail__no_messages__exact = False)
+      return User.objects.all().order_by('email').filter(id__gt = 0).filter(is_active__exact=True).filter(userdetail__no_messages__exact = False)
 
    def getGratitudes(self, user):
       today = datetime.date.today()
@@ -33,14 +33,12 @@ class EntryUtils:
       return formFieldsHtml[:numberOfGratitudesNeeded]
 
    def getGratitudeDayNumber(self, user):
-      today = datetime.date.today()
-      oneDayInFuture = today + datetime.timedelta(days = 1)
-      gratitudes = Gratitude.objects.filter(user_id = user.id)
-      datetimes = [gratitude.created for gratitude in gratitudes]
-      dates = [datetime.date(created.year, created.month, created.day) for created in datetimes] 
-      dateDict = {}
-      for date in dates:
-         dateDict["%s"%date] = True
-      uniqueDates = dateDict.keys()
-      return len(uniqueDates) + 1
+      today = datetime.datetime.now()
+      signupDatetime = user.date_joined      
+      delta = today - signupDatetime
+      dayNumber = delta.days + 1
+      return dayNumber
+
+   def getUser(self, userid):
+      return User.objects.filter(id__exact=userid)[0]
 
