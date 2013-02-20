@@ -29,18 +29,48 @@ def sendMessages():
          numberOfGratitudesNeeded = entryUtils.numberOfGratitudesNeeded(user)
          if (numberOfGratitudesNeeded > 0):
             count += 1
-            sendEmail(user, numberOfGratitudesNeeded)
+            sendDailyEmail(user, numberOfGratitudesNeeded)
       timeAfterSending = datetime.datetime.now()
       interval = timeAfterSending - timeBeforeSending
       logger.info("Sent %d emails in %s" % (count, interval))
    else:
       logger.error("Webserver is not running - not sending emails!")
 
-def sendEmail(user, numberOfGratitudesNeeded):
+@cronjobs.register
+def sendActivationReminders():
+   monitorUtils = MonitorUtils()
+   if monitorUtils.isWebserverRunning():  
+      timeBeforeSending = datetime.datetime.now()
+      count = 0
+      entryUtils = EntryUtils()
+      users = entryUtils.getUsersWhoHaveNotActivated()
+      logger.info("About to send emails, checking %d users." % len(users))
+      for user in users:
+         count += 1
+         dateJoined = user.date_joined
+         now = datetime.datetime.now()
+         delta = now - dateJoined
+         if delta.days in settings.REMINDER_EMAIL_DAYS: 
+            #print "activation reminder email needed for user %s (%s)" % user.email
+            sendActivationReminderEmail(user)
+      timeAfterSending = datetime.datetime.now()
+      interval = timeAfterSending - timeBeforeSending
+      logger.info("Sent %d emails in %s" % (count, interval))
+   else:
+      logger.error("Webserver is not running - not sending emails!")
+
+def sendDailyEmail(user, numberOfGratitudesNeeded):
    emailSender = EmailSender()
    subject = getEmailSubjectLine(user)
    body = getEmailBody(user, numberOfGratitudesNeeded)
-   logger.info("Sending message %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
+   logger.info("Sending daily email %s [%s]: %s %s" % (user.email, user.id, subject, numberOfGratitudesNeeded))
+   status = emailSender.send([user.email], subject, body)
+
+def sendActivationReminderEmail(user):
+   emailSender = EmailSender()
+   subject = getActivationReminderEmailSubjectLine(user)
+   body = getActivationReminderEmailBody(user)
+   logger.info("Sending activation reminder email %s [%s]: %s" % (user.email, user.id, subject))
    status = emailSender.send([user.email], subject, body)
 
 def getEmailSubjectLine(user):
@@ -70,6 +100,28 @@ def getContext(user):
 
 
 abspath = lambda *p: os.path.abspath(os.path.join(*p))
+
+def getActivationReminderEmailSubjectLine(user):
+   subject = render_to_string("gratitude/emails/activation_email_subject.txt",
+                              getActivationReminderContext(user))
+   subject = ''.join(subject.splitlines())
+   return subject
+
+def getActivationReminderEmailBody(user):
+   body = render_to_string("gratitude/emails/activation_email_body.html",
+                              getActivationReminderContext(user))
+   return body
+
+def getActivationReminderContext(user):
+   entryUtils = EntryUtils()
+   activationKey = entryUtils.getActivationKey(user)
+   context = {'user': user,
+              'site': Site.objects.get_current(),
+              'site_prefix': settings.SITE_PREFIX,
+              'settings': settings,
+              'activation_key': activationKey,
+             }
+   return context
 
 @cronjobs.register
 def sendMessagesAndFix():
