@@ -57,7 +57,7 @@
                   <div class="row-fluid">
                      <div class="profile-item">
                         <div class="span12">
-                           <li class="profile-text">
+                           <li class="profile-text" value="{{gratitude.listValue}}">
                               <span id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{ gratitude.text }}</span> 
                               <span class="pull-right {% if forloop.parentloop.counter > 1 %}profile-hidden{% endif %}"><input id="gratitude-fbshare-{{forloop.parentloop.counter}}-{{forloop.counter}}" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="publish1('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" /></span>
                            </li>
@@ -92,6 +92,5 @@
           '//connect.facebook.net/en_US/all.js';
         document.getElementById('fb-root').appendChild(e);
       }());
-
-</script>
+   </script>
 {% endblock %}

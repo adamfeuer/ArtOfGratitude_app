@@ -257,9 +257,12 @@ def get_gratitudes(user):
    gratitudes = Gratitude.objects.filter(user_id = user.id).order_by("-created")
    gratitudeList = []
    if len(gratitudes) > 0:
+      counter = len(gratitudes)
       group = []
       currentDay = None
       for gratitude in gratitudes:
+         gratitude.listValue = counter
+         counter -= 1
          gratitudeDay = gratitude.created.date()
          if gratitudeDay != currentDay:
             currentDay = gratitudeDay
