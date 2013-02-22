@@ -83,7 +83,7 @@
          {% else %}
             {% if not action_shared_site %}
                <div id="fb-share-artofgratitude-site" class="alert alert-success">
-                  <span><input id="fb-share-artofgratitude-site-button" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="facebookShareSite()" />Share the Art of Gratitude website (won't share any of your gratitudes)</span><button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}<br>
+                  <span><input id="fb-share-artofgratitude-site-button" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="facebookShareSite()" />Share the Art of Gratitude website (this won't share any of your gratitudes below)</span><button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}<br>
                </div>
             {% endif %} 
          {% endif %}
@@ -112,7 +112,12 @@
          <p class="profile-text profile-item"><i>{% trans "Look for your daily gratitude email in your inbox tomorrow!" %}</i><p/>
       {% endif %}
    </div> 
-   <div class="span3"></div>
+   <div class="span2"><div class="daybadge">Day<br><h2>{{days_so_far}}</h2>
+         {% if days_so_far <= days_of_gratitude %}
+            <span class="centered">of {{days_of_gratitude}}</span>
+         {% endif %}
+   </div></div>
+   <div class="span1"></div>
 </div>
 {% endblock %}
 {% block content-footer %}

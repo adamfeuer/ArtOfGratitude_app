@@ -1338,6 +1338,18 @@ input[type="text"], input[type="password"] {
    padding: 20px;
 }
 
+.daybadge {
+   text-align: center;
+   margin-left: 30px;
+   background: #CAE0C3;
+   color: #468847;
+   background-color: #dff0d8;
+   border-color: #d6e9c6;
+   -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+           border-radius: 15px;
+}
+
 /* for wordpress */
 img.alignright {float:right; margin:0 0 1em 1em}
 img.alignleft {float:left; margin:0 1em 1em 0}
