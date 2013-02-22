@@ -27,7 +27,7 @@ from userena.forms import AuthenticationForm
 from userena.utils import signin_redirect, get_profile_model
 
 from forms import EmailForm, MessagingForm, SignupFormOnePage, ProfileForm, RememberMeAuthenticationForm, AlertErrorList
-from models import UserDetail, Gratitude
+from models import UserDetail, Gratitude, Action
 from EmailSender import EmailSender
 from EntryUtils import EntryUtils
 from managers import GratitudeManager
@@ -183,6 +183,7 @@ def profile_simple(request, profile_form=ProfileForm,
    extra_context['gratitudes_length'] = get_gratitudes_length(gratitudes)
    extra_context['form_fields'] = EntryUtils().getFormFields(user)
    extra_context['facebook_app_id'] = settings.FACEBOOK_APP_ID
+   extra_context['action_shared_site'] = get_action_shared_site(user)
    return render_to_response(template_name,
                              extra_context,
                              context_instance=RequestContext(request))
@@ -345,6 +346,12 @@ def save_user_details(user, form):
    user_details.no_messages = form.cleaned_data['no_messages']
    user_details.save()
    return
+
+def get_action_shared_site(user):
+   if Action.get_action_count_for_user(user, Action.SHARE_SITE_FACEBOOK) > 0 or Action.get_action_count_for_user(user, Action.SHARE_SITE_TWITTER) > 0:
+      return True
+   else:
+      return False
 
 def clean_datetime(datetime_obj):
    if (datetime_obj is None):

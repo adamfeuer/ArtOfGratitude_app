@@ -196,3 +196,10 @@ MAX_AGE_OF_STASHED_GRATITUDES_IN_DAYS=90
 GRATITUDES_PER_DAY = 3
 REMINDER_EMAIL_DAYS = [1, 3, 7, 30]
 
+# Gratitude Analytics Actions
+MAX_ACTIONS_PER_DAY = 1000
+ACTION_SHARE_SITE_FACEBOOK = 'share_site_facebook'
+ACTION_SHARE_SITE_TWITTER = 'share_site_twitter'
+ACTION_SHARE_GRATITUDE_FACEBOOK = 'share_gratitude_facebook'
+ACTION_SHARE_GRATITUDE_TWITTER = 'share_gratitude_twitter'
+

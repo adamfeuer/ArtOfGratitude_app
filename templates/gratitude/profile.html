@@ -9,28 +9,61 @@
 
 <div id="fb-root"></div>
 <script>
-      function publish1(gratitudeTextId, gratitudeDateId) {
+      function publishGratitude(gratitudeTextId, gratitudeDateId) {
          var gratitudeDate = document.getElementById(gratitudeDateId).textContent; 
          var gratitudeText = document.getElementById(gratitudeTextId).textContent; 
+         var gratitudeId = document.getElementById(gratitudeTextId).getAttribute("gratitudeId"); 
+         console.log("Gratitude id: " + gratitudeId);
+         var gratitudeCaption = 'My gratitude for ' + gratitudeDate;
+         facebookShare(gratitudeText, gratitudeCaption, gratitudeId);
+      }
+
+      function facebookShare(gratitudeText, gratitudeCaption, gratitudeId) {
          var obj = {
             method: 'feed',
             display: 'popup',
             name: gratitudeText,
-            caption: 'My gratitude for ' + gratitudeDate,
+            caption: gratitudeCaption,
             description: 'From artofgratitude.com &mdash; a free site for cultivating the daily practice of gratitude.',
             link: '{{base_url}}',
             picture: '{{media_url}}/img/art_of_gratitude_leaf_large_square-128x128.png'
          };
 
         function callback(response) {
+            $.ajax({
+              url: "/app/gratitude/api/v1/action/share_gratitude_facebook/" + gratitudeId + "/?format=json", 
+              context: document.body
+            });
         }
 
-         FB.ui(obj, callback);
+        FB.ui(obj, callback);
+      }
+
+      function facebookShareSite() {
+         var obj = {
+            method: 'feed',
+            display: 'popup',
+            name: 'The Art of Gratitude',
+            caption: 'A free site for cultivating the daily practice of gratitude.',
+            link: '{{base_url}}',
+            picture: '{{media_url}}/img/art_of_gratitude_leaf_large_square-128x128.png'
+         };
+
+        function callback(response) {
+            $.ajax({
+              url: "/app/gratitude/api/v1/action/share_site_facebook/?format=json",
+              context: document.body
+            }).done(function() {
+               $("#fb-share-artofgratitude-site").alert('close');
+            });
+        }
+
+        FB.ui(obj, callback);
       }
 </script>
 
 <div class="profile-preferences">
-      <a href="{{site_prefix}}/accounts/{{ user.username }}">Preferences</a> 
+   <a href="{{site_prefix}}/accounts/{{ user.username }}">Preferences</a><br>
 </div>
 <div class="row">
    <div class="span9">
@@ -47,6 +80,12 @@
                {% endfor %}
                   <input class="btn btn-primary" type="submit" value="Save your gratitudes!"/>
             </form>
+         {% else %}
+            {% if not action_shared_site %}
+               <div id="fb-share-artofgratitude-site" class="alert alert-success">
+                  <span><input id="fb-share-artofgratitude-site-button" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="facebookShareSite()" />Share the Art of Gratitude website (won't share any of your gratitudes)</span><button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}<br>
+               </div>
+            {% endif %} 
          {% endif %}
          {% for group in gratitudes %}
             <div class="well">
@@ -58,8 +97,8 @@
                      <div class="profile-item">
                         <div class="span12">
                            <li class="profile-text" value="{{gratitude.listValue}}">
-                              <span id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{ gratitude.text }}</span> 
-                              <span class="pull-right {% if forloop.parentloop.counter > 1 %}profile-hidden{% endif %}"><input id="gratitude-fbshare-{{forloop.parentloop.counter}}-{{forloop.counter}}" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="publish1('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" /></span>
+                              <span id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}" gratitudeId="{{gratitude.id}}">{{ gratitude.text }}</span> 
+                              <span class="pull-right {% if forloop.parentloop.counter > 1 %}profile-hidden{% endif %}"><input id="gratitude-fbshare-{{forloop.parentloop.counter}}-{{forloop.counter}}" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="publishGratitude('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" /></span>
                            </li>
                         </div>
                      </div>
