@@ -82,7 +82,7 @@
       <ol reversed start="{{gratitudes_length}}">
          {% if form_fields|length > 0 %}
             <p/>
-            <p class="profile-text profile-item"><i>{% trans "Enter your gratitudes for today in the boxes below (remember to start with 'I'm grateful for...'):" %}</i><p/>
+            <p class="profile-text profile-item"><i>{% trans "Enter your gratitudes for today in the boxes below (remember to start with 'I am grateful for...'):" %}</i><p/>
             <br>
             <form action="{{ site_prefix }}/profile/{{ user.username }}" method="post">
                {% for field in form_fields %}

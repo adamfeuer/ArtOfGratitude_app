@@ -51,9 +51,9 @@ class MessagingForm(forms.Form):
       userDetail.save()
 
 class ProfileForm(forms.Form):
-   entry0 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'autofocus':'autofocus', 'tabindex': 1}))
-   entry1 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'tabindex': 2}))
-   entry2 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder':PROFILE_PLACEHOLDER, 'tabindex': 3}))
+   entry0 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder' : PROFILE_PLACEHOLDER, 'autofocus' : 'autofocus', 'tabindex': 1, 'class' : 'input-xxlarge'}))
+   entry1 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder' : PROFILE_PLACEHOLDER, 'tabindex': 2, 'class' : 'input-xxlarge'}))
+   entry2 = forms.CharField(required=False,max_length=5000,widget=forms.TextInput(attrs={'placeholder' : PROFILE_PLACEHOLDER, 'tabindex': 3, 'class' : 'input-xxlarge'}))
    stashed = forms.BooleanField(required=False,initial=False,widget=forms.HiddenInput())
    stash_id = forms.BooleanField(required=False,initial="",widget=forms.HiddenInput())
 
