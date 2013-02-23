@@ -123,9 +123,13 @@
       {% endif %}
    </div> 
    <div class="span2"><div class="daybadge">Day<br><h2>{{days_so_far}}</h2>
+      <span class="centered">
          {% if days_so_far <= days_of_gratitude %}
-            <span class="centered">of {{days_of_gratitude}}</span>
+            of {{days_of_gratitude}}
+         {% else %}
+            &nbsp;
          {% endif %}
+      </span>
    </div></div>
    <div class="span1"></div>
 </div>
