@@ -214,8 +214,7 @@ def activate(request, activation_key,
       # Sign the user in.
       auth_user = authenticate(identification=user.email,
                                check_password=False)
-      auth_user.date_joined = datetime.datetime.now()
-      auth_user.save()
+      UserDetail.set_activation_datetime(auth_user)
       login(request, auth_user)
       if userena_settings.USERENA_USE_MESSAGES:
           messages.success(request, _('Congratulations -- your Art of Gratitude account is confirmed!'),

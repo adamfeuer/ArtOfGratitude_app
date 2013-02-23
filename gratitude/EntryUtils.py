@@ -4,7 +4,7 @@ from django.conf import settings
 
 from userena.models import UserenaSignup
 
-from models import Gratitude
+from models import Gratitude, UserDetail
 from forms import ProfileForm
 
 logger = logging.getLogger(__name__)
@@ -42,8 +42,8 @@ class EntryUtils:
 
    def getGratitudeDayNumber(self, user):
       today = datetime.datetime.now()
-      signupDatetime = user.date_joined      
-      delta = today - signupDatetime
+      activationDatetime = UserDetail.get_activation_datetime(user)
+      delta = today - activationDatetime
       dayNumber = delta.days + 1
       return dayNumber
 
