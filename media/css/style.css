@@ -1358,7 +1358,7 @@ input[type="text"], input[type="password"] {
 
 .twitter-share-gratitude {
    position: relative;
-   top: 1px;
+   top: 2px;
    right: -4px;
 }
 
@@ -1368,13 +1368,13 @@ input[type="text"], input[type="password"] {
 
 .congratulations-title {
 	font-size: 25px;
-   font-color: black;
+   color: black;
    text-align: center;
 }
 
 .congratulations-text {
    font-size: 18px;
-   font-color: black;
+   color: black;
    text-align: center;
 }
 
@@ -1395,6 +1395,11 @@ input[type="text"], input[type="password"] {
    position: relative;
    right: -21px;
 }
+
+.thank-text {
+   font-size: 15px;
+}
+
 /* for wordpress */
 img.alignright {float:right; margin:0 0 1em 1em}
 img.alignleft {float:left; margin:0 1em 1em 0}

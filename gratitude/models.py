@@ -65,7 +65,8 @@ class Action(models.Model):
    SHARE_SITE_TWITTER = 'share_site_twitter'
    SHARE_GRATITUDE_FACEBOOK = 'share_gratitude_facebook'
    SHARE_GRATITUDE_TWITTER = 'share_gratitude_twitter'
-   ALLOWED_ACTIONS = [SHARE_SITE_FACEBOOK, SHARE_SITE_TWITTER, SHARE_GRATITUDE_FACEBOOK, SHARE_GRATITUDE_TWITTER]
+   SEND_THANKS_FACEBOOK = 'send_thanks_facebook'
+   ALLOWED_ACTIONS = [SHARE_SITE_FACEBOOK, SHARE_SITE_TWITTER, SHARE_GRATITUDE_FACEBOOK, SHARE_GRATITUDE_TWITTER, SEND_THANKS_FACEBOOK]
    
    def __unicode__(self):
       return "'%s': '%s'" % (self.user, self.no_messages)

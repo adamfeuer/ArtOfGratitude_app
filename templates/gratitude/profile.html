@@ -2,13 +2,13 @@
 {% load i18n %}
 {% load extras %}
 {% block script_head %}
-   <script type="text/javascript" charset="utf-8">
-         window.twttr = (function (d,s,id) {
-           var t, js, fjs = d.getElementsByTagName(s)[0];
-           if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
-           js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-           return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-         }(document, "script", "twitter-wjs"));
+   <script>
+      window.twttr = (function (d,s,id) {
+        var t, js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+        js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+        return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+      }(document, "script", "twitter-wjs"));
    </script>
 {% endblock %}
 
@@ -39,9 +39,9 @@
                picture: '{{media_url}}/img/art_of_gratitude_leaf_large_square-128x128.png'
             };
 
-           function callback(response) {
+            function callback(response) {
                $.ajax({
-                 url: "/app/gratitude/api/v1/action/share_gratitude_facebook/" + gratitudeId + "/?format=json", 
+                 url: "/app/gratitude/api/v1/action/share_gratitude_facebook/" + gratitudeId + "/?format=json",
                  context: document.body
                });
            }
@@ -49,24 +49,45 @@
            FB.ui(obj, callback);
          }
 
-         function facebookShareSite() {
+         function facebookSendThanks(gratitudeText, gratitudeCaption, gratitudeId) {
             var obj = {
-               method: 'feed',
+               method: 'send',
                display: 'popup',
-               name: 'The Art of Gratitude',
-               caption: 'A free site for cultivating the daily practice of gratitude.',
+               name: 'Art of Gratitude',
+               caption: 'a free site for cultivating the daily practice of gratitude.',
                link: '{{base_url}}',
                picture: '{{media_url}}/img/art_of_gratitude_leaf_large_square-128x128.png'
             };
 
            function callback(response) {
                $.ajax({
+                 url: "/app/gratitude/api/v1/action/send_thanks_facebook/?format=json",
+                 context: document.body
+               });
+           }
+
+           FB.ui(obj, callback);
+
+         }
+
+         function facebookShareSite() {
+            var obj = {
+               method: 'feed',
+               display: 'popup',
+               name: 'The Art of Gratitude',
+               caption: 'a free site for cultivating the daily practice of gratitude.',
+               link: '{{base_url}}',
+               picture: '{{media_url}}/img/art_of_gratitude_leaf_large_square-128x128.png'
+            };
+
+            function callback(response) {
+               $.ajax({
                  url: "/app/gratitude/api/v1/action/share_site_facebook/?format=json",
                  context: document.body
                }).done(function() {
                   $("#share-artofgratitude-site").alert('close');
                });
-           }
+            }
 
            FB.ui(obj, callback);
          }
@@ -96,6 +117,7 @@
                   <span><span id="twitter-share-site"><a href="https://twitter.com/share" class="twitter-share-button twitter-share-site" data-text="The Art of Gratitude: a free site for cultivating the daily practice of gratitude." data-hashtags="ArtOfGratitude" data-url="https://artofgratitude.com" data-count="none" data-lang="en">Tweet</a></span><input id="fb-share-artofgratitude-site-button" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="facebookShareSite()" />Share the Art of Gratitude website (this won't share any of your gratitudes below)</span><button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}<br>
                </div>
             {% endif %} 
+            <p class="thank-text">SEND THANKS!<br>Completed your gratitudes for the day?<br>How about expressing your thanks to someone?&nbsp;&nbsp;&nbsp;<a id="fb-share-artofgratitude-send-thanks-button" class="btn btn-primary" alt="Send Thanks via Facebook" onclick="facebookSendThanks()">Send Thanks to a Friend</a></p><p>&nbsp;</p>
          {% endif %}
          {% for group in gratitudes %}
             <div class="well">
@@ -107,8 +129,8 @@
                      <div class="profile-item">
                         <div class="span12">
                            <li class="profile-text" value="{{gratitude.listValue}}">
-                              <span id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{ gratitude.text }}</span> 
-                              <span id="gratitude-share-buttons" class="pull-right {% if forloop.parentloop.counter > 1 %}profile-hidden{% endif %}" data-gratitude-id="{{gratitude.id}}"><a href="https://twitter.com/share" class="twitter-share-button twitter-share-gratitude" data-text="{{gratitude.text}}" data-hashtags="ArtOfGratitude" data-url="https://artofgratitude.com" data-count="none" data-lang="en" data-gratitude-id="{{gratitude.id}}">Tweet</a><input id="gratitude-fbshare-{{forloop.parentloop.counter}}-{{forloop.counter}}" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="publishGratitude('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" /></span>
+                              <span id="gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}" data-gratitude-id="{{gratitude.id}}">{{ gratitude.text }}</span> 
+                              {% if forloop.parentloop.counter < 5 %}<span id="gratitude-share-buttons" class="pull-right {% if forloop.parentloop.counter > 1 %}profile-hidden{% endif %}"><a href="https://twitter.com/share" class="twitter-share-button twitter-share-gratitude" data-text="{{gratitude.text}}" data-hashtags="ArtOfGratitude" data-url="https://artofgratitude.com" data-count="none" data-lang="en" data-gratitude-id="{{gratitude.id}}">Tweet</a><input id="gratitude-fbshare-{{forloop.parentloop.counter}}-{{forloop.counter}}" type="image" src="{{site_prefix}}/media/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="publishGratitude('gratitude-text-{{forloop.parentloop.counter}}-{{forloop.counter}}','gratitude-date-{{forloop.parentloop.counter}}')" /></span>{% endif %}
                            </li>
                         </div>
                      </div>
@@ -143,6 +165,7 @@
         FB.init({appId: '{{facebook_app_id}}', status: true, cookie: true,
                  xfbml: true});
         console.log('Facebook init done.');
+
       };
       (function() {
         var e = document.createElement('script'); e.async = true;
@@ -151,25 +174,25 @@
         document.getElementById('fb-root').appendChild(e);
       }());
    </script>
-   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
    <script>
-         twttr.ready(
-            function (twttr) {
-               twttr.events.bind('tweet', function(event) {
-                  var gratitudeId = event.target.parentNode.getAttribute("data-gratitude-id");
-                  if (gratitudeId != null) {
-                     $.ajax({
-                       url: "/app/gratitude/api/v1/action/share_gratitude_twitter/" + gratitudeId + "/?format=json", 
-                       context: document.body
-                     });
-                  } else {
-                     $.ajax({
-                       url: "/app/gratitude/api/v1/action/share_site_twitter/?format=json", 
-                       context: document.body
-                     });
-                     $("#share-artofgratitude-site").alert('close');
-                  };
-               });
-         });
+      twttr.ready(
+         function (twttr) {
+            twttr.events.bind('tweet', function(event) {
+               var gratitudeId = event.target.parentNode.getAttribute("data-gratitude-id");
+               if (gratitudeId != null) {
+                  $.ajax({
+                    url: "/app/gratitude/api/v1/action/share_gratitude_twitter/" + gratitudeId + "/?format=json", 
+                    context: document.body
+                  });
+               } else {
+                  $.ajax({
+                    url: "/app/gratitude/api/v1/action/share_site_twitter/?format=json", 
+                    context: document.body
+                  });
+                  $("#share-artofgratitude-site").alert('close');
+               };
+            });
+      });
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
    </script>   
 {% endblock %}
