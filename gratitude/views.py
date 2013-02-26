@@ -175,20 +175,35 @@ def profile_simple(request, profile_form=ProfileForm,
       else:
          messages.error(request, "There was a problem saving your gratitudes.")
    entryUtils = EntryUtils()
-   form = ProfileForm(initial = {}, user=user)
+   daysSoFar = entryUtils.getGratitudeDayNumber(user)
    extra_context = {}
-   extra_context.update(csrf(request))
    extra_context['user'] = user 
-   gratitudes = get_gratitudes(user)
-   extra_context['gratitudes'] = gratitudes
-   extra_context['gratitudes_length'] = get_gratitudes_length(gratitudes)
-   extra_context['days_so_far'] = entryUtils.getGratitudeDayNumber(user)
-   extra_context['days_of_gratitude'] = settings.DAYS_OF_GRATITUDE
-   extra_context['form_fields'] = entryUtils.getFormFields(user)
    extra_context['facebook_app_id'] = settings.FACEBOOK_APP_ID
    extra_context['action_shared_site'] = get_action_shared_site(user)
+   if daysSoFar == settings.DAYS_OF_GRATITUDE and not request.session.get('thankyou_seen', False):
+      template_name = 'gratitude/congratulations.html'
+   else:
+      form = ProfileForm(initial = {}, user=user)
+      extra_context.update(csrf(request))
+      gratitudes = get_gratitudes(user)
+      extra_context['gratitudes'] = gratitudes
+      extra_context['gratitudes_length'] = get_gratitudes_length(gratitudes)
+      extra_context['days_so_far'] = daysSoFar
+      extra_context['days_of_gratitude'] = settings.DAYS_OF_GRATITUDE
+      extra_context['form_fields'] = entryUtils.getFormFields(user)
+      extra_context['facebook_app_id'] = settings.FACEBOOK_APP_ID
+      extra_context['action_shared_site'] = get_action_shared_site(user)
    return render_to_response(template_name,
                              extra_context,
+                             context_instance=RequestContext(request))
+@login_required
+def thankyou(request, template_name='gratitude/thankyou.html'):
+   request.session['thankyou_seen'] = True
+   extra_context = {}
+   extra_context['user'] = request.user 
+   extra_context['facebook_app_id'] = settings.FACEBOOK_APP_ID
+   extra_context['action_shared_site'] = get_action_shared_site(request.user)
+   return render_to_response(template_name, extra_context,
                              context_instance=RequestContext(request))
 
 @csrf_exempt

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load extras %}
+{% block script_head %}
+   <script type="text/javascript" charset="utf-8">
+         window.twttr = (function (d,s,id) {
+           var t, js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+           js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+           return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+         }(document, "script", "twitter-wjs"));
+   </script>
+{% endblock %}
+
+{% block title %}{% trans 'Express Your Gratitude!' %}{% endblock %}
+{% block content_title %}<h2 class="content-title">{% trans 'Express Your Gratitude!' %}</h2>{% endblock %}
+
+{% block content %}
+
+<div id="fb-root"></div>
+   <script>
+         function facebookShareSite() {
+            console.log("base_url: {{base_url}}")
+            var obj = {
+               method: 'feed',
+               display: 'popup',
+               name: 'I completed 30 Days of Gratitude!',
+               caption: 'The Art of Gratitude',
+               description: 'A free site for cultivating the daily practice of gratitude.',
+               display: 'popup',
+               link: '{{base_url}}',
+               picture: '{{media_url}}/img/art_of_gratitude_leaf_large_square-128x128.png'
+            };
+
+           function callback(response) {
+               $.ajax({
+                 url: "/app/gratitude/api/v1/action/share_site_facebook/?format=json",
+                 context: document.body
+               }).done(function() {
+                  $("#share-artofgratitude-site").alert('close');
+               });
+           }
+
+           FB.ui(obj, callback);
+         }
+</script>
+
+<div class="row">
+   <div class="span12">
+      <h2 class="congratulations-title">Congratulations!</h2>
+      <p/>
+      <h2 class="congratulations-text">You've completed your 30 Days of Gratitude!</h2>
+      <img src="{{media_url}}/img/congratulations.jpg" class="aligncenter" height="30%" width="30%" />
+      <p/>
+      <h2 class="congratulations-text">You have a lot to be grateful for! Share your accomplishment with your friends.</h2>
+      <p/>
+      <div class="row">
+         <div class="span5"></div>
+         <div class="span2">
+            <span id="twitter-share-site"><a href="https://twitter.com/share" class="twitter-share-button twitter-share-site" data-text="I completed 30 Days of Gratitude!" data-hashtags="ArtOfGratitude" data-url="https://artofgratitude.com" data-count="none" data-lang="en">Tweet</a></span><input id="fb-share-artofgratitude-site-button" type="image" src="{{media_url}}/img/fb-share.png" class="profile-fb-share" alt="Post to Facebook" onclick="facebookShareSite()" /> <br>
+            <p>&nbsp;</p>
+            <div class="congratulations-continue"><a href="/app/thankyou" class="btn btn-primary ">Continue</a></div>
+         </div>
+         <div class="span5"></div>
+      </div>
+      <p/>
+   </div>
+</div>
+{% endblock %}
+{% block content-footer %}
+{% endblock %}
+{% block javascript %}
+   <script>
+      window.fbAsyncInit = function() {
+        console.log('Initializing Facebook SDK...');
+        FB.init({appId: '{{facebook_app_id}}', status: true, cookie: true,
+                 xfbml: true});
+        console.log('Facebook init done.');
+      };
+      (function() {
+        var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol +
+          '//connect.facebook.net/en_US/all.js';
+        document.getElementById('fb-root').appendChild(e);
+      }());
+   </script>
+   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+   <script>
+         twttr.ready(
+            function (twttr) {
+               twttr.events.bind('tweet', function(event) {
+                  var gratitudeId = event.target.parentNode.getAttribute("data-gratitude-id");
+                  if (gratitudeId != null) {
+                     $.ajax({
+                       url: "/app/gratitude/api/v1/action/share_gratitude_twitter/" + gratitudeId + "/?format=json", 
+                       context: document.body
+                     });
+                  } else {
+                     $.ajax({
+                       url: "/app/gratitude/api/v1/action/share_site_twitter/?format=json", 
+                       context: document.body
+                     });
+                     $("#share-artofgratitude-site").alert('close');
+                  };
+               });
+         });
+   </script>   
+{% endblock %}

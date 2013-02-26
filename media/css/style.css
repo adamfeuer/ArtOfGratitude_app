@@ -1362,6 +1362,39 @@ input[type="text"], input[type="password"] {
    right: -4px;
 }
 
+.centered {
+   text-align: center;
+}
+
+.congratulations-title {
+	font-size: 25px;
+   font-color: black;
+   text-align: center;
+}
+
+.congratulations-text {
+   font-size: 18px;
+   font-color: black;
+   text-align: center;
+}
+
+.congratulations-continue {
+   position: relative;
+   right: -25px;
+}
+
+.thankyou-blue {
+   color: #5430B8;
+}
+
+.thankyou-well {
+   height: 220px;
+}
+
+.thankyou-share {
+   position: relative;
+   right: -21px;
+}
 /* for wordpress */
 img.alignright {float:right; margin:0 0 1em 1em}
 img.alignleft {float:left; margin:0 1em 1em 0}
