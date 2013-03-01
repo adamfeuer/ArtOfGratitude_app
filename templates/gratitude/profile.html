@@ -40,10 +40,12 @@
             };
 
             function callback(response) {
-               $.ajax({
-                 url: "/app/gratitude/api/v1/action/share_gratitude_facebook/" + gratitudeId + "/?format=json",
-                 context: document.body
-               });
+               if (response) {
+                  $.ajax({
+                    url: "/app/gratitude/api/v1/action/share_gratitude_facebook/" + gratitudeId + "/?format=json",
+                    context: document.body
+                  });
+               }
            }
 
            FB.ui(obj, callback);
@@ -60,10 +62,12 @@
             };
 
            function callback(response) {
-               $.ajax({
-                 url: "/app/gratitude/api/v1/action/send_thanks_facebook/?format=json",
-                 context: document.body
-               });
+              if (response) {
+                 $.ajax({
+                   url: "/app/gratitude/api/v1/action/send_thanks_facebook/?format=json",
+                   context: document.body
+                 });
+              }
            }
 
            FB.ui(obj, callback);
@@ -81,12 +85,14 @@
             };
 
             function callback(response) {
-               $.ajax({
-                 url: "/app/gratitude/api/v1/action/share_site_facebook/?format=json",
-                 context: document.body
-               }).done(function() {
-                  $("#share-artofgratitude-site").alert('close');
-               });
+               if (response) {
+                  $.ajax({
+                    url: "/app/gratitude/api/v1/action/share_site_facebook/?format=json",
+                    context: document.body
+                  }).done(function() {
+                     $("#share-artofgratitude-site").alert('close');
+                  });
+               }
             }
 
            FB.ui(obj, callback);
