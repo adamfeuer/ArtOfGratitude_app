@@ -228,7 +228,7 @@ def activate(request, activation_key,
    user = UserenaSignup.objects.activate_user(activation_key)
    if user:
       # Sign the user in.
-      auth_user = authenticate(identification=user.email,
+      auth_user = authenticate(identification=user.username,
                                check_password=False)
       UserDetail.set_activation_datetime(auth_user)
       login(request, auth_user)

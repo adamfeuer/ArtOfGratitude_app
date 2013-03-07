@@ -69,7 +69,7 @@ class Action(models.Model):
    ALLOWED_ACTIONS = [SHARE_SITE_FACEBOOK, SHARE_SITE_TWITTER, SHARE_GRATITUDE_FACEBOOK, SHARE_GRATITUDE_TWITTER, SEND_THANKS_FACEBOOK]
    
    def __unicode__(self):
-      return "'%s': '%s'" % (self.user, self.no_messages)
+      return "'%s': '%s'" % (self.user, self.action)
    
    @staticmethod
    def get_action_count_for_user(user, action):
