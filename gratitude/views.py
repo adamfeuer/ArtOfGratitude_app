@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import logout, REDIRECT_FIELD_NAME
+from django.contrib.auth import login, logout, REDIRECT_FIELD_NAME
 from django.contrib.auth.decorators import permission_required, login_required, user_passes_test 
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.contrib import messages
@@ -101,13 +101,25 @@ def one_page_signup(request, signup_form=SignupFormOnePage,
 @secure_required
 def social_verification(request):
    user = request.user
-   user.is_active = False
-   user.save()
-   gratitudeManager = GratitudeManager()
-   gratitudeManager.create_profile_and_userdetail(user)
-   redirect_to = settings.SIGNUP_SUCCESSFUL_URL
-   if request.user.is_authenticated():
+   if User.objects.all().filter(email__iexact=user.email).count() > 1:
       logout(request)
+      user.delete()
+      users = User.objects.all().filter(email__iexact=user.email)
+      for queryUser in users:
+         if queryUser.is_active is True:
+            authUser = authenticate(identification=queryUser.username, check_password=False)
+            login(request, authUser)
+            redirect_to = reverse('gratitude_profile_simple')
+      messages.error(request, _('Please check your email') + ' (%s) ' % user.email + _('to activate your account. Once activated, you can log in with Facebook. Thanks!')),
+      redirect_to = reverse('gratitude_message')
+   else:
+      redirect_to = settings.SIGNUP_SUCCESSFUL_URL
+      user.is_active = False
+      user.save()
+      gratitudeManager = GratitudeManager()
+      gratitudeManager.create_profile_and_userdetail(user)
+      if request.user.is_authenticated():
+         logout(request)
    return redirect(redirect_to)
 
 @secure_required
