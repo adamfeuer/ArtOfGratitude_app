@@ -36,3 +36,9 @@ class Quotes:
    def getQuotes(self):
       return Quotes.quotes
 
+   def main(self):
+      for quote in Quotes.quotes.values():
+         print quote
+
+if __name__ == "__main__":
+   Quotes().main()
