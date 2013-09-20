@@ -1,14 +1,18 @@
-Gratitude
+The Art of Gratitude
 ===========
-A Python Django application.
+Python / Django web app that runs the ArtOfGratitude.com (gratitude journal) website.
+
+For more info, see http://artofgratitude.com
+
+The website for Art Of Gratitude runs on Wordpress; only the Art of Gratitude journal application
+runs in Python / Django.
 
 Requirements
 ------------
 * Python 2.7
-* Django 1.4
-* Userena
+* Amazon SES account: http://aws.amazon.com
 
-* Twilio account: http://twilio.com
+Other Python modules are documented in the file requirements.txt.
 
 Recommended
 -----------
@@ -21,4 +25,5 @@ Installing
 See the file INSTALL.md
 
 Adam Feuer
-adamf@pobox.com
+adam@adamfeuer.com
+
